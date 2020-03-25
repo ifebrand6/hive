@@ -13,6 +13,25 @@ class Ability
     #     can :read, :all
     #   end
     #
+        user ||= User.new # guest user (not logged in)
+        can :manage, :all 
+        if user.superadmin_role?
+          can :manage, :all
+          can :access, :rails_admin
+          can :manage, :dashboard
+        end
+        if user.admin_role?
+          can :read, User #manage customers account
+        end
+      #
+        # user ||= User.new
+        # if user.superadmin_role?
+        #   can :manage, :local
+        # end
+        # if user.admin_role?
+        #   can :manage, User #manage the customers accounts
+        # end
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions
