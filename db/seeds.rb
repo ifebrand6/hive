@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+defaults_talent_types = TalentType.create([{:expert_specialization => "Farm manager"},
+     {:expert_specialization => "Farm attendant"},
+     {:expert_specialization => "Drone Service expert"},
+     {:expert_specialization => "Agricultural feasibility expert"},
+     {:expert_specialization => "Agricultural business plan expert"},
+     {:expert_specialization => "Fumigation and vaccination expert"},
+    ])
