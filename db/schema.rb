@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_121126) do
+ActiveRecord::Schema.define(version: 2020_03_27_173209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_121126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "talent_type_id"
+    t.string "suggested_skill", limit: 50
     t.index ["email"], name: "index_expert_applications_on_email", unique: true
     t.index ["talent_type_id"], name: "index_expert_applications_on_talent_type_id"
   end

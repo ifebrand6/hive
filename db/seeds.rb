@@ -11,4 +11,5 @@ defaults_talent_types = TalentType.create([{:expert_specialization => "Farm mana
      {:expert_specialization => "Agricultural feasibility expert"},
      {:expert_specialization => "Agricultural business plan expert"},
      {:expert_specialization => "Fumigation and vaccination expert"},
+     {:expert_specialization => "Add your own expert specialization"}
     ])

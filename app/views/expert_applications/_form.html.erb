@@ -14,9 +14,8 @@
         <%= f.label :TalentType, "Select Specialization" %>
         <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'} ) %>
         <br>
-        <%= fields_for :talent_type, @expert_application.talent_type do |e| %> 
-            Expert Specialization: <%= e.text_field :expert_specialization %>
-        <% end %> 
+        <%= f.label :suggested_skill, "Input exprtise, if your skills is not listed here" %>
+        <%= f.text_field :suggested_skill %>
         <br>
         <%= f.label :firstName, "First Name" %>
         <%= f.text_field :firstName %>
