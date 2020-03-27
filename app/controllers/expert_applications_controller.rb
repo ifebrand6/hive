@@ -3,6 +3,5 @@ class ExpertApplicationsController < ApplicationController
 
   def index
     @expert_specialization_list = TalentType.all
-    @expert_type = TalentType.all
   end
 end

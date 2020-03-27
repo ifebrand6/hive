@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_205102) do
+ActiveRecord::Schema.define(version: 2020_03_27_052943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expert_applications", force: :cascade do |t|
+    t.string "firstName", limit: 30
+    t.string "lastName", limit: 30
+    t.string "email"
+    t.integer "phoneNumber"
+    t.text "contactAddress"
+    t.text "shortBio"
+    t.text "certification", default: [], array: true
+    t.boolean "status", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_expert_applications_on_email", unique: true
+  end
 
   create_table "talent_types", force: :cascade do |t|
     t.string "expert_specialization", limit: 50

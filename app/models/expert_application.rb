@@ -1,0 +1,2 @@
+class ExpertApplication < ApplicationRecord
+end
