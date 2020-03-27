@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_052943) do
+ActiveRecord::Schema.define(version: 2020_03_27_121126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 2020_03_27_052943) do
     t.boolean "status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "talent_type_id"
     t.index ["email"], name: "index_expert_applications_on_email", unique: true
+    t.index ["talent_type_id"], name: "index_expert_applications_on_talent_type_id"
   end
 
   create_table "talent_types", force: :cascade do |t|
@@ -51,4 +53,5 @@ ActiveRecord::Schema.define(version: 2020_03_27_052943) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "expert_applications", "talent_types"
 end
