@@ -1,2 +1,6 @@
-<h1>Apply as an expert </h1>
-<h2>fill in your correct details</h2>
+<h1> BECOME AN EXPERT </h1>
+<h2>HI, ARE YOU AN EXPERT, APPLY NOW</h2>
+<% @expert_specialization_list.each do |f| %>
+<li><%= f.expert_specialization %></li>
+<%end%>
+<%= link_to 'apply', new_expert_application_path %>
