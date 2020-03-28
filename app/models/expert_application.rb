@@ -1,9 +1,12 @@
 class ExpertApplication < ApplicationRecord
     belongs_to :talent_type
 
-    def onboarding_expert(expert_application)
-        if (expert_application.status === false)
-            self.status = true
+    scope :pending_application, lambda { where(:status => false)}
+    scope :onboard_expert, -> { where(:status => true)}
+
+    def onboarding_expert
+        if (self.status === false)
+            self.update(status: true)
         else
             return expert_application
         end

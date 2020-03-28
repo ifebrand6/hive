@@ -1,5 +1,5 @@
 class ExpertApplicationsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index, :new, :create]
+  skip_before_action :authenticate_user!, :only => [:index, :new, :create, :show, :accept_application]
 
   def index
     @expert_specialization_list = TalentType.all
@@ -9,7 +9,10 @@ class ExpertApplicationsController < ApplicationController
     @expert_specialization_list = TalentType.all
     @expert_application = ExpertApplication.new
   end
-
+  def show
+    @expert_application = ExpertApplication.find(params[:id])
+  end
+  
   def create
     @expert_specialization_list = TalentType.all
     @expert_application = ExpertApplication.new(expert_application_params)
@@ -19,6 +22,12 @@ class ExpertApplicationsController < ApplicationController
       render :new
     end
   end
+  def accept_application
+    @expert_application = ExpertApplication.find(params[:id])
+   @expert_application.onboarding_expert
+    redirect_to dashboard_application_path
+  end
+  
 
 
     private
