@@ -1,6 +1,5 @@
 class GetExpertsController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index]
-  skip_before_action :create_guest_if_needed
 
 
   def index

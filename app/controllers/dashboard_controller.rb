@@ -1,6 +1,5 @@
 class DashboardController < ApplicationController
   skip_before_action :authenticate_user!, :except => []
-  #skip_before_action :create_guest_if_needed
 
   def index
   end
