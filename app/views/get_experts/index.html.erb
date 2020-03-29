@@ -1,2 +1,8 @@
-<h1>GetExperts#index</h1>
-<p>Find me in app/views/get_experts/index.html.erb</p>
+<h1>Request for an expert</h1>
+<p>fill in the form with the deatails of what you want</p>
+    <% if current_user.customer_role?  %>
+         <%= render partial: '/get_experts/request_forms/customer_requestForm' %>    
+    <% elsif  %>
+        <%= render 'request_forms/guest_requestForm '%>   
+    <% end %>
+
