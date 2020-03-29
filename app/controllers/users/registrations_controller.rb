@@ -5,21 +5,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    @current_user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  # POST /resource
-  def create
-    @current_user = params[:current_user] ? User.new(params[:current_user]) : User.new_guest
-    if @current_user.save
-      current_user.move_to(@current_user) if current_user && current_user.guest?
-      session[:user_id] = @current_user.id
-      redirect_to root_url
-    else
-      render "new"
-    end
-  end
+  # # POST /resource
+  # def create
+  #   @user = params[:user] ? User.new(params[:user]) : User.new_guest
+  #   if @user.save
+  #     current_user.move_to(@user) if current_user && current_user.guest?
+  #     session[:user_id] = @user.id
+  #     redirect_to root_url
+  #   else
+  #     render "new"
+  #   end
+  # end
 
   # GET /resource/edit
   # def edit
