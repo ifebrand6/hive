@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unit_price: 1
+  expected_contract_duration: 1
+  expected_start_date: 2020-03-30
+  quantity: 1
+  user: one
+  request: one
+  talent_type: one
+
+two:
+  unit_price: 1
+  expected_contract_duration: 1
+  expected_start_date: 2020-03-30
+  quantity: 1
+  user: two
+  request: two
+  talent_type: two

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_29_000946) do
+ActiveRecord::Schema.define(version: 2020_03_30_151747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 2020_03_29_000946) do
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
+  create_table "talent_requests", force: :cascade do |t|
+    t.integer "unit_price"
+    t.integer "expected_contract_duration"
+    t.date "expected_start_date"
+    t.integer "quantity", default: 1
+    t.bigint "user_id"
+    t.bigint "request_id"
+    t.bigint "talent_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_talent_requests_on_request_id"
+    t.index ["talent_type_id"], name: "index_talent_requests_on_talent_type_id"
+    t.index ["user_id"], name: "index_talent_requests_on_user_id"
+  end
+
   create_table "talent_types", force: :cascade do |t|
     t.string "expert_specialization", limit: 50
     t.datetime "created_at", null: false
@@ -57,10 +72,14 @@ ActiveRecord::Schema.define(version: 2020_03_29_000946) do
     t.boolean "superadmin_role", default: false
     t.boolean "admin_role", default: false
     t.boolean "customer_role", default: true
+    t.boolean "guest"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "expert_applications", "talent_types"
   add_foreign_key "requests", "users"
+  add_foreign_key "talent_requests", "requests"
+  add_foreign_key "talent_requests", "talent_types"
+  add_foreign_key "talent_requests", "users"
 end
