@@ -1,10 +1,11 @@
 class GetExpertsController < ApplicationController
+  before_action :current_or_guest_user
   skip_before_action :authenticate_user!, :only => [:index]
 
 
   def index
-    if ((current_user.customer_role || current_user.guest) === (true))
-      @request = Request.new(user_id: current_user.id)
+    if (current_or_guest_user)
+      @request = Request.new(user_id: current_or_guest_user.id)
       @request.save! 
     else
       redirect_to root_path 
