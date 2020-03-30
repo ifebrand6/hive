@@ -8,8 +8,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   @user = User.new
   # end
+  def new
+    current_or_guest_user
+  end
 
   # # POST /resource
+  def create
+    super
+    current_or_guest_user
+  end
+  
   # def create
   #   @user = params[:user] ? User.new(params[:user]) : User.new_guest
   #   if @user.save
