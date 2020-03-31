@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :requests
-  # Include default devise modules. Others available are:
+  has_many :requests, dependent: :delete_all
+  has_many :talent_requests
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable validatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
