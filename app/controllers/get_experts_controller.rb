@@ -7,7 +7,7 @@ class GetExpertsController < ApplicationController
     else
       redirect_to root_path 
     end
-     @talent_requests = @request.talent_requests.build
+    @talent_requests = @request.talent_requests.build
     #@talent_requests = TalentRequest.new
     # request = @talent_requests.build_request
   end
