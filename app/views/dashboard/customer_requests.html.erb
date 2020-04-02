@@ -1,0 +1,25 @@
+<h2><%= @user.email%> requests</h2>
+<p>List of customer requests </p>
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date created</th>
+            <th></th>
+            <th> Talent Request No</th>
+            <th>fAction</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @requests .each do |request |%>
+            <tr>
+                <th scope="row"><%= request.created_at %></th>
+                <td></td>
+                <td><%= request.talent_requests.count %></td>
+                <td><%= link_to  "see talent request", talent_requests_path(request) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
+<%= link_to  "back", :back %>

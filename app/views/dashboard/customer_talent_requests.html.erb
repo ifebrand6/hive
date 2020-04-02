@@ -1,0 +1,31 @@
+<h1><%= @request.user.email%> talents requested</h1>
+<p>User talent request details </p>
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Order Date</th>
+            <th>Talent Demanded</th>
+            <th>Expected Duration Of Contract</th>
+            <th>Expected Start Date</th>
+            <th>Quantity Demanded</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @talent_requests.each do |talent_request| %>
+        <tr>
+            <th scope="row"><%= talent_request.id %></th>
+            <td><%= talent_request.created_at %></td>
+            <td><%= talent_request.talent_type.expert_specialization %></td>
+            <td><%= talent_request.expected_contract_duration %></td>
+            <td><%= talent_request.expected_start_date %></td>
+            <td><%= talent_request.quantity %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
+<%= link_to  "back", :back %>
+<br>
+<%=link_to 'finalize request', :back%>
