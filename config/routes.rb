@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'dashboard/index'
   get 'dashboard/application'
   get 'dashboard/talents'
+  get 'dashboard/customers_requests'
+  get 'dashboard/customer_talent_requests/:id' => 'dashboard#customer_talent_requests', :as => 'talent_requests'
+  get 'dashboard/customer_requests/:id' => 'dashboard#customer_requests', :as => 'customer_requests'
   get 'onboard/:id' => 'expert_applications#accept_application', :as => 'onboard'
   #get '/apply', to: " expert_application#apply" #rename route so site/career/appy
   resources :expert_applications, path: 'application'
