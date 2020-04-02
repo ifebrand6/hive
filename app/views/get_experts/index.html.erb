@@ -1,6 +1,9 @@
 <h1>Request for an expert</h1>
 <p>fill in the form with the deatails of what you want</p>
-    <% if current_or_guest_user %>
-         <%= render partial: '/get_experts/request_forms/customer_requestForm' %>     
-    <% end %>
-
+<% if current_user.nil? %>
+<h2> Guest Request  form</h2>
+<%= render partial: '/get_experts/request_forms/guest_requestForm' %>  
+<% else %>
+<h2> Customer Request form</h2>
+<%= render partial: '/get_experts/request_forms/customer_requestForm' %>  
+<% end %>   
