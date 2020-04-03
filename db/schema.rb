@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_062944) do
+ActiveRecord::Schema.define(version: 2020_04_03_064037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 2020_04_03_062944) do
     t.string "email"
     t.string "phoneNumber"
     t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
+  create_table "talent_assignments", force: :cascade do |t|
+    t.date "engaged_date"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "finalized_request_id"
+    t.bigint "expert_application_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expert_application_id"], name: "index_talent_assignments_on_expert_application_id"
+    t.index ["finalized_request_id"], name: "index_talent_assignments_on_finalized_request_id"
   end
 
   create_table "talent_requests", force: :cascade do |t|
@@ -92,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_04_03_062944) do
   add_foreign_key "finalized_requests", "requests"
   add_foreign_key "finalized_requests", "users"
   add_foreign_key "requests", "users"
+  add_foreign_key "talent_assignments", "expert_applications"
+  add_foreign_key "talent_assignments", "finalized_requests"
   add_foreign_key "talent_requests", "requests"
   add_foreign_key "talent_requests", "talent_types"
   add_foreign_key "talent_requests", "users"
