@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  amount: 1
+  user: one
+  finalized_request: one
+
+two:
+  amount: 1
+  amount: 1
+  user: two
+  finalized_request: two
