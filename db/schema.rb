@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_091024) do
+ActiveRecord::Schema.define(version: 2020_04_03_062944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2020_03_31_091024) do
     t.string "suggested_skill", limit: 50
     t.index ["email"], name: "index_expert_applications_on_email", unique: true
     t.index ["talent_type_id"], name: "index_expert_applications_on_talent_type_id"
+  end
+
+  create_table "finalized_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "request_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id"], name: "index_finalized_requests_on_request_id"
+    t.index ["user_id"], name: "index_finalized_requests_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -80,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_03_31_091024) do
   end
 
   add_foreign_key "expert_applications", "talent_types"
+  add_foreign_key "finalized_requests", "requests"
+  add_foreign_key "finalized_requests", "users"
   add_foreign_key "requests", "users"
   add_foreign_key "talent_requests", "requests"
   add_foreign_key "talent_requests", "talent_types"
