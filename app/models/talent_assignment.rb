@@ -1,4 +1,6 @@
 class TalentAssignment < ApplicationRecord
-  belongs_to :finalized_request
+  validates :finalized_request, presence: true
+  belongs_to :finalized_request,inverse_of: :talent_assignments
   belongs_to :expert_application
+
 end

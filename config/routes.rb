@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'dashboard/customers_requests'
   get 'dashboard/customer_talent_requests/:id' => 'dashboard#customer_talent_requests', :as => 'talent_requests'
   get 'dashboard/customer_requests/:id' => 'dashboard#customer_requests', :as => 'customer_requests'
+  get 'dashboard/talent_assignment/:id' => 'dashboard#talent_assignment', :as => 'talent_assignment'
+  post "dashboard/finalize_user_request", to: "dashboard#finalize_user_request"
   get 'onboard/:id' => 'expert_applications#accept_application', :as => 'onboard'
   #get '/apply', to: " expert_application#apply" #rename route so site/career/appy
   resources :expert_applications, path: 'application'

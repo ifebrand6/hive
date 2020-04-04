@@ -1,0 +1,23 @@
+ <h1>Final user Request</h1>
+ <h3> fill in with the correct data </h3>
+
+ <%= form_for @final_request ,  url: {action: "finalize_user_request"} do |f| %>
+        <%= f.hidden_field :user_id, value: @talent_request.user_id %>
+        <%= f.hidden_field :request_id, value: @talent_request.request_id %>
+
+    <%= f.fields_for :talent_assignments do |a| %>
+        <%= a.label :engaged_date, "Engaged_date" %>
+        <%= a.date_field :engaged_date %>
+        <br>
+        <%= a.label :engaged_date, "Start Date" %>
+        <%= a.date_field  :start_date %>
+        <br>
+        <%= a.label :engaged_date, "Select Expert" %>
+        <%= a.select(:expert_application_id, @talents.collect{|e| [e.firstName   , + e.id]} ) %>
+        <%= a.check_box :_destroy %>
+        <%= a.label :_destroy, "remove" %>
+        <br>
+
+<% end %>
+<%= f.submit %>
+<% end %>
