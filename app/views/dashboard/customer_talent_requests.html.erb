@@ -21,11 +21,13 @@
             <td><%= talent_request.expected_contract_duration %></td>
             <td><%= talent_request.expected_start_date %></td>
             <td><%= talent_request.quantity %></td>
+            <%=link_to 'finalize request', talent_assignment_path(talent_request) %>
         </tr>
+       
         <% end %>
     </tbody>
 </table>
 </div>
 <%= link_to  "back", :back %>
+
 <br>
-<%=link_to 'finalize request', :back%>
