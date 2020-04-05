@@ -1,20 +1,15 @@
 class GetExpertsController < ApplicationController
   def index
     @expert_specialization_list = TalentType.all
-    if (current_or_guest_user)
-      @request = Request.new(user_id: current_or_guest_user.id)
-      @request.save! 
-    else
-      redirect_to root_path 
-    end
+    @request = Request.new(user_id: current_or_guest_user.id)
+    @request.save! 
     @talent_requests = @request.talent_requests.build
     #@talent_requests = TalentRequest.new
     # request = @talent_requests.build_request
   end
   def create
-    @request.find(params[:id])
-    # @talent_requests = TalentRequest.new(talent_request_params)
-    @talent_requests = @request.talent_requests.build(talent_request_params)
+    @talent_requests = TalentRequest.new(talent_request_params)
+    #@talent_requests = TalentRequest.new(talent_request_params)
     if @talent_requests.save!
       redirect_to root_path, notice: 'request has been recieved.'
     else
