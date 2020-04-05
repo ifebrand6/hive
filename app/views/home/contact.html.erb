@@ -2,7 +2,7 @@
 <p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, dolores sint veniam dolorem rem similique quod praesentium animi, amet dicta atque ea nobis accusamus hic molestiae quidem a nemo at.
 <p> </p>
 
-<%= form_with model: @message do |f| %>
+<%= form_with model: @message,  url: {action: "create"} do |f| %>
 <%= f.label :name, "Name" %>
 <%= f.text_field :name %>
 <br>

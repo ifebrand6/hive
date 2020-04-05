@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   get "/test", to: "home#test"
   get '/become-partner', to: "home#become_a_partner"
   get '/contact', to: "home#contact"
-
+  post "home/create", to: "home#create"
 end
