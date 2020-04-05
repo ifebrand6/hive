@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "dashboard/finalize_user_request", to: "dashboard#finalize_user_request"
   get 'onboard/:id' => 'expert_applications#accept_application', :as => 'onboard'
   #get '/apply', to: " expert_application#apply" #rename route so site/career/appy
+  resources :messages
   resources :expert_applications, path: 'application'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
