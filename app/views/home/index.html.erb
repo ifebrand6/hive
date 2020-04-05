@@ -1,11 +1,31 @@
-<% if current_user.nil? %>
-    <%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
-<% else %>
-    <%= link_to root_path, class: 'login-button' do %>Go to App<% end %>
-    <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
-<% end %>   
 
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="#">AgroHive</a>
+    </div>
+    <ul class="nav navbar-nav">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#"><%= link_to 'Get an expert', get_experts_path %> </a></li>
+        <li><a href="#"><%= link_to 'Become A Pathner', get_experts_path %> </a></li>
+        <li><a href="#"><%= link_to 'Ask a question', get_experts_path %> </a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <li><a href="#"><span class="glyphicon glyphicon-user"></span>
+        <% if current_user.nil? %>
+            <%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+        </a>
+        </li>
+        <% else %>
+    
+    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 
+        <%= link_to root_path, class: 'login-button' do %>Go to App<% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
+        <% end %>   
+    </a></li>
+    </ul>
+</div>
+</nav>
 <h1> Welcome to AgroHive </h1>
-<p>                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, dolores sint veniam dolorem rem similique quod praesentium animi, amet dicta atque ea nobis accusamus hic molestiae quidem a nemo at.
+<p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, dolores sint veniam dolorem rem similique quod praesentium animi, amet dicta atque ea nobis accusamus hic molestiae quidem a nemo at.
 </p>
-<%= link_to 'get expert', get_experts_path %> 
