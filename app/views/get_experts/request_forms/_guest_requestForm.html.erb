@@ -1,40 +1,39 @@
-<%= form_with(model: [@request,@talent_requests] ,  url: {action: "create"}, method: :post) do |f| %>
-<table>
-    <%= f.label :TalentType, "what type of services are you looking for" %>
-    <% if @talent_requests.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= pluralize(@talent_requests.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-        <ul>
-        <% @talent_requests.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+<%= form_with(model: @requests, local: true ,url: {action: "create"}) do |request| %>
+        <%= request.hidden_field :user_id, value: current_or_guest_user.id %>
+        <%= request.label :email, "Enter Email" %>
+        <%= request.email_field :email %>
+        <br>
+        <%= request.label :phoneNumber, "Phone Number" %>
+        <%= request.text_field :phoneNumber %>
+        <br>
+        <br> 
+    <table>
+        <%= request.fields_for :talent_request do |talent_request| %>
+            <%= talent_request.label :talent_type_id, "what type of services are you looking for" %>
+            <%= talent_request.select(:talent_type_id, @expert_specialization_list.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
+                <br>
+                <br>
+            <%= talent_request.label :unit_price, "Shows the unit price" %>
+            <%= talent_request.number_field :unit_price %>
+                <br>
+                <br>
+            <%= talent_request.label :expected_contract_duration, "What the duration you want for the contract" %>
+            <%= talent_request.date_field :expected_contract_duration %>
+                <br>
+                <br>
+            <%= talent_request.label :expected_start_date, "Expected Start Date" %>
+            <%= talent_request.date_field :expected_start_date %>
+                <br>
+                <br>
+            <%= talent_request.label :quantity, "quantity" %>
+            <%= talent_request.number_field :quantity %>
+            <%= talent_request.hidden_field :user_id, value: current_or_guest_user.id  %>
+                <br>
+                <br>
+                
         <% end %>
-        </ul>
-        </div>
-    <% end %>
-    <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'} ) %>
-    <br>
-    <br>
-    <%= f.label :unit_price, "Shows the unit price" %>
-    <%= f.number_field :unit_price %>
-    <br>
-    <br>
-    <%= f.label :expected_contract_duration, "What the duration you want for the contract" %>
-    <%= f.date_field :expected_contract_duration %>
-    <br>
-    <br>
-    <%= f.label :expected_start_date, "Expected Start Date" %>
-    <%= f.date_field :expected_start_date %>
-    <br>
-    <br>
-    <%= f.label :quantity, "quantity" %>
-    <%= f.number_field :quantity %>
-    <br>
-    <%= f.hidden_field :user_id, value: @request.user_id %>
-    <%= f.hidden_field :request_id, value: @request.id %>
-    feild_for
-    <br>
-    <%= f.submit "Submit", disable_with: 'Submiting...' %>
+        <%= request.submit "Submit", disable_with: 'Submiting...' %>
 
-</table>
+    </table>
 <% end %> 
