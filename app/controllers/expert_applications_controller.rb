@@ -1,4 +1,5 @@
 class ExpertApplicationsController < ApplicationController
+  before_action :authenticate_user!
   skip_before_action :authenticate_user!, :only => [:index, :new, :create, :show, :accept_application]
 
   def index
