@@ -8,7 +8,8 @@ class GetExpertsController < ApplicationController
     @expert_specialization_list = TalentType.all
     @requests = Request.new(request_and_talent_request_params)
     if @requests.save
-      # send mail to user and admin
+      SendMailToAdminForATalentRequestJob.perform_later(@requests.id)
+      SendAdmittedMsgForTalentRequestJob.perform_later(@requests.id)
       flash[:notice] = "You request has been recieved."
       redirect_to root_path, notice: 'request has been recieved.'
     else
