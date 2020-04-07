@@ -12,6 +12,11 @@ class NotifierMailerPreview < ActionMailer::Preview
     request = Request.last
     NotifierMailer.with(request: request).send_mail_to_admin_for_a_talent_request
   end
+  # Preview this email at http://localhost:3000/rails/mailers/notifier_mailer/send_admitted_msg_for_talent_request
+  def send_admitted_msg_for_talent_request
+    request = Request.last
+    NotifierMailer.with(request: request).send_admitted_msg_for_talent_request
+  end
 
   # Preview this email at http://localhost:3000/rails/mailers/notifier_mailer/send_final_request_mail
   def send_final_request_mail
