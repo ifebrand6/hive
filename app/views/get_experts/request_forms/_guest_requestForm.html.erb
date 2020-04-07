@@ -1,17 +1,26 @@
-<%= form_with(model: [@request,@talent_requests] ,  url: {action: "create"}, method: :post) do |f| %>
-<table>
-    <%= f.label :TalentType, "what type of services are you looking for" %>
-    <% if @talent_requests.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= pluralize(@talent_requests.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% if @request.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@request.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-        <ul>
-        <% @talent_requests.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-        </ul>
-        </div>
+    <ul>
+    <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
     <% end %>
+    </ul>
+    </div>
+<% end %>
+<%= form_with(model: @request, local: true ,url: {action: "create"}) do |r| %>
+<%= r.hidden_field :user_id, value: current_or_guest_user.id %>
+<%= r.label :email, "Enter Email" %>
+<%= r.email_field :email %>
+<br>
+<%= r.label :phoneNumber, "Phone Number" %>
+<%= r.text_field :phoneNumber %>
+<br>
+<table>
+    <%= r.fields_for :talent_request do |f| %>
+
+    <%= f.label :talent_type_id, "what type of services are you looking for" %>
     <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'} ) %>
     <br>
     <br>
@@ -29,12 +38,12 @@
     <br>
     <%= f.label :quantity, "quantity" %>
     <%= f.number_field :quantity %>
+    <%= f.hidden_field :user_id, value: current_or_guest_user.id  %>
     <br>
-    <%= f.hidden_field :user_id, value: @request.user_id %>
-    <%= f.hidden_field :request_id, value: @request.id %>
-    feild_for
     <br>
-    <%= f.submit "Submit", disable_with: 'Submiting...' %>
+    
+<% end %>
+    <%= r.submit "Submit", disable_with: 'Submiting...' %>
 
 </table>
 <% end %> 
