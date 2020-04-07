@@ -7,8 +7,9 @@ class ExpertApplication < ApplicationRecord
     def onboarding_expert
         if (self.status === false)
             self.update(status: true)
+            SendAcceptedExpertMailJob.perform_later(self.id)
         else
-            return expert_application
+            return self
         end
     end
 end
