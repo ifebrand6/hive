@@ -25,12 +25,16 @@ class DashboardController < ApplicationController
   def talent_assignment
     @talent_request = TalentRequest.find(params[:id]) #use to get the TalentRequest and populated to fill in the final request params
     @talents = ExpertApplication.all.where(talent_type: @talent_request.talent_type_id)
-    @final_request = FinalizedRequest.new
-    @final_request.talent_assignments.build
+    # @final_request = FinalizedRequest.new
+    # @final_request.talent_assignments.build
+    #@finalized_request = 
+    @finalized_request = FinalizedRequest.new
+    @finalized_request.talent_assignments.build
   end
   def finalize_user_request
-      @final_request = FinalizedRequest.new(final_params)
-      if @final_request.save
+      @finalized_request = FinalizedRequest.new(final_params)
+      if @finalized_request.save
+        # send mail to user with the payment link
       flash[:notice] = "Talent Assign successfully"
       redirect_to root_path
     else
@@ -41,7 +45,7 @@ class DashboardController < ApplicationController
   private
      
      def final_params
-      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignments_attributes: [:id,:engaged_date, :start_date,:expert_application_id, :finalized_request, :_destroy])
+      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignments_attributes: [:engaged_date, :start_date,:expert_application_id])
     end
 end
 
