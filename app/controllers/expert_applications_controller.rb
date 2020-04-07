@@ -25,7 +25,7 @@ class ExpertApplicationsController < ApplicationController
   end
   def accept_application
     @expert_application = ExpertApplication.find(params[:id])
-   @expert_application.onboarding_expert
+    @expert_application.onboarding_expert
     redirect_to dashboard_application_path
   end
   
