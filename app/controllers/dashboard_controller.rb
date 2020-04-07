@@ -23,11 +23,8 @@ class DashboardController < ApplicationController
     @talent_requests =  @request.talent_requests
   end
   def talent_assignment
-    @talent_request = TalentRequest.find(params[:id]) #use to get the TalentRequest and populated to fill in the final request params
+    @talent_request = TalentRequest.find(params[:id])
     @talents = ExpertApplication.all.where(talent_type: @talent_request.talent_type_id)
-    # @final_request = FinalizedRequest.new
-    # @final_request.talent_assignments.build
-    #@finalized_request = 
     @finalized_request = FinalizedRequest.new
     @finalized_request.talent_assignments.build
   end
