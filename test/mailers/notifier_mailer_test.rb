@@ -9,8 +9,8 @@ class NotifierMailerTest < ActionMailer::TestCase
     assert_match "Hi", mail.body.encoded
   end
 
-  test "send_mail_for_a_talent_request" do
-    mail = NotifierMailer.send_mail_for_a_talent_request
+  test "send_mail_to_admin_for_a_talent_request" do
+    mail = NotifierMailer.send_mail_to_admin_for_a_talent_request
     assert_equal "Send mail for a talent request", mail.subject
     assert_equal ["to@example.org"], mail.to
     assert_equal ["from@example.com"], mail.from
