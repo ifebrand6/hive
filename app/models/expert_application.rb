@@ -7,6 +7,7 @@ class ExpertApplication < ApplicationRecord
     def onboarding_expert
         if (self.status === false)
             self.update(status: true)
+            #send mail to self email notifying expert of accepted application
         else
             return expert_application
         end

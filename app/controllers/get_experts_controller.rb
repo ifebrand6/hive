@@ -9,8 +9,15 @@ class GetExpertsController < ApplicationController
   end
   def create
     @talent_requests = TalentRequest.new(talent_request_params)
+    fdf
     #@talent_requests = TalentRequest.new(talent_request_params)
     if @talent_requests.save!
+     # send mail to admin and user
+      # if user_sign_in 
+      #   NotifyUser.mail.with(@request).notify_user_and_admin
+      # else user_is_guest
+      #   NotifyGuest.mail.with(request_email:).notify_user_and_admin
+      # end
       redirect_to root_path, notice: 'request has been recieved.'
     else
       render :index
