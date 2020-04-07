@@ -40,6 +40,11 @@ class ApplicationController < ActionController::Base
          request.user_id = current_user.id
          request.save!
          end
+         guest_talent_requests = guest_user.talent_requests.all
+         guest_talent_requests.each do |talent_request|
+         talent_request.user_id = current_user.id
+         talent_request.save!
+         end
      end
      
      def create_guest_user
