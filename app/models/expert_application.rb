@@ -8,8 +8,10 @@ class ExpertApplication < ApplicationRecord
         if (self.status === false)
             self.update(status: true)
             #send mail to self email notifying expert of accepted application
+            # NotifierMailer.with(expert: self).send_accepted_expert_mail.deliver_now
+            SendAcceptedExpertMailJob.perform_later(self.id)
         else
-            return expert_application
+            return self
         end
     end
 end
