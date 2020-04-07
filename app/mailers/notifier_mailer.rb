@@ -6,9 +6,8 @@ class NotifierMailer < ApplicationMailer
   #   en.notifier_mailer.send_accepted_expert_mail.subject
   #
   def send_accepted_expert_mail
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    @expert = params[:expert]
+    mail(to: @expert.email, subject: 'Your application has been approved' )
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

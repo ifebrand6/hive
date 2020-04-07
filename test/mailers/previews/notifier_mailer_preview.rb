@@ -3,7 +3,8 @@ class NotifierMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/notifier_mailer/send_accepted_expert_mail
   def send_accepted_expert_mail
-    NotifierMailer.send_accepted_expert_mail
+    expert = ExpertApplication.last
+    NotifierMailer.with(expert: expert).send_accepted_expert_mail
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/notifier_mailer/send_mail_for_a_talent_request
