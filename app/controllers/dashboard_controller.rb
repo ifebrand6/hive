@@ -31,7 +31,7 @@ class DashboardController < ApplicationController
   def finalize_user_request
       @finalized_request = FinalizedRequest.new(final_params)
       if @finalized_request.save
-        # send mail to user with the payment link
+        SendFinalRequestMailJob.perform_later(@finalized_request.id)
       flash[:notice] = "Talent Assign successfully"
       redirect_to root_path
     else
