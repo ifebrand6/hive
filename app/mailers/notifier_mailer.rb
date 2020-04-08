@@ -33,9 +33,10 @@ class NotifierMailer < ApplicationMailer
   #   en.notifier_mailer.send_final_request_mail.subject
   #
   def send_final_request_mail
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    @finalized_request = params[:finalized_request]
+    @email = @finalized_request.request.email
+    @user = @finalized_request.user
+    mail(to: @email, subject: 'Your Request has been Processeed' )
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
