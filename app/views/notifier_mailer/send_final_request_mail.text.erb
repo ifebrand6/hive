@@ -1,3 +1,12 @@
-Notifier#send_final_request_mail
-
-<%= @greeting %>, find me in app/views/notifier_mailer/send_final_request_mail.text.erb
+<% if  @user.guest?%>
+        Dear <%= @user.email%>,
+    <% else %>
+   Hello, there 
+    <% end %>
+    This is a summary of your order
+    Talent Demand:
+    Unit needed
+    Start Date
+    End Date
+    Cost of Service: 
+    Total
