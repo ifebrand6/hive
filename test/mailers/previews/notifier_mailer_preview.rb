@@ -20,7 +20,8 @@ class NotifierMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/notifier_mailer/send_final_request_mail
   def send_final_request_mail
-    NotifierMailer.send_final_request_mail
+    finalized_request = FinalizedRequest.last
+    NotifierMailer.with(finalized_request: finalized_request).send_final_request_mail
   end
 
   # Preview this email at http://localhost:3000/rails/mailers/notifier_mailer/send_mail_for_a_completed_transcation
