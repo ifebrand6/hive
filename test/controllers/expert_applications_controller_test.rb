@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class ExpertApplicationsControllerTest < ActionDispatch::IntegrationTest
+class ExpertsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get expert_applications_index_url
+    get experts_index_url
     assert_response :success
   end
 

@@ -15,21 +15,19 @@ ActiveRecord::Schema.define(version: 2020_04_03_065001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "expert_applications", force: :cascade do |t|
-    t.string "firstName", limit: 30
-    t.string "lastName", limit: 30
+  create_table "experts", force: :cascade do |t|
+    t.string "first_name", limit: 30
+    t.string "last_name", limit: 30
     t.string "email"
-    t.integer "phoneNumber"
-    t.text "contactAddress"
-    t.text "shortBio"
+    t.integer "phone_nubmer"
+    t.text "contact_address"
+    t.text "short_bio"
     t.text "certification", default: [], array: true
     t.boolean "status", default: false
+    t.string "suggested_skill", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "talent_type_id"
-    t.string "suggested_skill", limit: 50
-    t.index ["email"], name: "index_expert_applications_on_email", unique: true
-    t.index ["talent_type_id"], name: "index_expert_applications_on_talent_type_id"
+    t.index ["email"], name: "index_experts_on_email", unique: true
   end
 
   create_table "finalized_requests", force: :cascade do |t|
@@ -43,10 +41,10 @@ ActiveRecord::Schema.define(version: 2020_04_03_065001) do
 
   create_table "requests", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "email"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
-    t.string "phoneNumber"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
@@ -55,10 +53,10 @@ ActiveRecord::Schema.define(version: 2020_04_03_065001) do
     t.date "start_date"
     t.date "end_date"
     t.bigint "finalized_request_id"
-    t.bigint "expert_application_id"
+    t.bigint "expert_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["expert_application_id"], name: "index_talent_assignments_on_expert_application_id"
+    t.index ["expert_id"], name: "index_talent_assignments_on_expert_id"
     t.index ["finalized_request_id"], name: "index_talent_assignments_on_finalized_request_id"
   end
 
@@ -79,6 +77,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_065001) do
 
   create_table "talent_types", force: :cascade do |t|
     t.string "expert_specialization", limit: 50
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["expert_specialization"], name: "index_talent_types_on_expert_specialization", unique: true
@@ -110,11 +109,10 @@ ActiveRecord::Schema.define(version: 2020_04_03_065001) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "expert_applications", "talent_types"
   add_foreign_key "finalized_requests", "requests"
   add_foreign_key "finalized_requests", "users"
   add_foreign_key "requests", "users"
-  add_foreign_key "talent_assignments", "expert_applications"
+  add_foreign_key "talent_assignments", "experts"
   add_foreign_key "talent_assignments", "finalized_requests"
   add_foreign_key "talent_requests", "requests"
   add_foreign_key "talent_requests", "talent_types"

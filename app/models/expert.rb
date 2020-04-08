@@ -1,22 +1,21 @@
 # == Schema Information
 #
-# Table name: expert_applications
+# Table name: experts
 #
 #  id              :bigint           not null, primary key
-#  firstName       :string(30)
-#  lastName        :string(30)
+#  first_name      :string(30)
+#  last_name       :string(30)
 #  email           :string
-#  phoneNumber     :integer
-#  contactAddress  :text
-#  shortBio        :text
+#  phone_nubmer    :integer
+#  contact_address :text
+#  short_bio       :text
 #  certification   :text             default([]), is an Array
 #  status          :boolean          default(FALSE)
+#  suggested_skill :string(50)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  talent_type_id  :bigint
-#  suggested_skill :string(50)
 #
-class ExpertApplication < ApplicationRecord
+class Expert < ApplicationRecord
     belongs_to :talent_type
 
     scope :pending_application, lambda { where(:status => false)}
@@ -26,7 +25,7 @@ class ExpertApplication < ApplicationRecord
         if (self.status === false)
             self.update(status: true)
         else
-            return expert_application
+            return self
         end
     end
 end

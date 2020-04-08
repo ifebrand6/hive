@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: expert_applications
+# Table name: experts
 #
 #  id              :bigint           not null, primary key
 #  firstName       :string(30)
@@ -18,7 +18,7 @@
 #
 require 'test_helper'
 
-class ExpertApplicationTest < ActiveSupport::TestCase
+class ExpertTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -18,5 +18,5 @@ class FinalizedRequest < ApplicationRecord
   def reject_talent_assignment
     attributes['finalized_request_id'].blank?
   end
-  
+
 end

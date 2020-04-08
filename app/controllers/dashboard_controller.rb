@@ -5,11 +5,11 @@ class DashboardController < ApplicationController
   end
 
   def application
-    @expert_application_list = ExpertApplication.all.pending_application
+    @expert_list = Expert.all.pending_application
   end
 
   def talents
-    @expert_application_list = ExpertApplication.all.onboard_expert
+    @expert_list = Expert.all.onboard_expert
   end
   def customers_requests
     @customers = User.all.where(customer_role: true)
@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
   end
   def talent_assignment
     @talent_request = TalentRequest.find(params[:id]) #use to get the TalentRequest and populated to fill in the final request params
-    @talents = ExpertApplication.all.where(talent_type: @talent_request.talent_type_id)
+    @talents = Expert.all.where(talent_type: @talent_request.talent_type_id)
     @final_request = FinalizedRequest.new
     @final_request.talent_assignments.build
   end
@@ -37,11 +37,11 @@ class DashboardController < ApplicationController
       render :talent_assignment
     end
   end
-  
+
   private
-     
+
      def final_params
-      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignments_attributes: [:id,:engaged_date, :start_date,:expert_application_id, :finalized_request, :_destroy])
+      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignments_attributes: [:id,:engaged_date, :start_date,:expert_id, :finalized_request, :_destroy])
     end
 end
 

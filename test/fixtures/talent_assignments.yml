@@ -2,14 +2,14 @@
 #
 # Table name: talent_assignments
 #
-#  id                    :bigint           not null, primary key
-#  engaged_date          :date
-#  start_date            :date
-#  end_date              :date
-#  finalized_request_id  :bigint
-#  expert_application_id :bigint
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
+#  id                   :bigint           not null, primary key
+#  engaged_date         :date
+#  start_date           :date
+#  end_date             :date
+#  finalized_request_id :bigint
+#  expert_id            :bigint
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 
 one:
@@ -17,11 +17,11 @@ one:
   start_date: 2020-04-03
   end_date: 2020-04-03
   finalized_request: one
-  expert_application: one
+  expert: one
 
 two:
   engaged_date: 2020-04-03
   start_date: 2020-04-03
   end_date: 2020-04-03
   finalized_request: two
-  expert_application: two
+  expert: two

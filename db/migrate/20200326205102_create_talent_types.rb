@@ -2,6 +2,7 @@ class CreateTalentTypes < ActiveRecord::Migration[5.2]
   def change
     create_table :talent_types do |t|
       t.string :expert_specialization, limit: 50
+      t.text :description
 
       t.timestamps
     end

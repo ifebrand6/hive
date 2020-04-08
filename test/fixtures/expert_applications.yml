@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: expert_applications
+# Table name: experts
 #
 #  id              :bigint           not null, primary key
 #  firstName       :string(30)
