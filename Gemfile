@@ -42,6 +42,8 @@ gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
 gem 'devise-guests', '~> 0.5.0'
 gem 'delayed_job_active_record'
+gem "blogit"
+gem "acts-as-taggable-on"
   group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
