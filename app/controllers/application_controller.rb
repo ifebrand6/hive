@@ -2,20 +2,6 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :current_or_guest_user
 
-    def authenticate_blogger
-    end
-    
-    # The sign out URL to leave the admin dashboard 
-    #
-    # Returns a String with a URL path that your application must recognised with a DELETE HTTP request
-    def blogit_admin_sign_out_url
-    end
-    
-    # The currently signed in Blogger. Must be an instance of an ActiveRecord::Base model that blogs (you've called the `blogs` method)
-    # 
-    # Returns an ActiveRecord::Base subclass instance
-    def current_blogger
-    end
   # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
         if current_user
@@ -30,6 +16,7 @@ class ApplicationController < ActionController::Base
         guest_user
         end
     end
+
     # find guest_user object associated with the current session,
     # creating one as needed
     def guest_user(with_retry = true)
@@ -44,6 +31,8 @@ class ApplicationController < ActionController::Base
     def get_expert_talents
         experts = TalentType.all
      end
+
+     
      private
 
      # called (once) when the user logs in, insert any code your application needs
