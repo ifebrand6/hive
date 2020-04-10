@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get '/contact', to: "home#contact"
   post "home/create", to: "home#create"
   mount Blogit::Engine => "/blog"
+ 
 end
