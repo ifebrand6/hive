@@ -1,0 +1,7 @@
+<h1>Agrohive blog</h1>
+      <p>This is Agrohive blog section</p>
+    <% @posts.each do |post|%>
+        <h2> <%= post.title%>  </h2>
+        <p><%= post.content%></p>
+      <% end %>
+        
