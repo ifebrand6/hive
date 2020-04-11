@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'posts/index'
-  get 'posts/new'
-  get 'posts/edit'
-  get 'posts/delete'
-  # get 'get_experts#index', path: 'requestexpert'
+
+  get 'blog/index'
+  resources :posts
   resources :get_experts, path: 'requestexpert'
   get 'dashboard/index'
   get 'dashboard/application'
