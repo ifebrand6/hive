@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :comments
   get 'blog/index'
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   resources :get_experts, path: 'requestexpert'
   get 'dashboard/index'
   get 'dashboard/application'
