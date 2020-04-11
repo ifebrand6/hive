@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_130301) do
+ActiveRecord::Schema.define(version: 2020_04_11_135024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,16 @@ ActiveRecord::Schema.define(version: 2020_04_11_130301) do
     t.datetime "updated_at", null: false
     t.index ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true
     t.index ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "body"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -244,6 +254,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_130301) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "posts"
   add_foreign_key "expert_applications", "talent_types"
   add_foreign_key "finalized_requests", "requests"
   add_foreign_key "finalized_requests", "users"
