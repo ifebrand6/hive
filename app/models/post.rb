@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
-  attr_accessor(:title)
+  validates :title, presence: true
+  validates :content, presence: true
+
+  scope :recent, -> { order(created_at: :desc) }
 end
