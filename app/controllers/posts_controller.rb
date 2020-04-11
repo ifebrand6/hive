@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :set_post, :only => [:edit, :update, :destroy]
+before_action :set_post, :only => [:edit, :update,:show, :destroy]
 
   def index
     @posts = Post.all
@@ -12,8 +12,7 @@ before_action :set_post, :only => [:edit, :update, :destroy]
   end
   
   def create
-    current_user = User.find(2)
-    @post = current_user.posts.new(post_params)
+    @post = Post.new(post_params)
       if @post.save
         redirect_to action: "index"
         flash[:notice] = "#{@post.title.upcase }  WAS CREATED SUCCESSFULLY"
