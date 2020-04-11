@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   get 'blog/index'
   resources :posts
   resources :get_experts, path: 'requestexpert'
