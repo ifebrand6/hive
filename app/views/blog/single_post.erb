@@ -22,13 +22,15 @@
 </p>    
 <% end %>
 
-<% form_for [@post, Comment.new] do |f| %>
+<%= form_with(model: @comment, local: true,url: {action: "add_comment"}) do |f| %>
 <p>
-
+    <%= f.label :name, "Email" %><br />
+    <%= f.email_field :email %>
     <%= f.label :name, "Author" %><br />
     <%= f.text_field :name %><br />
     <%= f.label :body, "Comment Description" %><br />
     <%= f.text_area :body %>
+    f,<%= f.hidden_field :post_id, value: @post.id %>
 </p>
 
 <p>

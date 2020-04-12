@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-
-  get 'blog/index'
+  # resources :blog
+  get 'blog'  => 'blog#index'
+  get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
+  post 'blog/add_comment' => 'blog#add_comment'
+  # get '/blog/:id', to: 'blog#show'
   resources :posts do
     resources :comments
   end
