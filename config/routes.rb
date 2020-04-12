@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
   post 'blog/add_comment' => 'blog#add_comment'
   # get '/blog/:id', to: 'blog#show'
-  resources :posts do
-    resources :comments
-  end
+  resources :posts 
+  resources :comments, only: [:create,:show]
+
   # TODO RENAME PATH TO BOOK-AN-AGRO-EXPERT/SERVICE
   resources :get_experts, only: [:new,:create], path: 'book-an-agriculture-expert_service'
   get 'dashboard/index'

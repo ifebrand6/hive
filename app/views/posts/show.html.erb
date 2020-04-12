@@ -21,17 +21,3 @@
     <%=h c.body %>
 </p>    
 <% end %>
-
-<% form_for [@post, Comment.new] do |f| %>
-<p>
-
-    <%= f.label :name, "Author" %><br />
-    <%= f.text_field :name %><br />
-    <%= f.label :body, "Comment Description" %><br />
-    <%= f.text_area :body %>
-</p>
-
-<p>
-    <%= f.submit "Add Comment" %>
-</p>
-<% end %>
