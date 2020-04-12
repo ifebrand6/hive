@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
-  resources :get_experts, path: 'requestexpert'
+  # TODO RENAME PATH TO BOOK-AN-AGRO-EXPERT/SERVICE
+  resources :get_experts, only: [:new,:create], path: 'book-an-agriculture-expert_service'
   get 'dashboard/index'
   get 'dashboard/application'
   get 'dashboard/talents'

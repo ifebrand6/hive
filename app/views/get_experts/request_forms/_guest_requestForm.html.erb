@@ -1,5 +1,5 @@
 
-<%= form_with(model: @requests, local: true ,url: {action: "create"}) do |request| %>
+<%= form_with(model: @request, local: true ,url: {action: "create"}) do |request| %>
         <%= request.hidden_field :user_id, value: current_or_guest_user.id %>
         <%= request.label :email, "Enter Email" %>
         <%= request.email_field :email %>

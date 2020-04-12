@@ -1,17 +1,17 @@
 class GetExpertsController < ApplicationController
-  # TODO RENAME METHOD TO NEW, CHECK ROUTE DEF, RENAME VIEW, RENAME REQUESTS TO SING(NEW/CREATE)
-  def index
+  # TODO , CHECK ROUTE DEF
+  def new
     @expert_specializations = TalentType.all
-    @requests = Request.new
-    @requests.build_talent_request
+    @request = Request.new
+    @request.build_talent_request
   end
 
   def create
     @expert_specializations = TalentType.all
-    @requests = Request.new(request_and_talent_request_params)
-      if @requests.save
-          SendMailToAdminForATalentRequestJob.perform_later(@requests.id)
-          SendAdmittedMsgForTalentRequestJob.perform_later(@requests.id)
+    @request = Request.new(request_and_talent_request_params)
+      if @request.save
+          SendMailToAdminForATalentRequestJob.perform_later(@request.id)
+          SendAdmittedMsgForTalentRequestJob.perform_later(@request.id)
           flash[:notice] = "You request has been recieved."
           redirect_to root_path, notice: 'request has been recieved.'
       else
