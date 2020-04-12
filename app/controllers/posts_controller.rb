@@ -10,7 +10,7 @@ before_action :set_post, :only => [:edit, :update,:show, :destroy]
   def new
     @post = Post.new
   end
-  
+  # TODO SEND RSS FEED TO MAILS WHEN A POST IS BEING  -- SHOULD BE APPROVED FOR PUBLISHED
   def create
     @post = Post.new(post_params)
       if @post.save

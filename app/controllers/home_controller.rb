@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-
+    #   TODO CREATE A MESSAGE CONTROLLER TO HANDLE THE MESSAGE, REDEFINE ROUTE
     def become_a_partner
         @message = Message.new
     end
