@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
   end
-
+  
   # GET /comments/1
   # GET /comments/1.json
   def show

@@ -14,10 +14,10 @@ before_action :set_post, :only => [:edit, :update,:show, :destroy]
   def create
     @post = Post.new(post_params)
       if @post.save
-        redirect_to action: "index"
-        flash[:notice] = "#{@post.title.upcase }  WAS CREATED SUCCESSFULLY"
+          redirect_to action: "index"
+          flash[:notice] = "#{@post.title.upcase }  WAS CREATED SUCCESSFULLY"
       else
-        render :new
+         render :new
       end
   end
 
@@ -26,20 +26,20 @@ before_action :set_post, :only => [:edit, :update,:show, :destroy]
 
   def update
     if @post.update(post_params)
-    redirect_to action: "index"
-    flash[:notice] = "#{@post.title.upcase } HAS BEEN UPDATED SUCCESSFULLY"
+        redirect_to action: "index"
+        flash[:notice] = "#{@post.title.upcase } HAS BEEN UPDATED SUCCESSFULLY"
     else
-      flash[:notice] = "Post was not updated"
-      render :edit
+        flash[:notice] = "Post was not updated"
+        render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      flash[:notice] = "#{@post.title} was deleted suc"
-      redirect_to posts_path
+        flash[:notice] = "#{@post.title} was deleted suc"
+        redirect_to posts_path
     else
-      flash[:notice] = "Post was not deleted"
+        flash[:notice] = "Post was not deleted"
     end
   end
 

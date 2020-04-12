@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
                 guest_user(with_retry = false).try(:reload).try(:destroy)
                 session[:guest_user_id] = nil
             end
-        current_user
+            current_user
         else
-        guest_user
+            guest_user
         end
     end
 
@@ -23,20 +23,18 @@ class ApplicationController < ActionController::Base
         # Cache the value the first time it's gotten.
         @cached_guest_user ||= User.find(session[:guest_user_id] ||= create_guest_user.id)
 
-    rescue ActiveRecord::RecordNotFound # if session[:guest_user_id] invalid
+     rescue ActiveRecord::RecordNotFound # if session[:guest_user_id] invalid
         session[:guest_user_id] = nil
         guest_user if with_retry
     end
 
     def get_expert_talents
         experts = TalentType.all
-     end
+    end
 
      
-     private
-
-     # called (once) when the user logs in, insert any code your application needs
-     # to hand off from guest_user to current_user.
+    private
+     # this hand off from guest_user to current_user.
      def logging_in
 
          guest_requests = guest_user.requests.all
@@ -44,6 +42,7 @@ class ApplicationController < ActionController::Base
          request.user_id = current_user.id
          request.save!
          end
+
          guest_talent_requests = guest_user.talent_requests.all
          guest_talent_requests.each do |talent_request|
          talent_request.user_id = current_user.id
@@ -56,6 +55,5 @@ class ApplicationController < ActionController::Base
          u.save!(:validate => false)
          session[:guest_user_id] = u.id
          u
-     end
-     
+     end    
 end
