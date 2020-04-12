@@ -11,7 +11,7 @@
     <table>
         <%= request.fields_for :talent_request do |talent_request| %>
             <%= talent_request.label :talent_type_id, "what type of services are you looking for" %>
-            <%= talent_request.select(:talent_type_id, @expert_specialization_list.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
+            <%= talent_request.select(:talent_type_id, @expert_specializations.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
                 <br>
                 <br>
             <%= talent_request.label :unit_price, "Shows the unit price" %>

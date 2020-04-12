@@ -1,13 +1,13 @@
 class GetExpertsController < ApplicationController
-
+  # TODO RENAME METHOD TO NEW, CHECK ROUTE DEF, RENAME VIEW, RENAME REQUESTS TO SING(NEW/CREATE)
   def index
-    @expert_specialization_list = TalentType.all
+    @expert_specializations = TalentType.all
     @requests = Request.new
     @requests.build_talent_request
   end
 
   def create
-    @expert_specialization_list = TalentType.all
+    @expert_specializations = TalentType.all
     @requests = Request.new(request_and_talent_request_params)
       if @requests.save
           SendMailToAdminForATalentRequestJob.perform_later(@requests.id)

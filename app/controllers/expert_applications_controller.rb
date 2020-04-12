@@ -1,33 +1,31 @@
 class ExpertApplicationsController < ApplicationController
-  before_action :authenticate_user!
-  skip_before_action :authenticate_user!, :only => [:index, :new, :create, :show, :accept_application]
+  before_action :set_expert_application, :only => [:show,:accept_application]
 
   def index
-    @expert_specialization_list = TalentType.all
+    @expert_specializations = TalentType.all
   end
 
   def new
-    @expert_specialization_list = TalentType.all
+    @expert_specializations = TalentType.all
     @expert_application = ExpertApplication.new
   end
 
-  def show
-    @expert_application = ExpertApplication.find(params[:id])
-  end
+  def show;end
   
+   #TODO ADD COOLECTION FOR CERTIFICATION
   def create
-    @expert_specialization_list = TalentType.all
+    @expert_specializations = TalentType.all
     @expert_application = ExpertApplication.new(expert_application_params)
       if @expert_application.save
-        redirect_to action: "index", flash: "APPLICATION SUBMITTED SUCCESSFULLY"
+        redirect_to root_path
+        flash[:notice] = "APPLICATION SUBMITTED SUCCESSFULLY"
       else
         render :new
       end
   end
 
   def accept_application
-    @expert_application = ExpertApplication.find(params[:id])
-    @expert_application.onboarding_expert
+    @expert_application.accept_application
     redirect_to dashboard_application_path
   end
   
@@ -36,7 +34,7 @@ class ExpertApplicationsController < ApplicationController
       params.require(:expert_application).permit(:firstName,:lastName,:email, :phoneNumber, :contactAddress,:shortBio, :talent_type_id, :suggested_skill)
     end
 
-    def talent_type_params
-      params.require(:talent_type).permit(:expert_specialization)
+    def set_expert_application
+      @expert_application = ExpertApplication.find(params[:id])
     end
 end

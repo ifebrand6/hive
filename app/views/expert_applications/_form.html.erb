@@ -12,7 +12,7 @@
     <% end %>
     <table>
         <%= f.label :TalentType, "Select Specialization" %>
-        <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'} ) %>
+        <%= f.select(:talent_type_id, @expert_specializations.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
         <br>
         <%= f.label :suggested_skill, "Input exprtise, if your skills is not listed here" %>
         <%= f.text_field :suggested_skill %>
