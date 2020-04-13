@@ -1,6 +1,6 @@
 <%= @expert_application.firstName%>
 
-<table id="table" border="1"> 
+<table id="table" border="1">
         <tr>
             <td>Name</td>
             <td>Email</td>
@@ -14,18 +14,18 @@
 
 
 
-        </tr>      
+        </tr>
 
         <tbody id="after_add">
             <td><%=@expert_application.firstName %> <%=@expert_application.lastName %></td>
             <td><%=@expert_application.email %></td>
-            <td><%=@expert_application.phoneNumber %></td>
+            <td><%=@expert_application.phone_number %></td>
             <td><%=@expert_application.contactAddress %></td>
             <td><%=@expert_application.shortBio %></td>
             <td><%=@expert_application.certification %></td>
-            <td><%=@expert_application.created_at %></td> 
-            <td><%=@expert_application.talent_type.expert_specialization %></td> 
-        </tbody> 
+            <td><%=@expert_application.created_at %></td>
+            <td><%=@expert_application.talent_type.expert_specialization %></td>
+        </tbody>
 </table>
 <%= link_to  "back", :back %>
 <br>

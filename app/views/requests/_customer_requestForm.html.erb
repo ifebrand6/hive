@@ -1,9 +1,9 @@
 <%= form_with(model: @requests, local: true ,url: {action: "create"}) do |request| %>
         <%= request.hidden_field :user_id, value: current_user.id %>
         <%= request.hidden_field :email, value: current_user.email %>
-        <%= request.label :phoneNumber, "Phone Number" %>
-        <%= request.text_field :phoneNumber %>
-      <br> 
+        <%= request.label :phone_number, "Phone Number" %>
+        <%= request.text_field :phone_number %>
+      <br>
     <table>
          <%= request.fields_for :talent_request do |talent_request| %>
             <%= talent_request.label :talent_type_id, "what type of services are you looking for" %>
@@ -27,9 +27,9 @@
             <%= talent_request.hidden_field :user_id, value: current_user.id  %>
                 <br>
                 <br>
-                
+
          <% end %>
          <%= request.submit "Submit", disable_with: 'Submiting...' %>
 
      </table>
-<% end %> 
+<% end %>
