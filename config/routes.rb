@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'blog'  => 'blog#index'
   get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
-  resources :posts 
+  scope 'admin'  do 
+    resources :posts
+  end
   resources :comments, only: [:create,:show]
   resources :get_experts, only: [:new,:create], path: 'book-an-agriculture-expert_service'
   get "/admin/dashboard", to: "admin#index"
