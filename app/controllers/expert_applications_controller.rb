@@ -26,7 +26,7 @@ class ExpertApplicationsController < ApplicationController
 
   def accept_application
     @expert_application.accept_application
-    redirect_to dashboard_application_path
+    redirect_to admin_application_path
   end
   
   private

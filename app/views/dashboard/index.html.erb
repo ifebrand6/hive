@@ -1,0 +1,14 @@
+<ul class="nav navbar-nav">
+<li><%= link_to 'Accept  application', new_get_expert_path %></li>
+    <li><%= link_to 'Add New Service', become_partner_path %></li>
+    <li><%= link_to 'Finalized Customer request', expert_applications_path %></li>
+    <li><%= link_to 'Add Blog Post', expert_applications_path %></li>
+    <li><%= link_to 'Assign Talent', expert_applications_path %></li>        
+</ul>
+<h1>Admin Dashboard</h1>
+<p>welcome</p>
+<%= link_to 'Pending Applications', admin_application_path  %>
+<br>
+<%= link_to 'Onboard experts', admin_talents_path %>
+<br>
+<%= link_to  "Requested talent", admin_customers_requests_path %>

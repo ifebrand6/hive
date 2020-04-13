@@ -18,7 +18,7 @@ class Ability
         if user.superadmin_role?
           can :manage, :all
           can :access, :rails_admin
-          can :manage, :dashboard
+          can :manage, :admin
         end
         if user.admin_role?
           can :read, User #manage customers account
