@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :posts 
   resources :comments, only: [:create,:show]
   resources :get_experts, only: [:new,:create], path: 'book-an-agriculture-expert_service'
-  get "/admin", to: "admin#index"
+  get "/admin/dashboard", to: "admin#index"
   get 'admin/application'
   get 'admin/talents'
   get 'admin/customers_requests'
