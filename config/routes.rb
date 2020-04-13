@@ -1,14 +1,14 @@
 # == Route Map
 #
 #                          Prefix Verb   URI Pattern                                                                              Controller#Action
-#                     get_experts GET    /requestexpert(.:format)                                                                 get_experts#index
-#                                 POST   /requestexpert(.:format)                                                                 get_experts#create
-#                  new_get_expert GET    /requestexpert/new(.:format)                                                             get_experts#new
-#                 edit_get_expert GET    /requestexpert/:id/edit(.:format)                                                        get_experts#edit
-#                      get_expert GET    /requestexpert/:id(.:format)                                                             get_experts#show
-#                                 PATCH  /requestexpert/:id(.:format)                                                             get_experts#update
-#                                 PUT    /requestexpert/:id(.:format)                                                             get_experts#update
-#                                 DELETE /requestexpert/:id(.:format)                                                             get_experts#destroy
+#                     get_experts GET    /request-expert(.:format)                                                                get_experts#index
+#                                 POST   /request-expert(.:format)                                                                get_experts#create
+#                  new_get_expert GET    /request-expert/new(.:format)                                                            get_experts#new
+#                 edit_get_expert GET    /request-expert/:id/edit(.:format)                                                       get_experts#edit
+#                      get_expert GET    /request-expert/:id(.:format)                                                            get_experts#show
+#                                 PATCH  /request-expert/:id(.:format)                                                            get_experts#update
+#                                 PUT    /request-expert/:id(.:format)                                                            get_experts#update
+#                                 DELETE /request-expert/:id(.:format)                                                            get_experts#destroy
 #                 dashboard_index GET    /dashboard/index(.:format)                                                               dashboard#index
 #           dashboard_application GET    /dashboard/application(.:format)                                                         dashboard#application
 #               dashboard_talents GET    /dashboard/talents(.:format)                                                             dashboard#talents
@@ -65,8 +65,7 @@
 # show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
 
 Rails.application.routes.draw do
-  # get 'get_experts#index', path: 'requestexpert'
-  resources :get_experts, path: 'requestexpert'
+  resources :get_experts, path: 'request-expert'
   get 'dashboard/index'
   get 'dashboard/application'
   get 'dashboard/talents'
