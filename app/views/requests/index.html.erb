@@ -1,0 +1,10 @@
+<h1>Request for an expert</h1>
+<p>fill in the form with the deatails of what you want</p>
+<%= render partial: '/requests/shared/error_message' %>
+<% if current_user.nil? %>
+<h2> Guest Request  form</h2>
+<%= render partial: '/requests/guest_requestForm' %>
+<% else %>
+<h2> Customer Request form</h2>
+<%= render partial: '/requests/customer_requestForm' %>
+<% end %>

@@ -1,9 +1,9 @@
-class GetExpertsController < ApplicationController
+class RequestsController < ApplicationController
   def index
     @expert_specialization_list = TalentType.all
-    @requests = Request.new
-    @requests.build_talent_request
+    @request = Request.new
   end
+
   def create
     @expert_specialization_list = TalentType.all
     @requests = Request.new(request_and_talent_request_params)
@@ -15,10 +15,9 @@ class GetExpertsController < ApplicationController
       render :index
     end
   end
-  
 
   private
     def request_and_talent_request_params
-      params.require(:request).permit(:user_id,:email,:phoneNumber,talent_request_attributes: [:user_id,:unit_price,:expected_contract_duration,:expected_start_date,:quantity,:talent_type_id])
+      params.require(:request).permit(:user_id, :email, :phoneNumber, talent_request_attributes: [:user_id, :unit_price, :expected_contract_duration, :expected_start_date, :quantity, :talent_type_id])
     end
 end

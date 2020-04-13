@@ -6,7 +6,7 @@
     </div>
     <ul class="nav navbar-nav">
     <li class="active"><a href="#">Home</a></li>
-    <li><a href="#"><%= link_to 'Get an expert', get_experts_path %> </a></li>
+    <li><a href="#"><%= link_to 'Get an expert', new_request_path %> </a></li>
         <li><a href="#"><%= link_to 'Become A Pathner', become_partner_path %> </a></li>
         <li><a href="#"><%= link_to 'Ask a question', contact_path %> </a></li>
         <li><a href="#"><%= link_to 'Apply as an expert', expert_applications_path %> </a></li>
@@ -19,11 +19,11 @@
         </a>
         </li>
         <% else %>
-    
-    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 
+
+    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
         <%= link_to root_path, class: 'login-button' do %>Go to App<% end %>
             <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
-        <% end %>   
+        <% end %>
     </a></li>
     </ul>
 </div>

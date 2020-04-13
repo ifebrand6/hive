@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <%= f.select(:talent_type_id, @expert_specialization_list.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
+      <br>
+      <br>
+  <%= f.input :unit_price %>
+      <br>
+  <%= f.input :expected_contract_duration %>
+      <br>
+  <%= f.input :expected_start_date %>
+      <br>
+  <%= f.input :quantity %>
+<%= link_to_remove_association "remove talent request", f, {class: 'btn btn-danger' }
+        %>
+
+</div>

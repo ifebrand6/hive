@@ -1,0 +1,18 @@
+
+<%= simple_form_for @request do |f| %>
+    <%= f.hidden_field :user_id, value: current_or_guest_user.id %>
+    <%= f.input :email %>
+    <br>
+    <%= f.input :phoneNumber %>
+    <br>
+    <div id="talent_requests" class="cellphones_form">
+        <%= f.fields_for :talent_requests do |talent_request| %>
+            <%= render 'get_experts/request_forms/talent_request_fields', :f => talent_request %>
+        <% end %>
+         <div class='links'>
+            <%= link_to_add_association 'Add Talent', f, :talent_requests %>
+         </div>
+        <%= f.submit "Submit", disable_with: 'Submiting...' %>
+
+    </div>
+<% end %>

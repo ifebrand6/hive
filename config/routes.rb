@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # get 'get_experts#index', path: 'requestexpert'
-  resources :get_experts, path: 'requestexpert'
+  resources :requests
   get 'dashboard/index'
   get 'dashboard/application'
   get 'dashboard/talents'
