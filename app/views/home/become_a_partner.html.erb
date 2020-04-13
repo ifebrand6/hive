@@ -1,0 +1,26 @@
+<h1>BECOME A PARTNER</h1>
+<p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, dolores sint veniam dolorem rem similique quod praesentium animi, amet dicta atque ea nobis accusamus hic molestiae quidem a nemo at.
+<p> </p>
+
+<%= form_with model: @message,  url: {action: "create"} do |f| %>
+<%= f.label :name, "Name" %>
+<%= f.text_field :name %>
+<br>
+<%= f.label :email, "Email" %>
+<%= f.email_field :email %>
+<br>
+<%= f.label :phone_number, "Phone Number" %>
+<%= f.text_field :phone_number %>
+<br>
+<%= f.label :body, "Body" %>
+<%= f.text_area :body %>
+<br>
+<%= f.label :location, "Location" %>
+<%= f.text_field :location %>
+<br>
+<%= f.label :company_about, "A Brief about Company." %>
+<%= f.text_area :company_about %>
+<br>
+
+<%= f.submit %>
+<% end %>

@@ -1,0 +1,45 @@
+<%= form_for(@expert_application) do |f| %>
+    <% if @expert_application.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@expert_application.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @expert_application.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+    <table>
+        <%= f.label :TalentType, "Select Specialization" %>
+        <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'} ) %>
+        <br>
+        <%= f.label :suggested_skill, "Input exprtise, if your skills is not listed here" %>
+        <%= f.text_field :suggested_skill %>
+        <br>
+        <%= f.label :firstName, "First Name" %>
+        <%= f.text_field :firstName %>
+        <br>
+        <%= f.label :lastName, "Last Name" %>
+        <%= f.text_field :lastName %>
+        <br>
+        <%= f.label :email, "Email Address" %>E
+        <%= f.email_field :email %>
+        <br>
+        <%= f.label :phoneNumber, "Phone Number" %>
+        <%= f.number_field :phoneNumber %>
+        <br>
+        <%= f.label :contactAddress, "Contact Address" %>
+        <%= f.text_field :contactAddress %>
+        <br>
+        <%= f.label :shortBio, "Short Biography" %>
+        <%= f.text_area :shortBio %>
+        <br>
+        <%= f.label :phoneNumber, "Certification" %>
+        <%= f.text_field :certification %>
+        <br>
+        <%= f.hidden_field :status %>
+        <%= f.submit "Submit", disable_with: 'Submiting...' %>
+     <% end %> 
+    </table>
+</div>

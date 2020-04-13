@@ -1,15 +1,6 @@
-# == Schema Information
-#
-# Table name: requests
-#
-#  id           :bigint           not null, primary key
-#  user_id      :bigint
-#  email        :string
-#  phone_number :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
 class Request < ApplicationRecord
   belongs_to :user
-  has_many :talent_requests, dependent: :delete_all
+  has_many :talent_requests, inverse_of: :request
+  accepts_nested_attributes_for :talent_requests, reject_if: :all_blank, allow_destroy: true
+  validates_presence_of :phoneNumber
 end

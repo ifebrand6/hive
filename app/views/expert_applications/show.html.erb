@@ -1,0 +1,34 @@
+<%= @expert_application.firstName%>
+
+<table id="table" border="1"> 
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Contact Address</td>
+            <td>Short Bio</td>
+            <td>Certification</td>
+            <td>Date submiited</td>
+            <td>Talent Type</td>
+
+
+
+
+        </tr>      
+
+        <tbody id="after_add">
+            <td><%=@expert_application.firstName %> <%=@expert_application.lastName %></td>
+            <td><%=@expert_application.email %></td>
+            <td><%=@expert_application.phoneNumber %></td>
+            <td><%=@expert_application.contactAddress %></td>
+            <td><%=@expert_application.shortBio %></td>
+            <td><%=@expert_application.certification %></td>
+            <td><%=@expert_application.created_at %></td> 
+            <td><%=@expert_application.talent_type.expert_specialization %></td> 
+        </tbody> 
+</table>
+<%= link_to  "back", :back %>
+<br>
+<%= link_to "Accept Application", onboard_path(@expert_application ,tyope: :try) , data:{ confirm: "confirm"} %>
+<br>
+<%= link_to  "Reject Application", dashboard_index_path %>
