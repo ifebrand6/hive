@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    before_action :current_or_guest_user
+    # before_action :current_or_guest_user
   # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
         if current_user
@@ -10,16 +10,13 @@ class ApplicationController < ActionController::Base
                 guest_user(with_retry = false).try(:reload).try(:destroy)
                 session[:guest_user_id] = nil
             end
-        current_user
+            current_user
         else
-        guest_user
+            guest_user
         end
     end
 
     def guest_user(with_retry = true)
-
-        # binding.pry
-
         @cached_guest_user ||= User.find(session[:guest_user_id] ||= create_guest_user.id)
 
     rescue ActiveRecord::RecordNotFound # if session[:guest_user_id] invalid

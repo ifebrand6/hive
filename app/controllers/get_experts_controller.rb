@@ -1,12 +1,7 @@
 class GetExpertsController < ApplicationController
   def index
     @expert_specialization_list = TalentType.all
-    if (current_or_guest_user)
-      @request = Request.new(user_id: current_or_guest_user.id)
-      @request.save!
-    else
-      redirect_to root_path
-    end
+    @request = Request.new
     @talent_requests = @request.talent_requests.build
   end
 
