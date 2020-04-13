@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class AdminController < ApplicationController
   #skip_before_action :authenticate_user!, :except => []
 
   def index
