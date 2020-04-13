@@ -3,7 +3,7 @@
     <%= f.hidden_field :user_id, value: current_or_guest_user.id %>
     <%= f.input :email %>
     <br>
-    <%= f.input :phoneNumber %>
+    <%= f.input :phone_number %>
     <br>
     <div id="talent_requests" class="cellphones_form">
         <%= f.fields_for :talent_requests do |talent_request| %>
