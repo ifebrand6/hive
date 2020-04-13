@@ -29,8 +29,9 @@ class DashboardController < ApplicationController
     @final_request.talent_assignments.build
   end
   def finalize_user_request
-      @final_request = FinalizedRequest.new(final_params)
-      if @final_request.save
+      @finalized_request = FinalizedRequest.new(final_params)
+      if @finalized_request.save
+        SendFinalRequestMailJob.perform_later(@finalized_request.id)
       flash[:notice] = "Talent Assign successfully"
       redirect_to root_path
     else

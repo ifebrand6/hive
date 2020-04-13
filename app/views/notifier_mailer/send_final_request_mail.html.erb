@@ -1,5 +1,21 @@
-<h1>Notifier#send_final_request_mail</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/notifier_mailer/send_final_request_mail.html.erb
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+    <% if  @user.guest?%>
+       <p> Dear <%= @user.email%>, </p>
+    <% else %>
+    <h4>  Hello, there</h4>
+    <p>We got a request from you</p>
+    <% end %>
+  <p>This is a summary of your order</p>
+  <p>Talent Demand:</p>
+  <p>Unit needed</p>
+  <p>Start Date</p>
+  <p>End Date</p>
+  <p>Cost of Service: </p>
+  <p>Total</p>
+</body>
+</html>

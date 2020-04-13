@@ -6,10 +6,12 @@ class GetExpertsController < ApplicationController
   end
 
   def create
-    @request = Request.find(params[:id])
-    @talent_requests = @request.talent_requests.build(talent_request_params)
-
-    if @talent_requests.save!
+    @expert_specialization_list = TalentType.all
+    @requests = Request.new(request_and_talent_request_params)
+    if @requests.save
+      SendMailToAdminForATalentRequestJob.perform_later(@requests.id)
+      SendAdmittedMsgForTalentRequestJob.perform_later(@requests.id)
+      flash[:notice] = "You request has been recieved."
       redirect_to root_path, notice: 'request has been recieved.'
     else
       render :index
