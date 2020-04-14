@@ -1,11 +1,7 @@
 # Load the Rails application.
 require_relative 'application'
-require "paystack"
-ADMIN_EMAIL = 'ifebrand6@gmail.com'
-GMAIL_USERNAME = 'ifebrand6@gmail.com'
-GMAIL_PASSWORD = '1997date'
-PAYSTACK_PUBLIC_KEY = Paystack.new
-PAYSTACK_PRIVATE_KEY = Paystack.new
-
+ADMIN_EMAIL = ENV["admin_email"]
+GMAIL_USERNAME = ENV["gmail_username"]
+GMAIL_PASSWORD = ENV["gmail_password"]
 # Initialize the Rails application.
 Rails.application.initialize!
