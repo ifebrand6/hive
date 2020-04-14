@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.6'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+
 gem "acts-as-taggable-on"
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cancancan'
@@ -10,9 +11,10 @@ gem 'coffee-rails', '~> 4.2'
 gem 'delayed_job_active_record'
 gem 'devise'
 gem 'devise-guests', '~> 0.5.0'
+gem "figaro"
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'paystackr'
+gem 'paystack'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails_admin', '~> 2.0'
