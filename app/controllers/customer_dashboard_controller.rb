@@ -13,9 +13,15 @@ class CustomerDashboardController < ApplicationController
   end
 
   def make_payment_for_finalized_request
+    @finalized_request = 
     @transaction = Transaction.new
     @profile = @transaction.build_user
   end
+
+  def save_transaction
+    
+  end
+  
 
   def transactions
   end
