@@ -1,5 +1,7 @@
 class CustomerDashboardController < ApplicationController
+
   def index
+    @finalized_requests = current_user.finalized_requests
   end
 
   def finalized_requests
@@ -17,7 +19,7 @@ class CustomerDashboardController < ApplicationController
   def show_transcation
   end
 
-  def request
+  def my_request
   end
 
   def show_request
@@ -25,4 +27,7 @@ class CustomerDashboardController < ApplicationController
 
   def delete_request
   end
+
+  private
+
 end

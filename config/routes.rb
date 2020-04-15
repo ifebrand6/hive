@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'make-payment', to: 'customer_dashboard#make_payment_for_finalized_request', as: 'make_payment_for_finalized_request'
   get 'my-transcations',to: 'customer_dashboard#transactions', as: 'customer_transcations'
   get 'my-transcation/:id', to: 'customer_dashboard#show_transcation', as: 'customer_transcation'
-  get 'my-requests', to: 'customer_dashboard#request', as: 'my_customer_requests'
+  get 'my-requests', to: 'customer_dashboard#my_request', as: 'my_customer_requests'
   get 'my-request/:id',to: 'customer_dashboard#show_request', as: 'my_customer_request'
   get 'delete-my-request/:id', to: 'customer_dashboard#delete_request',as: 'delete_customer_request'
   get 'blog'  => 'blog#index'
