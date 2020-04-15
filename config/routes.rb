@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'customer_dashboard/index'
+  get 'customer_dashboard/finalized_requests'
+  get 'customer_dashboard/show_finalized_request'
+  get 'customer_dashboard/make_payment_for_finalized_request'
+  get 'customer_dashboard/transctions'
+  get 'customer_dashboard/show_transcation'
+  get 'customer_dashboard/request'
+  get 'customer_dashboard/show_request'
+  get 'customer_dashboard/delete_request'
   get 'blog'  => 'blog#index'
   get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
   scope 'admin'  do 
