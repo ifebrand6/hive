@@ -21,8 +21,8 @@ class CustomerDashboardControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get transctions" do
-    get customer_dashboard_transctions_url
+  test "should get transactions" do
+    get customer_dashboard_transactions_url
     assert_response :success
   end
 
