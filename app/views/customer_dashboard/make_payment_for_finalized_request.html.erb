@@ -1,0 +1,37 @@
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<%= form_with(model: @transaction, local: true,url: {action: "make_payment_for_finalized_request"}) do |f| %>
+<%= f.submit 'Make Payment', :class => 'btn btn-large button slider-button', style: 'font-size: 14px;', :id => 'create_an_order', onclick: "payWithPaystack('#{current_user.email}'); return false;" %></form>
+<% end %>
+<span id="delivery_total_hidden" hidden>10000</span>
+<script>
+function payWithPaystack(email){
+    amount = $("#delivery_total_hidden").text();
+    $("#create_an_order").attr("disabled", false);
+    var handler = PaystackPop.setup({
+    key: "<%= ENV['PAYSTACK_PUBLIC_KEY']-%>",
+    email: email,
+    amount: parseInt(amount) ,
+    metadata: {
+    custom_fields: [
+    {
+        display_name: "Mobile Number",
+        variable_name: "mobile_number",
+        value: "+2348063202378"
+    }
+    ]
+    },
+    callback: function(response){
+    url = $( 'form#new_order' ).attr( 'action' );
+    action = url + "?transactref=" + response.reference
+    $('form#new_order').attr('action', action).submit();
+    },
+    onClose: function(){
+    $("#create_an_order").attr("disabled", false);
+
+    }
+});
+    handler.openIframe();
+}
+</script>
+
