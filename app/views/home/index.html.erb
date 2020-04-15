@@ -11,7 +11,6 @@
         <li><a href="#"><%= link_to 'Ask a question', contact_path %> </a></li>
         <li><a href="#"><%= link_to 'Apply as an expert', expert_applications_path %> </a></li>
         <li><%= link_to 'Blog', blog_path %>
-
     </ul>
     <ul class="nav navbar-nav navbar-right">
     <li><a href="#"><span class="glyphicon glyphicon-user"></span>
@@ -22,7 +21,7 @@
         <% else %>
     
     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 
-        <%= link_to root_path, class: 'login-button' do %>Go to App<% end %>
+        <%= link_to dashboard_path, class: 'login-button' do %>Go to Dashboard<% end %>
             <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
         <% end %>   
     </a></li>
