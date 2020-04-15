@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     def current_or_guest_user
         if current_user
             if session[:guest_user_id] && session[:guest_user_id] != current_user.id
-                logging_in
+                handing_off_guest_props_data_to_current_user
                 # reload guest_user to prevent caching problems before destruction
                 guest_user(with_retry = false).try(:reload).try(:destroy)
                 session[:guest_user_id] = nil
@@ -31,20 +31,27 @@ class ApplicationController < ActionController::Base
      end
      private
 
-     # called (once) when the user logs in, insert any code your application needs
-     # to hand off from guest_user to current_user.
-     def logging_in
+     
+    private
+     # this hand off from guest_user to current_user.
+     def handing_off_guest_props_data_to_current_user
 
          guest_requests = guest_user.requests.all
          guest_requests.each do |request|
          request.user_id = current_user.id
-         request.save!
+         request.save!  
          end
          guest_talent_requests = guest_user.talent_requests.all
          guest_talent_requests.each do |talent_request|
          talent_request.user_id = current_user.id
          talent_request.save!
          end
+
+         guest_finalized_requests = guest_user.finalized_requests.all
+         guest_finalized_requests.each do |finalized_request|
+         finalized_request.user_id = current_user.id
+         finalized_request.save!
+         end   
      end
 
      def create_guest_user
