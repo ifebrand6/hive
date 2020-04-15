@@ -1,2 +1,45 @@
-<h1>CustomerDashboard#show_finalized_request</h1>
-<p>Find me in app/views/customer_dashboard/show_finalized_request.html.erb</p>
+<h2> THIS IS THE DETAIL OF YOUR FINALIZED REQUEST</h2>
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Final Requet Id</th>
+            <th><%= @finalized_request.id%></th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Talent Assigned Date  </th>
+            <th> <%= time_ago_in_words(@talent_assignment.updated_at)%></th>
+        </tr>
+    </thead>
+    <thead>
+    <thead>
+        <tr>
+            <th>Talent Assigned</th>
+            <th><%= @talent_assignment.expert_application.talent_type.expert_specialization%></th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+        <th>Engage Date</th>
+            <th><%= @talent_assignment.engaged_date%></th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Contract Start Date</th>
+            <th><%= @talent_assignment.start_date%></th>
+        </tr>
+    </thead>
+    <thead>
+        <tr>
+            <th>Contract End Date</th>
+            <th><%= @talent_assignment.end_date%></th>
+        </tr>
+    </thead>
+</table>
+</div>
+<%= link_to  "PROCEED TO PAYMENT", make_payment_for_finalized_request_path(@talent_assignment) %>
+<p></p>
+<%= link_to  "back", :back %>
