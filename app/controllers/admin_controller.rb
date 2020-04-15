@@ -30,7 +30,7 @@ class AdminController < ApplicationController
   def talent_assignment
     @talents = ExpertApplication.all.where(talent_type: @talent_request.talent_type_id)
     @finalized_request = FinalizedRequest.new
-    @finalized_request.talent_assignments.build
+    @finalized_request.build_talent_assignment
   end
 
 # TODO make talent_requests void once a talent is assigned to the request
