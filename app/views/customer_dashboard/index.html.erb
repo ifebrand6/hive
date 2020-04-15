@@ -1,2 +1,26 @@
-<h1>CustomerDashboard#index</h1>
-<p>Find me in app/views/customer_dashboard/index.html.erb</p>
+<h2> THIS IS A LIST OF YOUR FINALIZED REQUEST</h2>
+<div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Request Id</th>
+            <th></th>
+            <th>Request Date</th>
+            <th>Talent Requested</th>
+            <th>See more</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @finalized_requests.each do |finalized_request |%>
+        <tr>
+            <th scope="row"><%= finalized_request.id %></th>
+            <td></td>
+            <td><%= time_ago_in_words(finalized_request.request.created_at) %></td>
+            <td><%= finalized_request.talent_assignment.expert_application.talent_type.expert_specialization%></td>
+            <td><%= link_to  "See more", show_customer_finalized_request_path(finalized_request) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>
+<%= link_to  "back", :back %>
