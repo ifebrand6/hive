@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:create,:show]
   resources :get_experts, only: [:new,:create], path: 'book-an-agriculture-expert_service'
-  get "/admin/dashboard", to: "admin#index"
+  get "/admin", to: "admin#index"
   get 'admin/application'
   get 'admin/talents'
   get 'admin/customers_requests'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   post "admin/finalize_user_request(/:id)", to: "admin#finalize_user_request"
   get 'accept/:id' => 'expert_applications#accept_application', :as => 'onboard'
   resources :expert_applications, path: 'application'
-  mount RailsAdmin::Engine => '/super_admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/super-admin', as: 'rails_admin'
   root to: "home#index"
   get 'userrole/index'
   get 'userrole/test'
