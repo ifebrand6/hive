@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_135024) do
+ActiveRecord::Schema.define(version: 2020_04_16_213658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,65 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "dynabute_boolean_values", force: :cascade do |t|
+    t.integer "field_id"
+    t.integer "dynabutable_id"
+    t.string "dynabutable_type", limit: 50
+    t.boolean "value"
+    t.index ["dynabutable_id", "field_id"], name: "dynabute_boolean_values_on_record_id_and_recordable_id"
+    t.index ["dynabutable_id"], name: "dynabute_boolean_values_on_recordable_id"
+  end
+
+  create_table "dynabute_datetime_values", force: :cascade do |t|
+    t.integer "field_id"
+    t.integer "dynabutable_id"
+    t.string "dynabutable_type", limit: 50
+    t.datetime "value"
+    t.index ["dynabutable_id", "field_id"], name: "dynabute_datetime_values_on_record_id_and_recordable_id"
+    t.index ["dynabutable_id"], name: "dynabute_datetime_values_on_recordable_id"
+  end
+
+  create_table "dynabute_fields", force: :cascade do |t|
+    t.string "name", limit: 50
+    t.string "value_type", limit: 15
+    t.boolean "has_many", default: false
+    t.string "target_model", limit: 50
+    t.index ["target_model", "name"], name: "index_dynabute_fields_on_target_model_and_name"
+  end
+
+  create_table "dynabute_integer_values", force: :cascade do |t|
+    t.integer "field_id"
+    t.integer "dynabutable_id"
+    t.string "dynabutable_type", limit: 50
+    t.integer "value"
+    t.index ["dynabutable_id", "field_id"], name: "dynabute_integer_values_on_record_id_and_recordable_id"
+    t.index ["dynabutable_id"], name: "dynabute_integer_values_on_recordable_id"
+  end
+
+  create_table "dynabute_options", force: :cascade do |t|
+    t.integer "field_id"
+    t.string "label"
+    t.index ["field_id"], name: "index_dynabute_options_on_field_id"
+  end
+
+  create_table "dynabute_select_values", force: :cascade do |t|
+    t.integer "field_id"
+    t.integer "dynabutable_id"
+    t.string "dynabutable_type", limit: 50
+    t.integer "value"
+    t.index ["dynabutable_id", "field_id"], name: "dynabute_select_values_on_record_id_and_recordable_id"
+    t.index ["dynabutable_id"], name: "dynabute_select_values_on_recordable_id"
+  end
+
+  create_table "dynabute_string_values", force: :cascade do |t|
+    t.integer "field_id"
+    t.integer "dynabutable_id"
+    t.string "dynabutable_type", limit: 50
+    t.string "value", limit: 255
+    t.index ["dynabutable_id", "field_id"], name: "dynabute_string_values_on_record_id_and_recordable_id"
+    t.index ["dynabutable_id"], name: "dynabute_string_values_on_recordable_id"
+  end
+
   create_table "expert_applications", force: :cascade do |t|
     t.string "firstName", limit: 30
     t.string "lastName", limit: 30
@@ -201,6 +260,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.bigint "expert_application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount"
     t.index ["expert_application_id"], name: "index_talent_assignments_on_expert_application_id"
     t.index ["finalized_request_id"], name: "index_talent_assignments_on_finalized_request_id"
   end
