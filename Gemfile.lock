@@ -96,6 +96,8 @@ GEM
       devise
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dynabute (0.0.14)
+      activerecord (>= 4.2.8)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.12.2)
@@ -297,6 +299,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   devise-guests (~> 0.5.0)
+  dynabute
   figaro
   jbuilder (~> 2.5)
   jquery-rails
