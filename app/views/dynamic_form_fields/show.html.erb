@@ -1,2 +1,24 @@
-<h1>DynamicFormFields#show</h1>
-<p>Find me in app/views/dynamic_form_fields/show.html.erb</p>
+<div class="col-lg-12">
+    <div class="page-header">
+        <h1>Dynabute Fileds for Article</h1></div><%= link_to  "New", new_dynamic_form_field_path(target_model: params['target_model']) %>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Field Type</th>
+                <th>Other records</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @model_objects.each do |model_object|%>
+            <tr>
+                <td><%= model_object.name%></td>
+                <td><%= model_object.value_type%></td>
+                <td><%= model_object.has_many%></td>
+                <td><%= link_to  "Edit", edit_dynamic_form_field_path(model_object) %> <%= link_to 'Destroy', dynamic_form_field_path(model_object), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+</div>

@@ -1,2 +1,4 @@
-<h1>DynamicFormFields#edit</h1>
-<p>Find me in app/views/dynamic_form_fields/edit.html.erb</p>
+<h1>New  field for <%= @model_field.target_model %> form </h1>
+<%= @model_field.errors.messages%>
+<br>
+<%= render partial: 'edit_form', model_field: @model_field %>  

@@ -1,2 +1,4 @@
-<h1>DynamicFormFields#new</h1>
-<p>Find me in app/views/dynamic_form_fields/new.html.erb</p>
+<h1>New  field for <%= params['target_model'].camelcase %> form </h1>
+<%= @model_field.errors.messages%>ff
+<br>
+<%= render partial: 'form',  model_field: @model_field%>  

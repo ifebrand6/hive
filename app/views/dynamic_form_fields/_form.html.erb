@@ -1,0 +1,44 @@
+<%= form_with(model: @model_field,url: {action: "create", target_model: params['target_model']}) do |f| %>
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="authenticity_token" value="WWKltCQ9uJMeByJz3fq4r+DzV2SvUZRtxhcqFpGivkr13wwOwsqQSop5+Bjy7dMrsQmjyf3QL/dOR4gC98g5JA==">
+    <div class="form-group string required dynabute_field_name">
+        <label class="control-label string required" for="dynabute_field_name"><abbr title="required">*</abbr> Name</label>
+        <input class="form-control string required" type="text" name="dynabute_field[name]" id="dynabute_field_name"> </div>
+    <div id="value_type">
+        <div class="form-group select optional dynabute_field_value_type">
+            <label class="control-label select optional" for="dynabute_field_value_type">Value type</label>
+            <select class="form-control select optional" name="dynabute_field[value_type]" id="dynabute_field_value_type">
+                <option value=""></option>
+                <option value="string">string</option>
+                <option value="integer">integer</option>
+                <option value="boolean">boolean</option>
+                <option value="datetime">datetime</option>
+                <option value="select">select</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group boolean optional dynabute_field_has_many">
+        <div class="checkbox">
+            <input value="0" type="hidden" name="dynabute_field[has_many]">
+            <label class="boolean optional" for="dynabute_field_has_many">
+                <input class="boolean optional" type="checkbox" value="1" name="dynabute_field[has_many]" id="dynabute_field_has_many">Has many</label>
+        </div>
+    </div>
+
+    <input type="submit" name="commit" value="Create Field" class="btn btn-default btn-primary" data-disable-with="Create Field">
+    <script>
+    const value_type = $('#value_type select'),
+        options = $('#options');
+    const set_options_visibility = ($elem) => {
+        if($elem.val() == 'select') {
+            options.show()
+        } else {
+            options.hide()
+        }
+    }
+    value_type.change(function() {
+        set_options_visibility($(this))
+    })
+    set_options_visibility(value_type)
+    </script>
+<% end %>
