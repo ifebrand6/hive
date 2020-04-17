@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :dynamic_form_fields
-  # CUSTOMER DASHBO
+  
+  resources :dynamic_form_fields, param: :target_model, only: [:index,:new,:show,:create]
+  resources :dynamic_form_fields, only: [:edit,:update,:destroy]
+  # CUSTOMER DASHBO 
   get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'
   get 'my-finalized-requests', to: 'customer_dashboard#finalized_requests', as: 'customer_finalized_requests'
   get 'my-finalized-request/:id', to: 'customer_dashboard#show_finalized_request', as: 'show_customer_finalized_request'
