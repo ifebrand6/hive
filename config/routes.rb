@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  get 'dynamic_form_fields/index'
-  get 'dynamic_form_fields/new'
-  get 'dynamic_form_fields/show'
-  get 'dynamic_form_fields/edit'
+  resources :dynamic_form_fields
   # CUSTOMER DASHBO
   get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'
   get 'my-finalized-requests', to: 'customer_dashboard#finalized_requests', as: 'customer_finalized_requests'
