@@ -1,5 +1,6 @@
 class ExpertApplication < ApplicationRecord
     belongs_to :talent_type
+    has_dynabutes
 
     scope :pending_application, lambda { where(:status => false)}
     scope :onboard_expert, -> { where(:status => true)}
