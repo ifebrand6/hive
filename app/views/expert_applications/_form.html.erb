@@ -39,6 +39,12 @@
         <%= f.text_field :certification %>
         <br>
         <%= f.hidden_field :status %>
+        <% @new_fields.each do |ee| %>
+        <%= f.fields_for :dyna do |a| %>
+        <%= a.label :name, "#{ee.name}" %>
+        <input type="text" class="form-control" id="name">
+        <% end %>
+        <% end %>
         <%= f.submit "Submit", disable_with: 'Submiting...' %>
      <% end %> 
     </table>
