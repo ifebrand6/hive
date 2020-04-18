@@ -6,6 +6,7 @@ class ExpertApplicationsController < ApplicationController
   end
 
   def new
+    @new_fields = ExpertApplication.dynabutes
     @expert_specializations = TalentType.all
     @expert_application = ExpertApplication.new
   end
