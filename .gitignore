@@ -23,5 +23,16 @@
 /public/assets
 .byebug_history
 
+# ignore logfiles
+/log
+/logfile
+/pg_upgrade_internal.log
+/pg_upgrade_server.log
+/pg_upgrade_utility.log
+
+/logfiles
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore application configuration
+/config/application.yml
