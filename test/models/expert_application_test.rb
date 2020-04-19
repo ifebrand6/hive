@@ -7,7 +7,7 @@
 #  last_name        :string(30)
 #  email           :string
 #  phone_number     :integer
-#  contactAddress  :text
+#  contact_address  :text
 #  short_bio        :text
 #  certification   :text             default([]), is an Array
 #  status          :boolean          default(FALSE)
