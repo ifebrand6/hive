@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.string "first_name", limit: 30
     t.string "last_name", limit: 30
     t.string "email"
-    t.integer "phoneNumber"
+    t.integer "phone_number"
     t.text "contactAddress"
     t.text "shortBio"
     t.text "certification", default: [], array: true
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
-    t.string "phoneNumber"
+    t.string "phone_number"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 

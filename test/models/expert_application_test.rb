@@ -6,7 +6,7 @@
 #  first_name       :string(30)
 #  last_name        :string(30)
 #  email           :string
-#  phoneNumber     :integer
+#  phone_number     :integer
 #  contactAddress  :text
 #  shortBio        :text
 #  certification   :text             default([]), is an Array
