@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :current_or_guest_user
-
   # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
         if current_user
@@ -16,7 +15,6 @@ class ApplicationController < ActionController::Base
         guest_user
         end
     end
-
     # find guest_user object associated with the current session,
     # creating one as needed
     def guest_user(with_retry = true)

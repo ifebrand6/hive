@@ -1,5 +1,5 @@
-class RemoveExpertApplicationFromTalentTypes < ActiveRecord::Migration[5.2]
+class RemoveExpertFromTalentTypes < ActiveRecord::Migration[5.2]
   def change
-    remove_reference :talent_types, :expert_application, foreign_key: true
+    remove_reference :talent_types, :expert, foreign_key: true
   end
 end

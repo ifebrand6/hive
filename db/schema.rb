@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "expert_applications", force: :cascade do |t|
+  create_table "experts", force: :cascade do |t|
     t.string "firstName", limit: 30
     t.string "lastName", limit: 30
     t.string "email"
@@ -164,8 +164,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.datetime "updated_at", null: false
     t.bigint "talent_type_id"
     t.string "suggested_skill", limit: 50
-    t.index ["email"], name: "index_expert_applications_on_email", unique: true
-    t.index ["talent_type_id"], name: "index_expert_applications_on_talent_type_id"
+    t.index ["email"], name: "index_experts_on_email", unique: true
+    t.index ["talent_type_id"], name: "index_experts_on_talent_type_id"
   end
 
   create_table "finalized_requests", force: :cascade do |t|
@@ -198,10 +198,10 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.date "start_date"
     t.date "end_date"
     t.bigint "finalized_request_id"
-    t.bigint "expert_application_id"
+    t.bigint "expert_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["expert_application_id"], name: "index_talent_assignments_on_expert_application_id"
+    t.index ["expert_id"], name: "index_talent_assignments_on_expert_id"
     t.index ["finalized_request_id"], name: "index_talent_assignments_on_finalized_request_id"
   end
 
@@ -255,11 +255,11 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
   end
 
   add_foreign_key "comments", "posts"
-  add_foreign_key "expert_applications", "talent_types"
+  add_foreign_key "experts", "talent_types"
   add_foreign_key "finalized_requests", "requests"
   add_foreign_key "finalized_requests", "users"
   add_foreign_key "requests", "users"
-  add_foreign_key "talent_assignments", "expert_applications"
+  add_foreign_key "talent_assignments", "experts"
   add_foreign_key "talent_assignments", "finalized_requests"
   add_foreign_key "talent_requests", "requests"
   add_foreign_key "talent_requests", "talent_types"
