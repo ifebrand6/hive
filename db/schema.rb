@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
   end
 
   create_table "experts", force: :cascade do |t|
-    t.string "firstName", limit: 30
+    t.string "first_name", limit: 30
     t.string "lastName", limit: 30
     t.string "email"
     t.integer "phoneNumber"

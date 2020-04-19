@@ -3,7 +3,7 @@
 # Table name: experts
 #
 #  id              :bigint           not null, primary key
-#  firstName       :string(30)
+#  first_name       :string(30)
 #  lastName        :string(30)
 #  email           :string
 #  phoneNumber     :integer

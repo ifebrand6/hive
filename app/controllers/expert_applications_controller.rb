@@ -33,7 +33,7 @@ class ExpertsController < ApplicationController
 
     private
     def expert_params
-      params.require(:expert).permit(:firstName,:lastName,:email, :phoneNumber, :contactAddress,:shortBio, :talent_type_id, :suggested_skill)
+      params.require(:expert).permit(:first_name,:lastName,:email, :phoneNumber, :contactAddress,:shortBio, :talent_type_id, :suggested_skill)
     end
     def talent_type_params
       params.require(:talent_type).permit(:expert_specialization)

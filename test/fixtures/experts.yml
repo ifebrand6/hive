@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  firstName: MyString
+  first_name: MyString
   lastName: MyString
   email: MyString
   contactAddress: MyText
@@ -9,7 +9,7 @@ one:
   certification: MyText
 
 two:
-  firstName: MyString
+  first_name: MyString
   lastName: MyString
   email: MyString
   contactAddress: MyText

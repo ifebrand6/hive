@@ -2,7 +2,7 @@ class CreateExperts < ActiveRecord::Migration[5.2]
   def change
     create_table :experts do |t|
       t.string :first_name, limit: 30
-      t.string :last_name, limit: 30
+      t.string :first_name, limit: 30
       t.string :email
       t.integer :phone_nubmer
       t.text :contact_address, limit: 50
