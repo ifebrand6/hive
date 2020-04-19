@@ -1,2 +1,2 @@
-module ExpertApplicationsHelper
+module ExpertsHelper
 end

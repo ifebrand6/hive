@@ -5,11 +5,11 @@ class DashboardController < ApplicationController
   end
 
   def application
-    @expert_list = ExpertApplication.all.pending_application
+    @expert_list = Expert.all.pending_application
   end
 
   def talents
-    @expert_list = ExpertApplication.all.onboard_expert
+    @expert_list = Expert.all.onboard_expert
   end
   def customers_requests
     @customers = User.all.where(customer_role: true)
@@ -24,7 +24,7 @@ class DashboardController < ApplicationController
   end
   def talent_assignment
     @talent_request = TalentRequest.find(params[:id])
-    @talents = ExpertApplication.all.where(talent_type: @talent_request.talent_type_id)
+    @talents = Expert.all.where(talent_type: @talent_request.talent_type_id)
     @finalized_request = FinalizedRequest.new
     @finalized_request.talent_assignments.build
   end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ExpertApplicationTest < ActiveSupport::TestCase
+class ExpertTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

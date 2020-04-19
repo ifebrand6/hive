@@ -1,4 +1,4 @@
-class ExpertApplication < ApplicationRecord
+class Expert < ApplicationRecord
     belongs_to :talent_type
 
     scope :pending_application, lambda { where(:status => false)}
