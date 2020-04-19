@@ -5,7 +5,7 @@ one:
   last_name: MyString
   email: MyString
   contactAddress: MyText
-  shortBio: MyText
+  short_bio: MyText
   certification: MyText
 
 two:
@@ -13,5 +13,5 @@ two:
   last_name: MyString
   email: MyString
   contactAddress: MyText
-  shortBio: MyText
+  short_bio: MyText
   certification: MyText

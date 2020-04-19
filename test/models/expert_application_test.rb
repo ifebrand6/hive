@@ -8,7 +8,7 @@
 #  email           :string
 #  phone_number     :integer
 #  contactAddress  :text
-#  shortBio        :text
+#  short_bio        :text
 #  certification   :text             default([]), is an Array
 #  status          :boolean          default(FALSE)
 #  created_at      :datetime         not null

@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.string "email"
     t.integer "phone_number"
     t.text "contactAddress"
-    t.text "shortBio"
+    t.text "short_bio"
     t.text "certification", default: [], array: true
     t.boolean "status", default: false
     t.datetime "created_at", null: false
