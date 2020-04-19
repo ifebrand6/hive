@@ -1,4 +1,4 @@
-<%= @expert_application.firstName%>
+<%= @expert.firstName%>
 
 <table id="table" border="1"> 
         <tr>
@@ -17,18 +17,18 @@
         </tr>      
 
         <tbody id="after_add">
-            <td><%=@expert_application.firstName %> <%=@expert_application.lastName %></td>
-            <td><%=@expert_application.email %></td>
-            <td><%=@expert_application.phoneNumber %></td>
-            <td><%=@expert_application.contactAddress %></td>
-            <td><%=@expert_application.shortBio %></td>
-            <td><%=@expert_application.certification %></td>
-            <td><%=@expert_application.created_at %></td> 
-            <td><%=@expert_application.talent_type.expert_specialization %></td> 
+            <td><%=@expert.firstName %> <%=@expert.lastName %></td>
+            <td><%=@expert.email %></td>
+            <td><%=@expert.phoneNumber %></td>
+            <td><%=@expert.contactAddress %></td>
+            <td><%=@expert.shortBio %></td>
+            <td><%=@expert.certification %></td>
+            <td><%=@expert.created_at %></td> 
+            <td><%=@expert.talent_type.expert_specialization %></td> 
         </tbody> 
 </table>
 <%= link_to  "back", :back %>
 <br>
-<%= link_to "Accept Application", onboard_path(@expert_application ,tyope: :try) , data:{ confirm: "confirm"} %>
+<%= link_to "Accept Application", onboard_path(@expert ,tyope: :try) , data:{ confirm: "confirm"} %>
 <br>
 <%= link_to  "Reject Application", dashboard_index_path %>

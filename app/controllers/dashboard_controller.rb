@@ -5,11 +5,11 @@ class DashboardController < ApplicationController
   end
 
   def application
-    @expert_application_list = ExpertApplication.all.pending_application
+    @expert_list = ExpertApplication.all.pending_application
   end
 
   def talents
-    @expert_application_list = ExpertApplication.all.onboard_expert
+    @expert_list = ExpertApplication.all.onboard_expert
   end
   def customers_requests
     @customers = User.all.where(customer_role: true)
@@ -42,7 +42,7 @@ class DashboardController < ApplicationController
   private
      
      def final_params
-      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignments_attributes: [:engaged_date, :start_date,:expert_application_id])
+      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignments_attributes: [:engaged_date, :start_date,:expert_id])
     end
 end
 

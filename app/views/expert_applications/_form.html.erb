@@ -1,10 +1,10 @@
-<%= form_for(@expert_application) do |f| %>
-    <% if @expert_application.errors.any? %>
+<%= form_for(@expert) do |f| %>
+    <% if @expert.errors.any? %>
         <div id="error_explanation">
-        <h2><%= pluralize(@expert_application.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%= pluralize(@expert.errors.count, "error") %> prohibited this post from being saved:</h2>
 
         <ul>
-        <% @expert_application.errors.full_messages.each do |msg| %>
+        <% @expert.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
         <% end %>
         </ul>

@@ -12,13 +12,13 @@
         </tr>
     </thead>
     <tbody>
-    <% @expert_application_list.each do |expert_application| %>
+    <% @expert_list.each do |expert| %>
         <tr>
-            <th scope="row"><%= expert_application.id %></th>
-            <td><%= expert_application.created_at %></td>
-            <td><%= expert_application.firstName %></td>
-            <td><%= expert_application.talent_type.expert_specialization %></td>
-            <td><%= expert_application.id %></td>
+            <th scope="row"><%= expert.id %></th>
+            <td><%= expert.created_at %></td>
+            <td><%= expert.firstName %></td>
+            <td><%= expert.talent_type.expert_specialization %></td>
+            <td><%= expert.id %></td>
         </tr>
         <% end %>
     </tbody>

@@ -12,7 +12,7 @@
         <%= a.date_field  :start_date %>
         <br>
         <%= a.label :engaged_date, "Select Expert" %>
-        <%= a.select(:expert_application_id, @talents.collect{|e| [e.firstName   , + e.id]} ) %>
+        <%= a.select(:expert_id, @talents.collect{|e| [e.firstName   , + e.id]} ) %>
         <br>
 
 <% end %>
