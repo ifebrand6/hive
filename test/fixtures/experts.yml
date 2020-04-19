@@ -2,7 +2,7 @@
 
 one:
   first_name: MyString
-  lastName: MyString
+  last_name: MyString
   email: MyString
   contactAddress: MyText
   shortBio: MyText
@@ -10,7 +10,7 @@ one:
 
 two:
   first_name: MyString
-  lastName: MyString
+  last_name: MyString
   email: MyString
   contactAddress: MyText
   shortBio: MyText

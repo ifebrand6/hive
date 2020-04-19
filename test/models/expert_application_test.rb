@@ -4,7 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  first_name       :string(30)
-#  lastName        :string(30)
+#  last_name        :string(30)
 #  email           :string
 #  phoneNumber     :integer
 #  contactAddress  :text
