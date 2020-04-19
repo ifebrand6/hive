@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.string "last_name", limit: 30
     t.string "email"
     t.integer "phone_number"
-    t.text "contactAddress"
+    t.text "contact_address"
     t.text "short_bio"
     t.text "certification", default: [], array: true
     t.boolean "status", default: false
