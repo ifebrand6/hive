@@ -6,7 +6,7 @@
 #  first_name      :string(30)
 #  first_name       :string(30)
 #  email           :string
-#  phone_nubmer    :integer
+#  phone_number    :integer
 #  contact_address :text
 #  short_bio       :text
 #  certification   :text             default([]), is an Array
@@ -16,7 +16,7 @@
 #  updated_at      :datetime         not null
 #
 class Expert < ApplicationRecord
-    belongs_to :talent_type
+    # belongs_to :talent_type
 
     scope :pending_application, lambda { where(:status => false)}
     scope :onboard_expert, -> { where(:status => true)}
