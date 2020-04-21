@@ -3,10 +3,6 @@
     <% else %>
    Hello, there 
     <% end %>
-    This is a summary of your order
-    Talent Demand:
-    Unit needed
-    Start Date
-    End Date
-    Cost of Service: 
-    Total
+    We got a request from you on <%= @finalized_request.request.created_at%>
+Please kindly Click the link below to see and finalized your request.
+<%= link_to  "Proceed to payment", show_customer_finalized_request_url(@finalized_request.id) %>

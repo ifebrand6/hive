@@ -31,7 +31,5 @@ class CustomerDashboardController < ApplicationController
 
   def delete_request
   end
-
-  private
-
+  
 end

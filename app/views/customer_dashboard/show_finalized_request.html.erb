@@ -17,7 +17,7 @@
     <thead>
         <tr>
             <th>Talent Assigned</th>
-            <th><%= @talent_assignment.expert_application.talent_type.expert_specialization%></th>
+            <th><%= @talent_assignment.expert.talent_type.expert_specialization%></th>
         </tr>
     </thead>
     <thead>
@@ -41,7 +41,7 @@
     <thead>
         <tr>
             <th>Payment Amount:</th>
-            <th><%= @talent_assignment.end_date%></th>
+            <th></th>
         </tr>
     </thead>
 </table>
@@ -53,7 +53,7 @@
 <% end %>
 <br>
 <%= link_to  "back", :back %>
-<span id="delivery_total_hidden" hidden>10000</span>
+<span id="delivery_total_hidden" hidden><%= (rand(777) * 100000)%></span>
 <script>
 function payWithPaystack(email){
     amount = $("#delivery_total_hidden").text();
