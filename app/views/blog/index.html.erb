@@ -1,0 +1,11 @@
+<h1>Agrohive blog</h1>
+      <p>This is Agrohive blog section</p>
+    <% @posts.each do |post|%>
+
+    <%= link_to(single_post_path(post)) do %> 
+        <h2> <%= post.title%>  </h2>
+     <% end %>
+        <p>
+          <%= post.content%>
+        </p>
+ <% end %>

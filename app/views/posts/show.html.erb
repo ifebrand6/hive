@@ -1,0 +1,23 @@
+<p>
+<b>Title:</b>
+<%=h @post.title %>
+
+</p>
+
+<p>
+<b>Body:</b>
+<%=h @post.content %>
+</p>
+
+<h2>Comments</h2>
+
+<% @post.comments.each do |c| %>
+<p>
+    <b><%=h c.name %> said:</b><br />
+    <%= time_ago_in_words(c.created_at) %> ago
+</p>
+
+<p>
+    <%=h c.body %>
+</p>    
+<% end %>

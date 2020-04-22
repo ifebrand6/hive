@@ -65,7 +65,11 @@
 # show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
 
 Rails.application.routes.draw do
-  # get 'get_experts#index', path: 'requestexpert'
+  get 'blog'  => 'blog#index'
+  get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
+  post 'blog/add_comment' => 'blog#add_comment'
+  resources :posts 
+  resources :comments, only: [:create,:show]
   resources :requests
   get 'dashboard/index'
   get 'dashboard/application'

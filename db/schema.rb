@@ -10,24 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_171636) do
+ActiveRecord::Schema.define(version: 2020_04_11_135024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "experts", force: :cascade do |t|
-    t.string "first_name", limit: 30
-    t.string "last_name", limit: 30
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
     t.string "email"
-    t.integer "phone_nubmer"
-    t.text "contact_address"
-    t.text "short_bio"
-    t.text "certification", default: [], array: true
-    t.boolean "status", default: false
-    t.string "suggested_skill", limit: 50
+    t.text "body"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_experts_on_email", unique: true
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -45,6 +40,21 @@ ActiveRecord::Schema.define(version: 2020_04_07_171636) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "experts", force: :cascade do |t|
+    t.string "first_name", limit: 30
+    t.string "last_name", limit: 30
+    t.string "email"
+    t.integer "phone_nubmer"
+    t.text "contact_address"
+    t.text "short_bio"
+    t.text "certification", default: [], array: true
+    t.boolean "status", default: false
+    t.string "suggested_skill", limit: 50
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_experts_on_email", unique: true
+  end
+
   create_table "finalized_requests", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "request_id"
@@ -52,6 +62,13 @@ ActiveRecord::Schema.define(version: 2020_04_07_171636) do
     t.datetime "updated_at", null: false
     t.index ["request_id"], name: "index_finalized_requests_on_request_id"
     t.index ["user_id"], name: "index_finalized_requests_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
@@ -124,6 +141,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_171636) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "posts"
   add_foreign_key "finalized_requests", "requests"
   add_foreign_key "finalized_requests", "users"
   add_foreign_key "requests", "users"
