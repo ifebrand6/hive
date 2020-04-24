@@ -1,23 +1,30 @@
 class RequestsController < ApplicationController
-  def index
-    @expert_specialization_list = TalentType.all
+ before_action :get_talent_types
+
+  def new
     @request = Request.new
+    @request.talent_requests.build
   end
+  
 
   def create
-    @expert_specialization_list = TalentType.all
-    @requests = Request.new(request_and_talent_request_params)
-    if @requests.save
+    @request = Request.new(request_and_talent_request_params)
+    if @request.save
       #TODO: send mail to user and admin
       flash[:notice] = "You request has been recieved."
       redirect_to root_path, notice: 'request has been recieved.'
     else
-      render :index
+      render :new
     end
   end
 
   private
     def request_and_talent_request_params
-      params.require(:request).permit(:user_id, :email, :phone_number, talent_request_attributes: [:user_id, :unit_price, :expected_contract_duration, :expected_start_date, :quantity, :talent_type_id])
+      params.require(:request).permit(:user_id, :email, :phone_number, talent_requests_attributes: [:user_id, :unit_price, :expected_contract_duration, :expected_start_date, :quantity, :talent_type_id])
     end
+    
+    def get_talent_types
+      @expert_specialization_list = TalentType.all
+    end
+    
 end

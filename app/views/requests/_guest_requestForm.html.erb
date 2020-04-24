@@ -7,7 +7,7 @@
     <br>
     <div id="talent_requests" class="cellphones_form">
         <%= f.fields_for :talent_requests do |talent_request| %>
-            <%= render 'get_experts/request_forms/talent_request_fields', :f => talent_request %>
+            <%= render 'talent_request_fields', :f => talent_request %>
         <% end %>
          <div class='links'>
             <%= link_to_add_association 'Add Talent', f, :talent_requests %>

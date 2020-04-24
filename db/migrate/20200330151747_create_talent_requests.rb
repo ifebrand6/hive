@@ -5,8 +5,6 @@ class CreateTalentRequests < ActiveRecord::Migration[5.2]
       t.integer :expected_contract_duration
       t.date :expected_start_date
       t.integer :quantity, :default => 1
-      t.string :email
-      t.string :phone_nubmer
       t.references :user, foreign_key: true
       t.references :request, foreign_key: true
       t.references :talent_type, foreign_key: true

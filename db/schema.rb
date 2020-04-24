@@ -101,8 +101,6 @@ ActiveRecord::Schema.define(version: 2020_04_24_061508) do
     t.integer "expected_contract_duration"
     t.date "expected_start_date"
     t.integer "quantity", default: 1
-    t.string "email"
-    t.string "phone_nubmer"
     t.bigint "user_id"
     t.bigint "request_id"
     t.bigint "talent_type_id"

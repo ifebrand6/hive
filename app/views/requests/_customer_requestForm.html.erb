@@ -1,35 +1,18 @@
-<%= form_with(model: @requests, local: true ,url: {action: "create"}) do |request| %>
-        <%= request.hidden_field :user_id, value: current_user.id %>
-        <%= request.hidden_field :email, value: current_user.email %>
-        <%= request.label :phone_number, "Phone Number" %>
-        <%= request.text_field :phone_number %>
-      <br>
-    <table>
-         <%= request.fields_for :talent_request do |talent_request| %>
-            <%= talent_request.label :talent_type_id, "what type of services are you looking for" %>
-            <%= talent_request.select(:talent_type_id, @expert_specialization_list.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
-                <br>
-                <br>
-            <%= talent_request.label :unit_price, "Shows the unit price" %>
-            <%= talent_request.number_field :unit_price %>
-                <br>
-                <br>
-            <%= talent_request.label :expected_contract_duration, "What the duration you want for the contract" %>
-            <%= talent_request.date_field :expected_contract_duration %>
-                <br>
-                <br>
-            <%= talent_request.label :expected_start_date, "Expected Start Date" %>
-            <%= talent_request.date_field :expected_start_date %>
-                <br>
-                <br>
-            <%= talent_request.label :quantity, "quantity" %>
-            <%= talent_request.number_field :quantity %>
-            <%= talent_request.hidden_field :user_id, value: current_user.id  %>
-                <br>
-                <br>
 
-         <% end %>
-         <%= request.submit "Submit", disable_with: 'Submiting...' %>
+<%= simple_form_for @request do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :email, value: current_user.email %>
+    <br>
+    <%= f.input :phone_number %>
+    <br>
+    <div id="talent_requests" class="cellphones_form">
+        <%= f.fields_for :talent_requests do |talent_request| %>
+            <%= render 'talent_request_fields', :f => talent_request %>
+        <% end %>
+        <div class='links'>
+            <%= link_to_add_association 'Add Talent', f, :talent_requests %>
+        </div>
+        <%= f.submit "Submit", disable_with: 'Submiting...' %>
 
-     </table>
+    </div>
 <% end %>
