@@ -81,6 +81,8 @@
 # show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
 
 Rails.application.routes.draw do
+  resources :experts, path: 'application'
+  # get 'get_experts#index', path: 'requestexpert'
   get 'blog'  => 'blog#index'
   get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
   post 'blog/add_comment' => 'blog#add_comment'
@@ -97,7 +99,7 @@ Rails.application.routes.draw do
   post "dashboard/finalize_user_request", to: "dashboard#finalize_user_request"
   get 'onboard/:id' => 'expert_applications#accept_application', :as => 'onboard'
   #get '/apply', to: " expert_application#apply" #rename route so site/career/appy
-  resources :expert_applications, path: 'application'
+  # resources :expert_applications, path: 'application'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
