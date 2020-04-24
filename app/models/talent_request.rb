@@ -7,6 +7,8 @@
 #  expected_contract_duration :integer
 #  expected_start_date        :date
 #  quantity                   :integer          default(1)
+#  email                      :string
+#  phone_nubmer               :string
 #  user_id                    :bigint
 #  request_id                 :bigint
 #  talent_type_id             :bigint

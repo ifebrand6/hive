@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_11_135024) do
+ActiveRecord::Schema.define(version: 2020_04_24_061508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.text "certification", default: [], array: true
     t.boolean "status", default: false
     t.string "suggested_skill", limit: 50
+    t.bigint "talent_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_experts_on_email", unique: true
+    t.index ["talent_type_id"], name: "index_experts_on_talent_type_id"
   end
 
   create_table "finalized_requests", force: :cascade do |t|
@@ -66,9 +68,11 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.text "content"
+    t.text "contents"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -97,6 +101,8 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.integer "expected_contract_duration"
     t.date "expected_start_date"
     t.integer "quantity", default: 1
+    t.string "email"
+    t.string "phone_nubmer"
     t.bigint "user_id"
     t.bigint "request_id"
     t.bigint "talent_type_id"
@@ -131,19 +137,22 @@ ActiveRecord::Schema.define(version: 2020_04_11_135024) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "guest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "superadmin_role", default: false
     t.boolean "admin_role", default: false
     t.boolean "customer_role", default: true
-    t.boolean "guest"
+    t.boolean "expert", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "experts", "talent_types"
   add_foreign_key "finalized_requests", "requests"
   add_foreign_key "finalized_requests", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "requests", "users"
   add_foreign_key "talent_assignments", "experts"
   add_foreign_key "talent_assignments", "finalized_requests"

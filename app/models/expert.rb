@@ -12,6 +12,7 @@
 #  certification   :text             default([]), is an Array
 #  status          :boolean          default(FALSE)
 #  suggested_skill :string(50)
+#  talent_type_id  :bigint
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -10,6 +10,7 @@ class CreateExperts < ActiveRecord::Migration[5.2]
       t.text :certification, array: true, :default => []
       t.boolean :status, default: false
       t.string :suggested_skill, limit:50, :default => nil
+      t.references :talent_type, foreign_key: true
       t.timestamps
     end
     add_index :experts, :email, unique: true

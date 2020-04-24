@@ -8,12 +8,13 @@
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
+#  guest                  :boolean
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  superadmin_role        :boolean          default(FALSE)
 #  admin_role             :boolean          default(FALSE)
 #  customer_role          :boolean          default(TRUE)
-#  guest                  :boolean
+#  expert                 :boolean          default(FALSE)
 #
 class User < ApplicationRecord
   has_many :requests, dependent: :delete_all

@@ -1,14 +1,27 @@
 # == Route Map
 #
 #                          Prefix Verb   URI Pattern                                                                              Controller#Action
-#                     get_experts GET    /request-expert(.:format)                                                                get_experts#index
-#                                 POST   /request-expert(.:format)                                                                get_experts#create
-#                  new_get_expert GET    /request-expert/new(.:format)                                                            get_experts#new
-#                 edit_get_expert GET    /request-expert/:id/edit(.:format)                                                       get_experts#edit
-#                      get_expert GET    /request-expert/:id(.:format)                                                            get_experts#show
-#                                 PATCH  /request-expert/:id(.:format)                                                            get_experts#update
-#                                 PUT    /request-expert/:id(.:format)                                                            get_experts#update
-#                                 DELETE /request-expert/:id(.:format)                                                            get_experts#destroy
+#                            blog GET    /blog(.:format)                                                                          blog#index
+#                     single_post GET    /blog/single_post/:id(.:format)                                                          blog#single_post
+#                blog_add_comment POST   /blog/add_comment(.:format)                                                              blog#add_comment
+#                           posts GET    /posts(.:format)                                                                         posts#index
+#                                 POST   /posts(.:format)                                                                         posts#create
+#                        new_post GET    /posts/new(.:format)                                                                     posts#new
+#                       edit_post GET    /posts/:id/edit(.:format)                                                                posts#edit
+#                            post GET    /posts/:id(.:format)                                                                     posts#show
+#                                 PATCH  /posts/:id(.:format)                                                                     posts#update
+#                                 PUT    /posts/:id(.:format)                                                                     posts#update
+#                                 DELETE /posts/:id(.:format)                                                                     posts#destroy
+#                        comments POST   /comments(.:format)                                                                      comments#create
+#                         comment GET    /comments/:id(.:format)                                                                  comments#show
+#                        requests GET    /requests(.:format)                                                                      requests#index
+#                                 POST   /requests(.:format)                                                                      requests#create
+#                     new_request GET    /requests/new(.:format)                                                                  requests#new
+#                    edit_request GET    /requests/:id/edit(.:format)                                                             requests#edit
+#                         request GET    /requests/:id(.:format)                                                                  requests#show
+#                                 PATCH  /requests/:id(.:format)                                                                  requests#update
+#                                 PUT    /requests/:id(.:format)                                                                  requests#update
+#                                 DELETE /requests/:id(.:format)                                                                  requests#destroy
 #                 dashboard_index GET    /dashboard/index(.:format)                                                               dashboard#index
 #           dashboard_application GET    /dashboard/application(.:format)                                                         dashboard#application
 #               dashboard_talents GET    /dashboard/talents(.:format)                                                             dashboard#talents
@@ -17,15 +30,15 @@
 #               customer_requests GET    /dashboard/customer_requests/:id(.:format)                                               dashboard#customer_requests
 #               talent_assignment GET    /dashboard/talent_assignment/:id(.:format)                                               dashboard#talent_assignment
 # dashboard_finalize_user_request POST   /dashboard/finalize_user_request(.:format)                                               dashboard#finalize_user_request
-#                         onboard GET    /onboard/:id(.:format)                                                                   experts#accept_application
-#                         experts GET    /application(.:format)                                                                   experts#index
-#                                 POST   /application(.:format)                                                                   experts#create
-#                      new_expert GET    /application/new(.:format)                                                               experts#new
-#                     edit_expert GET    /application/:id/edit(.:format)                                                          experts#edit
-#                          expert GET    /application/:id(.:format)                                                               experts#show
-#                                 PATCH  /application/:id(.:format)                                                               experts#update
-#                                 PUT    /application/:id(.:format)                                                               experts#update
-#                                 DELETE /application/:id(.:format)                                                               experts#destroy
+#                         onboard GET    /onboard/:id(.:format)                                                                   expert_applications#accept_application
+#             expert_applications GET    /application(.:format)                                                                   expert_applications#index
+#                                 POST   /application(.:format)                                                                   expert_applications#create
+#          new_expert_application GET    /application/new(.:format)                                                               expert_applications#new
+#         edit_expert_application GET    /application/:id/edit(.:format)                                                          expert_applications#edit
+#              expert_application GET    /application/:id(.:format)                                                               expert_applications#show
+#                                 PATCH  /application/:id(.:format)                                                               expert_applications#update
+#                                 PUT    /application/:id(.:format)                                                               expert_applications#update
+#                                 DELETE /application/:id(.:format)                                                               expert_applications#destroy
 #                     rails_admin        /admin                                                                                   RailsAdmin::Engine
 #                            root GET    /                                                                                        home#index
 #                  userrole_index GET    /userrole/index(.:format)                                                                userrole#index
@@ -46,6 +59,9 @@
 #                                 DELETE /user(.:format)                                                                          devise/registrations#destroy
 #                                 POST   /user(.:format)                                                                          devise/registrations#create
 #                            test GET    /test(.:format)                                                                          home#test
+#                  become_partner GET    /become-partner(.:format)                                                                home#become_a_partner
+#                         contact GET    /contact(.:format)                                                                       home#contact
+#                     home_create POST   /home/create(.:format)                                                                   home#create
 #              rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 #       rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
 #              rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
@@ -68,7 +84,7 @@ Rails.application.routes.draw do
   get 'blog'  => 'blog#index'
   get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
   post 'blog/add_comment' => 'blog#add_comment'
-  resources :posts 
+  resources :posts
   resources :comments, only: [:create,:show]
   resources :requests
   get 'dashboard/index'
