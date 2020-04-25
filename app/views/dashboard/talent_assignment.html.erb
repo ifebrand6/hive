@@ -1,10 +1,10 @@
  <h1>Final user Request</h1>
  <h3> fill in with the correct data </h3>
 <%= form_with(model: @finalized_request, local: true,url: {action: "finalize_user_request"}) do |f| %>
-        <%= f.hidden_field :user_id, value: @talent_request.user_id %>
+        <%= f.hidden_field :user_id, value: @talent_request.request.user_id %>
         <%= f.hidden_field :request_id, value: @talent_request.request_id %>
 
-    <%= f.fields_for :talent_assignments do |a| %>
+    <%= f.fields_for :talent_assignment do |a| %>
         <%= a.label :engaged_date, "Engaged_date" %>
         <%= a.date_field :engaged_date %>
         <br>
@@ -12,7 +12,7 @@
         <%= a.date_field  :start_date %>
         <br>
         <%= a.label :engaged_date, "Select Expert" %>
-        <%= a.select(:expert_id, @talents.collect{|e| [e.firstName   , + e.id]} ) %>
+        <%= a.select(:expert_id, @talents.collect{|e| [e.first_name   , + e.id]} ) %>
         <%= a.check_box :_destroy %>
         <%= a.label :_destroy, "remove" %>
         <br>
