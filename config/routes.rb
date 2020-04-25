@@ -92,6 +92,8 @@ Rails.application.routes.draw do
   get 'my-requests', to: 'customer_dashboard#request', as: 'my_customer_requests'
   get 'my-request/:id',to: 'customer_dashboard#show_request', as: 'my_customer_request'
   get 'delete-my-request/:id', to: 'customer_dashboard#delete_request',as: 'delete_customer_request'
+  get 'blog'  => 'blog#index'
+  get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
   post 'blog/add_comment' => 'blog#add_comment'
   resources :posts
   resources :comments, only: [:create,:show]

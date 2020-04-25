@@ -11,7 +11,7 @@ class CustomerDashboardController < ApplicationController
   def make_payment_for_finalized_request
   end
 
-  def transctions
+  def transactions
   end
 
   def show_transcation
