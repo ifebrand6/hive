@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-    <% if  @user.guest?%>
+    <% if  @user.customer_role?%>
        <p> Dear <%= @user.email%>, </p>
     <% else %>
     <h4>  Hello, there</h4>
@@ -17,5 +17,6 @@
   <p>End Date</p>
   <p>Cost of Service: </p>
   <p>Total</p>
+  <%= link_to  "Proceed to payment", root_url %>
 </body>
 </html>
