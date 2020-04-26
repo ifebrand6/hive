@@ -10,6 +10,21 @@ class NotifierMailer < ApplicationMailer
     mail(to: @expert.email, subject: 'Your application has been approved' )
   end
 
+  def send_mail_to_admin_for_new_expert_appplication
+    @expert = params[:expert]
+    mail(to: ADMIN_EMAIL, subject: "You have new expert application")
+  end
+
+  def send_acknowledge_mail_to_new_expert
+    @expert = params[:expert]
+    mail(to: @expert.email, subject: "Your application has been recieved")
+  end
+
+  def send_mail_to_expert_for_a_job_request
+      @finalized_request = params[:finalized_request]
+      @email = @finalized_request.talent_assignment.expert.email
+      mail(to: @email, subject: "You have a new job")
+  end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
