@@ -45,8 +45,18 @@ class NotifierMailer < ApplicationMailer
   #   en.notifier_mailer.send_mail_for_a_completed_transcation.subject
   #
   def send_mail_for_a_completed_transcation
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    @transaction = params[:transaction]
+    @transaction_reference = generate_unique_reference(@transaction)
+    @email = @transaction.finalized_request.request.email
+    mail(to: @email, subject: 'Your Transaction is successful!' )
   end
+
+  private
+    def generate_unique_reference(transaction)
+      a = transaction
+      c = "REF/#{a.id}/"
+      b = (a.created_at).strftime("%Y%m%dT%H%M")
+      reference = c << b
+      return reference
+    end
 end

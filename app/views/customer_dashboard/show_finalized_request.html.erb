@@ -40,7 +40,8 @@
     </thead>
     <thead>
         <tr>
-            <th>Payment Amount:</th>
+        <% pseudo_amount = (rand(777) * 100000)%>
+            <th>Payment Amount:NGN<%= number_with_delimiter((pseudo_amount / 100)) %></th>
             <th></th>
         </tr>
     </thead>
@@ -48,12 +49,15 @@
 </div>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
-<%= form_with(model: @transaction, local: true,url: {action: "make_payment_for_finalized_request"}) do |f| %>
-<%= f.submit 'Make Payment', :class => 'btn btn-large button slider-button', style: 'font-size: 14px;', :id => 'create_an_order', onclick: "payWithPaystack('#{@finalized_request.request.email}'); return false;" %></form>
+<%= form_with(model: @transaction,local: true, url: @transactions) do |f| %>
+<%= f.hidden_field :user_id, value: @finalized_request.user.id %>
+<%= f.hidden_field :finalized_request_id, value: @finalized_request.id %>
+<%= f.hidden_field :amount, value: (pseudo_amount / 100) %>
+<%= f.submit 'Make Payment',type: 'button', :class => 'btn btn-large button slider-button', style: 'font-size: 14px;', :id => 'create_an_order', onclick: "payWithPaystack('#{@finalized_request.request.email}'); return false;" %></form>
 <% end %>
 <br>
 <%= link_to  "back", :back %>
-<span id="delivery_total_hidden" hidden><%= (rand(777) * 100000)%></span>
+<span id="delivery_total_hidden" hidden><%= pseudo_amount%></span>
 <script>
 function payWithPaystack(email){
     amount = $("#delivery_total_hidden").text();
