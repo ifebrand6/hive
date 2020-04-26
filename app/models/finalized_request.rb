@@ -18,7 +18,7 @@ class FinalizedRequest < ApplicationRecord
   private
     
   def notifier
-    # SendFinalRequestMailJob.perform_later(id)
+    SendFinalRequestMailJob.perform_later(id)
     SendMailToExpertForAnAssignedTalentJob.perform_later(id)
   end
 
