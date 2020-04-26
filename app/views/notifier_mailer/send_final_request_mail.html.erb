@@ -4,18 +4,13 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-    <% if  @user.guest?%>
+    <% if  @user.customer_role?%>
        <p> Dear <%= @user.email%>, </p>
     <% else %>
     <h4>  Hello, there</h4>
-    <p>We got a request from you</p>
     <% end %>
-  <p>This is a summary of your order</p>
-  <p>Talent Demand:</p>
-  <p>Unit needed</p>
-  <p>Start Date</p>
-  <p>End Date</p>
-  <p>Cost of Service: </p>
-  <p>Total</p>
+  <p>We got a request from you on <%= @finalized_request.request.created_at%> </p>
+  <p>Please kindly Click the link below to see and finalized your request.</p>
+  <%= link_to  "Finalized your request", show_customer_finalized_request_url(@finalized_request.id) %>
 </body>
 </html>

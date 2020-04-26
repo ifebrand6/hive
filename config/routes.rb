@@ -82,7 +82,16 @@
 
 Rails.application.routes.draw do
   resources :experts, path: 'application'
-  # get 'get_experts#index', path: 'requestexpert'
+  # CUSTOMER DASHBO
+  get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'
+  get 'my-finalized-requests', to: 'customer_dashboard#finalized_requests', as: 'customer_finalized_requests'
+  get 'my-finalized-request/:id', to: 'customer_dashboard#show_finalized_request', as: 'show_customer_finalized_request'
+  get 'make-payment', to: 'customer_dashboard#make_payment_for_finalized_request', as: 'make_payment_for_finalized_request'
+  get 'my-transcations',to: 'customer_dashboard#transactions', as: 'customer_transcations'
+  get 'my-transcation/:id', to: 'customer_dashboard#show_transcation', as: 'customer_transcation'
+  get 'my-requests', to: 'customer_dashboard#my_request', as: 'my_customer_requests'
+  get 'my-request/:id',to: 'customer_dashboard#show_request', as: 'my_customer_request'
+  get 'delete-my-request/:id', to: 'customer_dashboard#delete_request',as: 'delete_customer_request'
   get 'blog'  => 'blog#index'
   get 'blog/single_post/:id' => 'blog#single_post', :as => 'single_post'
   post 'blog/add_comment' => 'blog#add_comment'
