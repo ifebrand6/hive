@@ -42,7 +42,9 @@ gem 'con'
 gem 'devise'
 gem 'devise-guests', '~> 0.5.0'
 gem 'delayed_job_active_record'
+gem "figaro"
 gem 'jquery-rails'
+gem 'paystack'
 gem 'rails_admin', '~> 2.0'
 gem 'toastr-rails'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
