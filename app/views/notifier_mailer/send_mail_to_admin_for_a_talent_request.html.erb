@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' /> </head>
+
 <body>
-    <p>You got a new request from <%= @request.email %>!</p>
-    <p>
-    Talent details<br>
-    --------------------------
-    </p>
+    <p>You got a new request from
+        <%= @request.email %>!</p>
+    <p> Talent details
+        <br> -------------------------- </p>
     <% @talent_requests.each do |f|%>
-   <p> Talent Demanded: <%= f.talent_type.expert_specialization %></p>
-    <p> Unit Price: <%= f.unit_price %></p>
-    <p> Quantity Demanded:<%= f.quantity %></p>
-    <p> Expecteed Duration of Contract:<%= f.expected_contract_duration %></p>
-    <p> Expecteed Start Date:<%= f.expected_start_date %></p>
-    <p> Date ordered: <%= f.created_at %></p>
-    ---------------------------------------
-    <% end %>
-    ----------
-    --------------------------
-    <p>
-     <strong>Client Phone Number: <%= @request.phone_number %>
-     </strong>
-</body>
+        <p> Talent Demanded:
+            <%= f.talent_type.expert_specialization %>
+        </p>
+        <p> Unit Price:
+            <%= f.unit_price %>
+        </p>
+        <p> Quantity Demanded:
+            <%= f.quantity %>
+        </p>
+        <p> Expecteed Duration of Contract:
+            <%= f.expected_contract_duration %>
+        </p>
+        <p> Expecteed Start Date:
+            <%= f.expected_start_date %>
+        </p>
+        <p> Date ordered:
+            <%= f.created_at %>
+        </p> ---------------------------------------
+        <% end %> ---------- --------------------------
+            <p> <strong>Client Phone Number: <%= @request.phone_number %>
+    </strong> </body>
+
 </html>
