@@ -13,6 +13,9 @@
         <br>
         <%= a.label :engaged_date, "Select Expert" %>
         <%= a.select(:expert_id, @talents.collect{|e| [e.first_name   , + e.id]} ) %>
+        <br>
+        <%= a.label :contract_cost, "Total Cost Of Contract" %>
+        <%= a.number_field :contract_cost %>
         <%= a.check_box :_destroy %>
         <%= a.label :_destroy, "remove" %>
         <br>

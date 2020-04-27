@@ -40,8 +40,7 @@
     </thead>
     <thead>
         <tr>
-        <% pseudo_amount = (rand(777) * 100000)%>
-            <th>Payment Amount:NGN<%= number_with_delimiter((pseudo_amount / 100)) %></th>
+            <th>Payment Amount:<%= humanized_money_with_symbol(@talent_assignment.amount) %></th>
             <th></th>
         </tr>
     </thead>
@@ -59,10 +58,10 @@
 <script>
 var transactionObj = {
     email_prepared_for_paystack: '<%= @finalized_request.request.email%>',
-    amount: <%= pseudo_amount%>,
+    amount: <%= (@talent_assignment.amount * 100) %>,
     user_id: <%= @finalized_request.request.user_id%>,
-    finalized_request_id: <%= @finalized_request.id%>
-    talent_request: <%= @finalized_request.talent_assignment.expert.talent_type.expert_specialization %>
+    finalized_request_id: <%= @finalized_request.id%>,
+    talent_request: '<%= @finalized_request.talent_assignment.expert.talent_type.expert_specialization %>'
     // other params you want to save
 };
 function saveOrderThenPayWithPaystack(){

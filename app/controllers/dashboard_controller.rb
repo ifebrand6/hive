@@ -46,7 +46,7 @@ class DashboardController < ApplicationController
   private
 
      def final_params
-      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignment_attributes: [:engaged_date, :start_date,:expert_id])
+      params.require(:finalized_request).permit(:user_id, :request_id, talent_assignment_attributes: [:engaged_date, :start_date,:expert_id,:contract_cost])
     end
 end
 

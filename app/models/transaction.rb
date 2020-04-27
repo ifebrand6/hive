@@ -12,7 +12,7 @@
 class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :finalized_request
-  
+  monetize :amount, as: "amount_price"
   after_create :notifier
   
   def notifier
