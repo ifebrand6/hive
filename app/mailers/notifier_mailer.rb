@@ -1,20 +1,27 @@
 class NotifierMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier_mailer.send_accepted_expert_mail.subject
-  #
   def send_accepted_expert_mail
     @expert = params[:expert]
     mail(to: @expert.email, subject: 'Your application has been approved' )
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier_mailer.send_mail_to_admin_for_a_talent_request.subject
-  #
+  def send_mail_to_admin_for_new_expert_appplication
+    @expert = params[:expert]
+    mail(to: ADMIN_EMAIL, subject: "You have new expert application")
+  end
+
+  def send_acknowledge_mail_to_new_expert
+    @expert = params[:expert]
+    mail(to: @expert.email, subject: "Your application has been recieved")
+  end
+
+  def send_mail_to_expert_for_an_assigned_talent
+      @finalized_request = params[:finalized_request]
+      @talent_assignment = @finalized_request.talent_assignment
+      @email = @finalized_request.talent_assignment.expert.email
+      mail(to: @email, subject: "You have a new job")
+  end
+
   def send_mail_to_admin_for_a_talent_request
     @request = params[:request]
     @talent_request = @request.talent_request
@@ -27,11 +34,6 @@ class NotifierMailer < ApplicationMailer
     mail(to: @request.email, subject: "Your Request has been recieved.")
   end
   
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier_mailer.send_final_request_mail.subject
-  #
   def send_final_request_mail
     @finalized_request = params[:finalized_request]
     @email = @finalized_request.request.email
@@ -39,14 +41,8 @@ class NotifierMailer < ApplicationMailer
     mail(to: @email, subject: 'Your Request has been Processeed' )
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notifier_mailer.send_mail_for_a_completed_transcation.subject
-  #
   def send_mail_for_a_completed_transcation
     @greeting = "Hi"
-
     mail to: "to@example.org"
   end
 end

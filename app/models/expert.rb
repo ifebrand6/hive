@@ -18,6 +18,7 @@
 #
 class Expert < ApplicationRecord
     belongs_to :talent_type
+    after_create :notifier
 
     scope :pending_application, lambda { where(:status => false)}
     scope :onboard_expert, -> { where(:status => true)}
@@ -25,8 +26,15 @@ class Expert < ApplicationRecord
     def onboarding_expert
         if (self.status === false)
             self.update(status: true)
+            SendAcknowledgeMailToNewExpertJob.perform_later(id)
         else
             return self
         end
+    end
+
+    private
+    def notifier
+        SendMailToAdminForNewExpertAppplicationJob.perform_later(id)
+        SendAcknowledgeMailToNewExpertJob.perform_later(id)
     end
 end
