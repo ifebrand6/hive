@@ -83,6 +83,7 @@
 Rails.application.routes.draw do
   resources :experts, path: 'application'
   # CUSTOMER DASHBO
+  get 'verify/:id', to: 'transactions#verify_transaction', as: 'verify'
   resources :transactions
   get 'thank-you', to: 'customer_dashboard#thank_you', as: 'thank_you'
   get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'

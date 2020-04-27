@@ -47,44 +47,79 @@
     </thead>
 </table>
 </div>
-<script src="https://js.paystack.co/v1/inline.js"></script>
 
-<%= form_with(model: @transaction,local: true, url: @transactions) do |f| %>
-<%= f.hidden_field :user_id, value: @finalized_request.user.id %>
-<%= f.hidden_field :finalized_request_id, value: @finalized_request.id %>
-<%= f.hidden_field :amount, value: (pseudo_amount / 100) %>
-<%= f.submit 'Make Payment',type: 'button', :class => 'btn btn-large button slider-button', style: 'font-size: 14px;', :id => 'create_an_order', onclick: "payWithPaystack('#{@finalized_request.request.email}'); return false;" %></form>
-<% end %>
+<form action="#">
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<button type="button" name="pay_now" id="pay-now" title="Pay now"  onclick="payWithPaystack()">Pay now</button>
+</form>
+
 <br>
 <%= link_to  "back", :back %>
-<span id="delivery_total_hidden" hidden><%= pseudo_amount%></span>
+
 <script>
-function payWithPaystack(email){
-    amount = $("#delivery_total_hidden").text();
-    $("#create_an_order").attr("disabled", false);
-    var handler = PaystackPop.setup({   
+var transactionObj = {
+    email_prepared_for_paystack: '<%= @finalized_request.request.email%>',
+    amount: <%= pseudo_amount%>,
+    user_id: <%= @finalized_request.request.user_id%>,
+    finalized_request_id: <%= @finalized_request.id%>
+    talent_request: <%= @finalized_request.talent_assignment.expert.talent_type.expert_specialization %>
+    // other params you want to save
+};
+function saveOrderThenPayWithPaystack(){
+    // Send the data to save using post
+    console.log('d')
+    var posting = $.post( '/transactions', transactionObj );
+
+    posting.done(function( data ) {
+    /* check result from the attempt */
+    payWithPaystack(data);
+    });
+    posting.fail(function( data ) { /* and if it failed... */ });
+}
+function payWithPaystack(data){
+    var handler = PaystackPop.setup({
     key: "<%= ENV['PAYSTACK_PUBLIC_KEY']-%>",
-    email: email,
-    amount: parseInt(amount) ,
+    email: transactionObj.email_prepared_for_paystack,
+    amount: transactionObj.amount,
     metadata: {
-    custom_fields: [
-    {
-        display_name: "Mobile Number",
-        variable_name: "mobile_number",
-        value: "+2348063202378"
-    }
-    ]
+        finalized_request_id: transactionObj.finalized_request_id,
+        custom_fields: [
+        {
+            display_name: "Paid on",
+            variable_name: "paid_on",
+            value: 'Website'
+        },
+        {
+            display_name: "Paid via",
+            variable_name: "paid_via",
+            value: 'Inline Popup'
+        },
+        {
+            display_name: "Talent Request",
+            variable_name: "talent_request",
+            value: transactionObj.talent_request
+        }
+        ]
     },
     callback: function(response){
-    url = $( 'form#new_order' ).attr( 'action' );
-    action = url + "?transactref=" + response.reference
-    $('form#new_order').attr('action', action).submit();
+        console.log('d')
+        var verifying = $.get( '/verify/' + response.reference);
+        verifying.done(function( data ) {
+            $.ajax({
+                url: "/transactions",
+                type: "POST",
+                data: {transaction: {
+                user_id: transactionObj.user_id,
+                finalized_request_id: transactionObj.finalized_request_id,
+                amount: transactionObj.amount}},
+                success: function(resp){ }
+            });
+        });
     },
     onClose: function(){
-    $("#create_an_order").attr("disabled", false);
-
+        alert('Click "Pay now" to retry payment.');
     }
-});
+    });
     handler.openIframe();
 }
 </script>
