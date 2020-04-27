@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-    <p>Your request for  <%= @talent_request.talent_type.expert_specialization %>  has been recieved</p>
+    <p>Your request for <% @talent_requests.each do |f|%> <%= f.talent_type.expert_specialization %>   <% end %>has been recieved</p>
     <p>We will get back to you as soon as possible.</p>
     <p>thanks for your patronage.</p>
 </body>

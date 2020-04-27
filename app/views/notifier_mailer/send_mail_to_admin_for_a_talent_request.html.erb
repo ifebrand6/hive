@@ -9,12 +9,16 @@
     Talent details<br>
     --------------------------
     </p>
-    <p>Talent Demanded: <%= @talent_request.talent_type.expert_specialization %> </p>
-    <p>Unit Price: <%= @talent_request.unit_price %> </p>
-    <p>Quantity Demanded:<%= @talent_request.quantity %> </p>
-    <p>Expecteed Duration of Contract:<%= @talent_request.expected_contract_duration %> </p>
-    <p>Expecteed Start Date:<%= @talent_request.expected_start_date %></p>
-    <p>Date ordered: <%= @talent_request.created_at %></p>
+    <% @talent_requests.each do |f|%>
+   <p> Talent Demanded: <%= f.talent_type.expert_specialization %></p>
+    <p> Unit Price: <%= f.unit_price %></p>
+    <p> Quantity Demanded:<%= f.quantity %></p>
+    <p> Expecteed Duration of Contract:<%= f.expected_contract_duration %></p>
+    <p> Expecteed Start Date:<%= f.expected_start_date %></p>
+    <p> Date ordered: <%= f.created_at %></p>
+    ---------------------------------------
+    <% end %>
+    ----------
     --------------------------
     <p>
      <strong>Client Phone Number: <%= @request.phone_number %>

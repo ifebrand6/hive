@@ -13,4 +13,10 @@ class Request < ApplicationRecord
   belongs_to :user
   has_many :talent_requests, dependent: :destroy
   accepts_nested_attributes_for :talent_requests
+  after_create :notifier
+
+  def notifier
+    SendMailToAdminForATalentRequestJob.perform_later(id)
+    SendAdmittedMsgForTalentRequestJob.perform_later(id)
+  end
 end

@@ -1,3 +1,4 @@
-Your request for  <%= @talent_request.talent_type.expert_specialization %> has been recieved
+our request for <% @talent_requests.each do |f|%> <%= f.talent_type.expert_specialization %> <% end %>has been recieved
 We will get back to you as soon as possible.
 thanks for your patronage.
+

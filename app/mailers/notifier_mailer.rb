@@ -24,13 +24,13 @@ class NotifierMailer < ApplicationMailer
 
   def send_mail_to_admin_for_a_talent_request
     @request = params[:request]
-    @talent_request = @request.talent_request
+    @talent_requests = @request.talent_requests
     mail(to: ADMIN_EMAIL, subject: "You have a new Request.")
   end
   
   def send_admitted_msg_for_talent_request
     @request = params[:request]
-    @talent_request = @request.talent_request
+    @talent_requests = @request.talent_requests
     mail(to: @request.email, subject: "Your Request has been recieved.")
   end
   
