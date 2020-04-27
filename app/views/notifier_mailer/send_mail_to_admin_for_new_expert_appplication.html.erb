@@ -5,6 +5,6 @@
 </head>
 <body>
     <p>A new application for <%= @expert.talent_type.expert_specialization%>.</p>
-    <p><%= link_to  "See more", experts_path %> more to take final action.</p>
+    <p><%= link_to  "See more", expert_url(@expert.id) %> more to take final action.</p>
 </body>
 </html>

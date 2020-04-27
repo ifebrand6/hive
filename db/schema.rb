@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_24_061508) do
+ActiveRecord::Schema.define(version: 2020_04_27_180406) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_061508) do
     t.string "first_name", limit: 30
     t.string "last_name", limit: 30
     t.string "email"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.text "contact_address"
     t.text "short_bio"
     t.text "certification", default: [], array: true
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_061508) do
     t.bigint "expert_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "contract_cost"
     t.index ["expert_id"], name: "index_talent_assignments_on_expert_id"
     t.index ["finalized_request_id"], name: "index_talent_assignments_on_finalized_request_id"
   end
