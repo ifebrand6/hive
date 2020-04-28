@@ -8,7 +8,7 @@
 #  expected_start_date        :date
 #  quantity                   :integer          default(1)
 #  email                      :string
-#  phone_nubmer               :string
+#  phone_number               :string
 #  user_id                    :bigint
 #  request_id                 :bigint
 #  talent_type_id             :bigint

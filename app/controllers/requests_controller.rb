@@ -10,7 +10,6 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_and_talent_request_params)
     if @request.save
-      #TODO: send mail to user and admin
       flash[:notice] = "You request has been recieved."
       redirect_to root_path, notice: 'request has been recieved.'
     else

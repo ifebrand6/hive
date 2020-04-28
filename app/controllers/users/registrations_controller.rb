@@ -14,8 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # # POST /resource
   def create
-    super
     current_or_guest_user
+    super
   end
   
   # def create
