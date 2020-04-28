@@ -44,6 +44,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5.0'
 gem 'delayed_job_active_record'
 gem "figaro"
+gem 'friendly_id', '~> 5.2.4'
 gem 'money-rails', '~>1.12'
 gem 'paperclip'
 gem 'paystack'
@@ -80,6 +81,3 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
-
-
-

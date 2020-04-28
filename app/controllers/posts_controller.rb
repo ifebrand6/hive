@@ -50,6 +50,6 @@ before_action :set_post, :only => [:edit, :update,:show, :destroy]
   end
   
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
   end
 end
