@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
+    before_action :configure_sign_up_params, if: :devise_controller?
     before_action :current_or_guest_user
   # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
@@ -61,4 +62,7 @@ class ApplicationController < ActionController::Base
          u
      end
 
+     def configure_sign_up_params
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_role])
+    end
 end

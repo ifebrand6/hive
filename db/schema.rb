@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2020_04_27_180406) do
     t.datetime "updated_at", null: false
     t.boolean "superadmin_role", default: false
     t.boolean "admin_role", default: false
-    t.boolean "customer_role", default: true
+    t.boolean "customer_role", default: false
     t.boolean "expert", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
