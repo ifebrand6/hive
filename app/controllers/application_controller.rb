@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :configure_sign_up_params, if: :devise_controller?
     before_action :current_or_guest_user
+
+    rescue_from CanCan::AccessDenied do |exception|
+        flash[:warning] = exception.message
+        redirect_to root_path
+     end
   # if user is logged in, return current_user, else return guest_user
     def current_or_guest_user
         if current_user

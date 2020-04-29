@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+    
     def become_a_partner
         @message = Message.new
     end

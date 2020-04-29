@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
  before_action :get_talent_types
-
+ 
   def new
     @request = Request.new
     @request.talent_requests.build

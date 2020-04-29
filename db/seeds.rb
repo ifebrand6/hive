@@ -13,3 +13,6 @@ defaults_talent_types = TalentType.create([
      {:expert_specialization => "Agricultural business plan expert"},
      {:expert_specialization => "Fumigation and vaccination expert"}
     ])
+admin_user_default = User.create([
+     {email: 'admin@hive.com',password: 'password',admin_role: true}
+])
