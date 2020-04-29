@@ -13,7 +13,7 @@
 </p>
 <p>
 <%= post.label :content %><br>
-<%= post.text_area :content %>
+<%= post.cktext_area :content ,id:'editor', rows: 5, cols: '40'%>
 </p>
 <p>
 <%= post.submit %>

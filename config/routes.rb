@@ -81,6 +81,7 @@
 # show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
 
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :experts, path: 'application'
   # CUSTOMER DASHBO
   get 'verify/:id', to: 'transactions#verify_transaction', as: 'verify'

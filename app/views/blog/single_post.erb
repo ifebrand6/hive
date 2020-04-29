@@ -1,8 +1,8 @@
 <p> <b>Title:</b>
-    <%=h @post.title %>
+    <%= @post.title %>
 </p>
 <p> <b>Body:</b>
-    <%=h @post.content %>
+    <%= raw @post.content %>
 </p>
 <h2>Comments</h2>
 <% @post.comments.each do |c| %>
@@ -10,7 +10,7 @@
         <br />
         <%= time_ago_in_words(c.created_at) %> ago </p>
     <p>
-        <%=h c.body %>
+        <%= c.body %>
     </p>
     <% end %>
         <%= render 'add_comment', post: @post%>
