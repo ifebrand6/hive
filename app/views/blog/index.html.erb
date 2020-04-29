@@ -6,6 +6,6 @@
         <h2> <%= post.title%>  </h2>
      <% end %>
         <p>
-          <%= post.content%>
+          <%= ((post.content).truncate_words(35)).html_safe%>
         </p>
  <% end %>

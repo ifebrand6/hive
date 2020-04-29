@@ -37,13 +37,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'cancancan'
+gem 'ckeditor'
 gem "cocoon"
 gem 'con'
 gem 'devise'
 gem 'devise-guests', '~> 0.5.0'
 gem 'delayed_job_active_record'
 gem "figaro"
+gem 'friendly_id', '~> 5.2.4'
 gem 'money-rails', '~>1.12'
+gem 'paperclip'
 gem 'paystack'
 gem 'rails_admin', '~> 2.0'
 gem 'rails-ujs'
@@ -78,6 +81,3 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
-
-
-

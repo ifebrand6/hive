@@ -1,12 +1,12 @@
 <p>
 <b>Title:</b>
-<%=h @post.title %>
+<%= @post.title %>
 
 </p>
 
 <p>
 <b>Body:</b>
-<%=h @post.content %>
+<%=raw(@post.content) %>
 </p>
 
 <h2>Comments</h2>
@@ -18,6 +18,6 @@
 </p>
 
 <p>
-    <%=h c.body %>
+    <%= c.body %>
 </p>    
 <% end %>

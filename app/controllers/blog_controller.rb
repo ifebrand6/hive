@@ -5,7 +5,7 @@ class BlogController < ApplicationController
   end
 
   def single_post
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
     @comment = Comment.new
 
   end
