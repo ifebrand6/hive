@@ -1,8 +1,8 @@
 class CustomerDashboardController < ApplicationController
-  authorize_resource :class => false, only: [:index]
+  # authorize_resource :class => false, only: [:index]
 
   def index
-    @finalized_requests = current_user.finalized_requests
+    @finalized_requests = current_user.finalized_requests.includes(:talent_assignment).where.not(:talent_assignments => {id: nil})
   end
   
   def finalized_requests

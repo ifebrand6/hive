@@ -4,10 +4,11 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    @talent_assignment = TalentAssignment.find(params[:id])
     @transaction = Transaction.new(transaction_params)
     if @transaction.save!
+      @talent_assignment.destroy
       redirect_to thank_you_path
-      #TODO SEND MAIL TO CUSTOMER
       flash[:notice] = 'Payment Successful'
     end
   end
@@ -32,6 +33,5 @@ class TransactionsController < ApplicationController
   private
     def transaction_params
       params.require(:transaction).permit(:user_id,:finalized_request_id,:amount)
-    
     end
 end

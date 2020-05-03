@@ -16,6 +16,7 @@
 #  updated_at                 :datetime         not null
 #
 class TalentRequest < ApplicationRecord
+  acts_as_paranoid
   belongs_to :request
   belongs_to :talent_type
 

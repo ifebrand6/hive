@@ -1,27 +1,32 @@
-<h1>User</h1>
-<p>List of customers request </p>
 <div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th></th>
-            <th>Email Address</th>
-            <th>Active Request No</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @customers.each do |customer |%>
-        <tr>
-            <th scope="row"><%= customer.id %></th>
-            <td></td>
-            <td><%= customer.email %></td>
-            <td><%= customer.requests.count %></td>
-            <td><%= link_to  "request", customer_requests_path(customer) %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-</div>
-<%= link_to  "back", :back %>
+
+<% if((@customers.includes(requests: :talent_requests).where.not(:talent_requests => {id: nil}).count) >= 1) %>
+        <h1>User</h1>
+        <p>List of customers request </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th></th>
+                        <th>Email Address</th>
+                        <th>Active Request No</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @customers.each do |customer |%>
+                    <tr>
+                        <th scope="row"><%= customer.id %></th>
+                        <td></td>
+                        <td><%= customer.email %></td>
+                        <td><%= customer.requests.includes(:talent_requests).where.not(:talent_requests => {id: nil}).count %></td>
+                        <td><%= link_to  "request", customer_requests_path(customer) %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+    <% else %>
+    <p>There are no  Requested Talent Yet.</p>
+      <% end %>
+    </div>
+<%= link_to  "back", dashboard_index_path %>

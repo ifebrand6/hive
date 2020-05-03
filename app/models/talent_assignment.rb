@@ -12,6 +12,7 @@
 #  updated_at           :datetime         not null
 #
 class TalentAssignment < ApplicationRecord
+  acts_as_paranoid
   belongs_to :finalized_request
   belongs_to :expert
 

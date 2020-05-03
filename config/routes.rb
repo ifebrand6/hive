@@ -85,7 +85,8 @@ Rails.application.routes.draw do
   resources :experts, path: 'application'
   # CUSTOMER DASHBO
   get 'verify/:id', to: 'transactions#verify_transaction', as: 'verify'
-  resources :transactions
+  # resources :transactions
+  post 'transactions/:id' => 'transactions#create'
   get 'thank-you', to: 'customer_dashboard#thank_you', as: 'thank_you'
   get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'
   get 'my-finalized-requests', to: 'customer_dashboard#finalized_requests', as: 'customer_finalized_requests'

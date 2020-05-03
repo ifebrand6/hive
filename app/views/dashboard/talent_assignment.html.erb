@@ -1,6 +1,6 @@
  <h1>Final user Request</h1>
  <h3> fill in with the correct data </h3>
-<%= form_with(model: @finalized_request, local: true,url: {action: "finalize_user_request"}) do |f| %>
+<%= form_with(model: @finalized_request, local: true,url: {action: "finalize_user_request",id: @talent_request}) do |f| %>
         <%= f.hidden_field :user_id, value: @talent_request.request.user_id %>
         <%= f.hidden_field :request_id, value: @talent_request.request_id %>
 

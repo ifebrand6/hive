@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  authorize_resource :class => false
+  # authorize_resource :class => false
   
   def index
   end
@@ -13,12 +13,12 @@ class DashboardController < ApplicationController
   end
 
   def customers_requests
-    @customers = User.customers
+    @customers = User.customers.includes(requests: :talent_requests).where.not(:talent_requests => {id: nil})
   end
 
   def customer_requests
     @user = User.find(params[:id])
-    @requests = @user.requests
+    @requests = @user.requests.includes(:talent_requests).where.not(:talent_requests => {id: nil})
   end
 
   def customer_talent_requests
@@ -34,10 +34,12 @@ class DashboardController < ApplicationController
   end
   
   def finalize_user_request
+      @talent_request = TalentRequest.find(params[:id])
       @finalized_request = FinalizedRequest.new(final_params)
       if @finalized_request.save
-      flash[:notice] = "Talent Assign successfully"
-      redirect_to root_path
+        @talent_request.destroy
+        flash[:notice] = "Talent Assign successfully"
+        redirect_to dashboard_customers_requests_path
     else
       render :talent_assignment
     end
@@ -48,6 +50,11 @@ class DashboardController < ApplicationController
      def final_params
       params.require(:finalized_request).permit(:user_id, :request_id, talent_assignment_attributes: [:engaged_date, :start_date, :expert_id, :contract_cost])
     end
+
+    def nullified_talent_assignment
+        
+    end
+    
 end
 
 

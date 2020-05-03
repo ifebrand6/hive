@@ -61,12 +61,13 @@ var transactionObj = {
     amount: <%= (@talent_assignment.amount * 100) %>,
     user_id: <%= @finalized_request.request.user_id%>,
     finalized_request_id: <%= @finalized_request.id%>,
+    id:  <%= @talent_assignment.id%>,
     talent_request: '<%= @finalized_request.talent_assignment.expert.talent_type.expert_specialization %>'
     // other params you want to save
 };
 function saveOrderThenPayWithPaystack(){
     // Send the data to save using post
-    console.log('d')
+    console.log('this is the transaction')
     var posting = $.post( '/transactions', transactionObj );
 
     posting.done(function( data ) {
@@ -101,16 +102,18 @@ function payWithPaystack(data){
         ]
     },
     callback: function(response){
-        console.log('d')
+        console.log(`this the params id ${transactionObj.id} `)
         var verifying = $.get( '/verify/' + response.reference);
         verifying.done(function( data ) {
             $.ajax({
-                url: "/transactions",
+                url: `/transactions/${transactionObj.id}`,
                 type: "POST",
-                data: {transaction: {
+                data: {
+                    transaction: {
                 user_id: transactionObj.user_id,
                 finalized_request_id: transactionObj.finalized_request_id,
-                amount: transactionObj.amount}},
+                amount: transactionObj.amount}
+                },
                 success: function(resp){ }
             });
         });

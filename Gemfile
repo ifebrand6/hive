@@ -47,6 +47,7 @@ gem "figaro"
 gem 'friendly_id', '~> 5.2.4'
 gem 'money-rails', '~>1.12'
 gem 'paperclip'
+gem "paranoia", "~> 2.2"
 gem 'paystack'
 gem 'rails_admin', '~> 2.0'
 gem 'rails-ujs'
@@ -57,7 +58,6 @@ gem 'simple_form'
 
 
 
-  
   group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
