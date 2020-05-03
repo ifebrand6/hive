@@ -1,9 +1,10 @@
 class CustomerDashboardController < ApplicationController
+  authorize_resource :class => false, only: [:index]
 
   def index
     @finalized_requests = current_user.finalized_requests
   end
-
+  
   def finalized_requests
   end
 

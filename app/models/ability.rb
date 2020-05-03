@@ -13,16 +13,13 @@ class Ability
     #     can :read, :all
     #   end
     #
-        user ||= User.new # guest user (not logged in)
-        can :manage, :all 
-        if user.superadmin_role?
-          can :manage, :all
-          can :access, :rails_admin
-          can :manage, :dashboard
-        end
-        if user.admin_role?
-          can :read, User #manage customers account
-        end
+    user ||= User.new
+      if user.admin_role?
+        can :manage, :all
+      elsif user.customer_role?
+        can :manage, :customer_dashboard
+      elsif user.guest?
+      end
       #
         # user ||= User.new
         # if user.superadmin_role?
