@@ -32,6 +32,12 @@ class Expert < ApplicationRecord
         end
     end
 
+    def decline_expert
+        self.destroy
+        # TODO sent expert rejection mail.
+    end
+    
+
     private
     def notifier
         SendMailToAdminForNewExpertAppplicationJob.perform_later(id)

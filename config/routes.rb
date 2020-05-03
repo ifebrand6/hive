@@ -111,9 +111,8 @@ Rails.application.routes.draw do
   get 'dashboard/customer_requests/:id' => 'dashboard#customer_requests', :as => 'customer_requests'
   get 'dashboard/talent_assignment/:id' => 'dashboard#talent_assignment', :as => 'talent_assignment'
   post "dashboard/finalize_user_request", to: "dashboard#finalize_user_request"
-  get 'onboard/:id' => 'expert_applications#accept_application', :as => 'onboard'
-  #get '/apply', to: " expert_application#apply" #rename route so site/career/appy
-  # resources :expert_applications, path: 'application'
+  get 'onboard/:id' => 'experts#accept_application', :as => 'onboard'
+  get 'reject/:id' => 'experts#reject_application', :as => 'reject'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"

@@ -30,6 +30,12 @@ class ExpertsController < ApplicationController
     redirect_to dashboard_application_path
   end
 
+  def reject_application
+    @expert = Expert.find(params[:id])
+    @expert.decline_expert
+    redirect_to dashboard_application_path
+  end
+
 private
   def expert_params
     params.require(:expert).permit(:first_name,:last_name,:email, :phone_number, :contact_address,:short_bio, :talent_type_id,:certification, :suggested_skill)

@@ -29,6 +29,6 @@
 </table>
 <%= link_to  "back", :back %>
 <br>
-<%= link_to "Accept Application", onboard_path(@expert ,tyope: :try) , data:{ confirm: "confirm"} %>
+<%= link_to "Accept Application", onboard_path(@expert) , data:{ confirm: "confirm"} %>
 <br>
-<%= link_to  "Reject Application", dashboard_index_path %>
+<%= link_to  "Reject Application", reject_path(@expert) , data:{ confirm: "confirm"}  %>
