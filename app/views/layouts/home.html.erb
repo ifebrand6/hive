@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agrohive</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+ <body data-aos-easing="slide" data-aos-duration="800" data-aos-delay="0" data-gr-c-s-loaded="true">
+    <%= render partial: 'home/shared/navbar' %>
+    <% unless flash.empty? %>
+    <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+        toastr['<%= type %>']('<%= f[1] %>');
+    <% end %>
+    </script>
+    <% end %>
+    <%= yield %>
+        <%= render partial: 'home/shared/footer' %>
+
+    <%= javascript_include_tag 'home/jquery.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery-migrate-3.0.1.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/popper.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/bootstrap.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery.easing.1.3.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery.waypoints.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery.stellar.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/owl.carousel.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery.magnific-popup.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/aos.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery.animateNumber.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/bootstrap-datepicker.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/jquery.timepicker.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/scrollax.min.js', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home/main.js', 'data-turbolinks-track': 'reload' %>
+
+
+</body>
+</html>

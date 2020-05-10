@@ -1,5 +1,16 @@
 class HomeController < ApplicationController
-    
+    layout "home"
+
+    def index
+        @expert_specialization_list = TalentType.all
+        @request = Request.new
+        @request.talent_requests.build
+        @posts = Post.recent
+    end
+
+    def service
+        
+    end
     def become_a_partner
         @message = Message.new
     end

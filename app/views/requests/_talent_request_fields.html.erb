@@ -1,14 +1,33 @@
 <div class="nested-fields">
-  <%= f.select(:talent_type_id, @expert_specialization_list.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'} ) %>
-      <br>
-      <br>
-  <%= f.input :unit_price %>
-      <br>
-  <%= f.input :expected_contract_duration %>
-      <br>
-  <%= f.input :expected_start_date %>
-      <br>
-  <%= f.input :quantity %>
-  <%= link_to_remove_association "remove talent request", f, {class: 'btn btn-danger' }
-        %>
+        <div class="form-group">
+            <label for="" class="label">Select Talent</label>
+            <%= f.select(:talent_type_id, @expert_specialization_list.collect{|expert| [expert.expert_specialization, + expert.id]}, {:include_blank => 'Please select a category'},class:"form-control" ) %>
+        </div>
+        <div class="d-flex">
+        <div class="form-group mr-2">
+            <label for="" class="label">Budget</label>
+            <%= f.number_field :unit_price , class:"form-control" %>
+        </div>
+        <div class="form-group mr-2">
+            <label for="" class="label"> Contract Duration</label>
+            <%= f.number_field :expected_contract_duration , class:"form-control" %>
+        </div>
+    </div>
+    <div class="d-flex">
+        <div class="form-group mr-2">
+        <label for="" class="label">Expected start date</label> 
+        <%= f.date_field  :expected_start_date, class:"form-control",placeholder:"Date",id:"book_pick_date" %>
+    </div>
+        <div class="form-group ml-2">
+        <label for="" class="label">Expected end date</label>
+        <%= f.date_field  :expected_end_date, class:"form-control", placeholder:"date",id:"book_off_date"  %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="label">Quantity</label>
+        <%= f.number_field :quantity, class:"form-control" %>
+    </div>
+    <div class="form-group">
+        <%= link_to_remove_association "remove talent request", f, {class: 'btn btn-danger' } %>
+    </div>
 </div>

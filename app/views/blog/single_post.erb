@@ -1,16 +1,86 @@
-<p> <b>Title:</b>
-    <%= @post.title %>
-</p>
-<p> <b>Body:</b>
-    <%= raw @post.content %>
-</p>
-<h2>Comments</h2>
-<% @post.comments.each do |c| %>
-    <p> <b><%=h c.name %> said:</b>
-        <br />
-        <%= time_ago_in_words(c.created_at) %> ago </p>
-    <p>
-        <%= c.body %>
-    </p>
-    <% end %>
-        <%= render 'add_comment', post: @post%>
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(&quot;<%= image_url 'home/bg15.jpg' %>&quot;); height: 357px; background-position: 50% -25px;" data-stellar-background-ratio="0.5">
+<div class="overlay"></div>
+<div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start" style="height: 357px;">
+    <div class="col-md-9 ftco-animate pb-5 fadeInUp ftco-animated">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
+        <h1 class="mb-3 bread"><%= @post.title %></h1>
+    </div>
+    </div>
+</div>
+</section>
+
+<section class="ftco-section ftco-degree-bg">
+<div class="container">
+    <div class="row">
+    <div class="col-md-8 ftco-animate fadeInUp ftco-animated">
+        <p><%= raw @post.content %></p>
+
+        <div class="tag-widget post-tag-container mb-5 mt-5">
+        <div class="tagcloud">
+          
+        </div>
+        </div>
+          
+        <div class="about-author d-flex p-4 bg-light">
+        <div class="bio mr-5">
+            <%= image_url'home/holder.png', alt:"Image placeholder, class:"img-fluid mb-4 %>
+        </div>
+        <div class="desc">
+            <h3>Chiamaka Ndukwu</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+        </div>
+        </div>
+
+
+        <div class="pt-5 mt-5">
+        <h3 class="mb-5"><%= @post.comments.count %> Comments</h3>
+        <ul class="comment-list">
+            <% @post.comments.each do |comment| %>
+            <li class="comment">
+            <div class="vcard bio">
+            <%= image_url'home/holder.png', alt:"Image placeholder" %>
+            </div>
+            <div class="comment-body">
+                <h3><%= comment.name %></h3>
+                <div class="meta"><%= comment.created_at.strftime("%B %d, %Y") %></div>
+                <p><%= comment.body %></p>
+                <p><a href="#" class="reply">Reply</a></p>
+            </div>
+            </li>
+            <% end %>
+        </ul>
+        <%= render 'add_comment', post: @post%>              
+        </div>
+
+    </div> <!-- .col-md-8 -->
+    <div class="col-md-4 sidebar ftco-animate fadeInUp ftco-animated">
+          
+          
+
+        <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
+        <h3>Recent Blog</h3>
+        <% @posts.each do |post| %>
+        <div class="block-21 mb-4 d-flex">
+            <a class="blog-img mr-4" style="background-image: url(<%= image_tag 'home/holder.png' %>);"></a>
+            <div class="text">
+            <h3 class="heading"><%= link_to(single_post_path(post)) do %><%= post.title%><% end %></h3>
+            <div class="meta">
+                <%= link_to(single_post_path(post)) do %>
+                <div><span class="icon-calendar"></span><%= post.updated_at.strftime("%B %d, %Y")%>div>
+                <div><span class="icon-chat"></span><%= post.comments.count%></div>
+                <%end%>
+            </div>
+            </div>
+        </div>
+        <% end %>
+        </div>
+
+        <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
+        <h3></h3>
+        </div>
+    </div>
+
+    </div>
+</div>
+</section>

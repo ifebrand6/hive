@@ -1,11 +1,50 @@
-<h1>Agrohive blog</h1>
-      <p>This is Agrohive blog section</p>
-    <% @posts.each do |post|%>
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(&quot;<%= image_url'home/holder.png' %>&quot;); height: 657px; background-position: 50% 273px;" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start" style="height: 657px;">
+      <div class="col-md-9 ftco-animate pb-5 fadeInUp ftco-animated">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+        <h1 class="mb-3 bread">Our Blog</h1>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <%= link_to(single_post_path(post)) do %> 
-        <h2> <%= post.title%>  </h2>
-     <% end %>
-        <p>
-          <%= ((post.content).truncate_words(35)).html_safe%>
-        </p>
- <% end %>
+<section class="ftco-section">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <% @posts.each do |post|%>
+      <div class="col-md-12 text-center d-flex ftco-animate fadeInUp ftco-animated">
+        <div class="blog-entry justify-content-end mb-md-5">
+          <a href="blog-single.html" class="block-20 img" style="background-image: url('<%= image_url 'home/bg15.jpg' %>');">
+          </a>
+          <div class="text px-md-5 pt-4">
+            <div class="meta mb-3">
+              <div><%= post.updated_at.strftime("%B %d, %Y")%></div>
+              <div><%= link_to(single_post_path(post),class:"meta-chat") do %><span class="icon-chat"></span><%= post.comments.count%><%end%></div>
+            </div>
+            <h3 class="heading mt-2"><%= link_to(single_post_path(post)) do %><%= post.title%><% end %></h3>
+            <p> <%=((post.content).truncate_words(20)).html_safe%></p>
+            <%= link_to(single_post_path(post),class:"btn btn-primary") do %>Continue <span class="icon-long-arrow-right"></span><% end %></p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <ul>
+            <li><a href="blog.html#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="blog.html#">2</a></li>
+            <li><a href="blog.html#">3</a></li>
+            <li><a href="blog.html#">4</a></li>
+            <li><a href="blog.html#">5</a></li>
+            <li><a href="blog.html#">&gt;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

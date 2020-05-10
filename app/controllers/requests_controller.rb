@@ -4,6 +4,7 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @request.talent_requests.build
+    render layout: 'home'
   end
   
 

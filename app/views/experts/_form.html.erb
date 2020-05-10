@@ -1,45 +1,32 @@
-<%= form_for(@expert) do |f| %>
-    <% if @expert.errors.any? %>
-        <div id="error_explanation">
-        <h2><%= pluralize(@expert.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-        <ul>
-        <% @expert.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-        </ul>
+<div class="col-md-8 block-9 mb-md-5">
+    <%= form_for(@expert, class:"bg-light p-5 contact-form")  do |f| %>
+    <div class="form-group">
+        <div class="form-group">
+            <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'}, class:"form-control" ) %>
         </div>
+        <input type="text" name="expert[first_name]" id="expert_first_name" class="form-control" placeholder="First Name">
+    </div>
+    <div class="form-group">
+        <input type="text" name="expert[last_name]" id="expert_last_name" class="form-control" placeholder="Last Name">
+    </div>
+    <div class="form-group">
+        <input type="text" name="expert[email]" id="expert_email" class="form-control" placeholder="Your Email">
+    </div>
+    <div class="form-group">
+        <input type="text" name="expert[phone_number]" id="expert_phone_number" class="form-control" placeholder="Your Phone Number">
+    </div>
+    <div class="form-group">
+        <input type="text" name="expert[contact_address]" id="expert_contact_address" class="form-control" placeholder="Contact Address">
+    </div>
+    <div class="form-group">
+        <input type="text" name="expert[certification]" id="expert_certification" class="form-control" placeholder="Certifications">
+    </div>
+    <div class="form-group">
+        <textarea name="expert[short_bio]" id="expert_short_bio" cols="30" rows="7" class="form-control" placeholder="Short Bio."></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" name="commit" value="Submit" disable_with="Submiting..." data-disable-with="Submit" class="btn btn-primary py-3 px-5">
+    </div>
     <% end %>
-    <table>
-        <%= f.label :TalentType, "Select Specialization" %>
-        <%= f.select(:talent_type_id, @expert_specialization_list.collect{|e| [e.expert_specialization, + e.id]}, {:include_blank => 'Please select a category'} ) %>
-        <br>
-        <%= f.label :suggested_skill, "Input exprtise, if your skills is not listed here" %>
-        <%= f.text_field :suggested_skill %>
-        <br>
-        <%= f.label :first_name, "First Name" %>
-        <%= f.text_field :first_name %>
-        <br>
-        <%= f.label :last_name, "Last Name" %>
-        <%= f.text_field :last_name %>
-        <br>
-        <%= f.label :email, "Email Address" %>E
-        <%= f.email_field :email %>
-        <br>
-        <%= f.label :phone_number, "Phone Number" %>
-        <%= f.number_field :phone_number %>
-        <br>
-        <%= f.label :contact_address, "Contact Address" %>
-        <%= f.text_field :contact_address %>
-        <br>
-        <%= f.label :short_bio, "Short Biography" %>
-        <%= f.text_area :short_bio %>
-        <br>
-        <%= f.label :phone_number, "Certification" %>
-        <%= f.text_field :certification %>
-        <br>
-        <%= f.hidden_field :status %>
-        <%= f.submit "Submit", disable_with: 'Submiting...' %>
-     <% end %>
-    </table>
+        
 </div>

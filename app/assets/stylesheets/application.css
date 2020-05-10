@@ -11,6 +11,19 @@
  * It is generally better to create a new file per style scope.
  *
 *= require toastr
- *= require_tree .
+*= require landing_page/css/open-iconic-bootstrap.min.css
+*= require landing_page/css/owl.carousel.min.css
+*= require landing_page/css/owl.theme.default.min.css
+*= require landing_page/css/animate.css
+*= require landing_page/css/open-iconic-bootstrap.min.css
+*= require landing_page/css/magnific-popup.css
+*= require landing_page/css/aos.css
+*= require landing_page/css/ionicons.min.css
+*= require landing_page/css/bootstrap-datepicker.css
+*= require landing_page/css/jquery.timepicker.css
+*= require landing_page/css/flaticon.css
+*= require landing_page/css/icomoon.css
+*= require landing_page/css/style.css
+
  *= require_self
  */

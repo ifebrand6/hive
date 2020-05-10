@@ -1,34 +1,130 @@
 
-<nav class="navbar navbar-inverse">
-<div class="container-fluid">
-    <div class="navbar-header">
-    <a class="navbar-brand" href="#">AgroHive</a>
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('<%= image_url 'home/bg10.jpg' %>');" data-stellar-background-ratio="0.5">
+<div class="overlay"></div>
+<div class="container">
+    <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+    <div class="col-lg-8 ftco-animate">
+        <div class="text w-100 text-center mb-md-5 pb-md-5">
+            <h1 class="mb-4">Fast &amp; Easy Way To Outsource  </h1>
+            <p style="font-size: 18px;">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts</p>
+            <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="ion-ios-play"></span>
+                </div>
+                <div class="heading-title ml-5">
+                    <span>Easy steps for outsorcing Agricultural Experts</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <ul class="nav navbar-nav">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#"><%= link_to 'Get an expert', new_request_path %> </a></li>
-        <li><a href="#"><%= link_to 'Become A Partner', become_partner_path %> </a></li>
-        <li><a href="#"><%= link_to 'Ask a question', contact_path %> </a></li>
-        <li><a href="#"><%= link_to 'Apply as an expert', experts_path %> </a></li>
-        <li><a href="#"><%= link_to 'Blog', blog_path %> </a></li>
-
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-    <li><a href="#"><span class="glyphicon glyphicon-user"></span>
-        <% if current_user.nil? %>
-            <%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
-        </a>
-        </li>
-        <% else %>
-
-    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-        <%= link_to dashboard_path, class: 'login-button' do %>Go to Dashboard<% end %>
-            <%= link_to destroy_user_session_path, method: :delete do %>Log out<% end %>
-        <% end %>
-    </a></li>
-    </ul>
+    </div>
 </div>
-</nav>
-<h1> Welcome to AgroHive </h1>
-<p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, dolores sint veniam dolorem rem similique quod praesentium animi, amet dicta atque ea nobis accusamus hic molestiae quidem a nemo at.
-</p>
+</div>
+    <%= render partial: 'requests/book_expert' %>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+    <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+        <span class="subheading">What we offer</span>
+        <h2 class="mb-2">Expertise</h2>
+    </div>
+    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel-car owl-carousel">
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end" style="background-image: url(<%= image_url 'home/farm_attendant.jpg' %>);">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="/requests/new">Farm attendant</a></h2>
+                                <div class="d-flex mb-3">
+                                </div>
+                                <p class="d-flex mb-0 d-block"><a href="/requests/new" class="btn btn-primary py-2 mr-1">Book now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end" style="background-image: url(<%= image_url 'home/drone.jpg' %>);">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="/requests/new">Drone Service expert</a></h2>
+                                <div class="d-flex mb-3">
+                                </div>
+                                <p class="d-flex mb-0 d-block"><a href="/requests/new" class="btn btn-primary py-2 mr-1">Book now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end" style="background-image: url(<%= image_url 'home/feasibility.jpg' %>);">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="/requests/new">Agricultural feasibility expert</a></h2>
+                                <div class="d-flex mb-3">
+                                </div>
+                                <p class="d-flex mb-0 d-block"><a href="/requests/new" class="btn btn-primary py-2 mr-1">Book now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end" style="background-image: url(<%= image_url 'home/business_planner.jpg' %>);">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="/requests/new">Agricultural business plan expert</a></h2>
+                                <div class="d-flex mb-3">
+                                </div>
+                                <p class="d-flex mb-0 d-block"><a href="/requests/new" class="btn btn-primary py-2 mr-1">Book now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end" style="background-image: url(<%= image_url 'home/fumigation.jpg' %>);">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="/requests/new">Fumigation and vaccination expert</a></h2>
+                                <div class="d-flex mb-3">
+                                </div>
+                                <p class="d-flex mb-0 d-block"><a href="/requests/new" class="btn btn-primary py-2 mr-1">Book now</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section">
+<div class="container">
+    <div class="row justify-content-center mb-5">
+    <div class="col-md-7 heading-section text-center ftco-animate">
+        <span class="subheading">Blog</span>
+        <h2>Recent Blog</h2>
+    </div>
+    </div>
+    <div class="row d-flex">
+    <% @posts.each do |post| %>
+    <div class="col-md-4 d-flex ftco-animate">
+        <div class="blog-entry justify-content-end">
+        <a href="blog-single.html" class="block-20" style="background-image: url(<%= image_url'home/holder.png' %>);">
+        </a>
+        <div class="text pt-4">
+            <div class="meta mb-3">
+            <%= link_to(single_post_path(post)) do %>
+            <div><span class="icon-calendar"></span><%= post.updated_at.strftime("%B %d, %Y")%></div>
+            <div><span class="icon-chat"></span><%= post.comments.count%></div>
+                <%end%>
+            </div>
+            <h3 class="heading mt-2"><%= link_to(single_post_path(post)) do %><%= post.title%><% end %></h3>
+            
+            <p><%= link_to(single_post_path(post),class:'btn btn-primary') do %>Read more<%end%></p>
+        </div>
+        </div>
+    </div>
+    <% end %>
+    </div>
+</div>
+</section>	

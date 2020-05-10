@@ -1,0 +1,67 @@
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+        <div class="col-md-12	featured-top">
+            <div class="row no-gutters">
+            <div class="col-md-4 d-flex align-items-center">
+                <%= form_for @request, :html =>{class:"request-form ftco-animate bg-primary fadeInUp ftco-animated"} do |f| %>
+                <h2>Book Talent</h2>
+                <%= f.hidden_field :user_id, value: current_or_guest_user.id %>
+                <div class="d-flex">
+                <div class="form-group mr-2">
+                    <label for="" class="label">Email</label>
+                    <input name="request[email]" id="request_email" type="email" class="form-control" placeholder="add your email">
+                </div>
+                <div class="form-group mr-2">
+                    <label for="" class="label">Phone Number</label>
+                    <input name="request[phone_number]" id="request_phone_number" type="text" class="form-control" placeholder="add your number">
+                </div>
+                </div>
+                    <%= f.fields_for :talent_requests do |talent_request| %>
+                    <%= render 'requests/talent_request_fields', :f => talent_request %>
+                    <% end %>
+                    <div class="form-group">
+                        <%= link_to_add_association('Add Talent', f, :talent_requests, partial: 'requests/talent_request_fields',class: "btn btn-info")%>
+                    </div>
+                <div class="form-group">                            
+                    <%= f.submit "Submit", value:"Book Expert Now", class:"btn btn-secondary py-3 px-4",disable_with: 'Submiting...' %>
+                </div>
+                <% end %>   
+            </div>
+            <div class="col-md-8 d-flex align-items-center">
+                <div class="services-wrap rounded-right w-100">
+                <h3 class="heading-section mb-4">Easy way to manage your Farm</h3>
+                <div class="row d-flex mb-4">
+                    <div class="col-md-4 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+                    <div class="services w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                        <div class="text w-100">
+                        <h3 class="heading mb-2">Choose Required Talent</h3>
+                        </div>
+                    </div>      
+                    </div>
+                    <div class="col-md-4 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+                    <div class="services w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                        <div class="text w-100">
+                        <h3 class="heading mb-2">We Select the Best Deal</h3>
+                        </div>
+                    </div>      
+                    </div>
+                    <div class="col-md-4 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+                    <div class="services w-100 text-center">
+                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                        <div class="text w-100">
+                        <h3 class="heading mb-2">Contract Begins</h3>
+                        </div>
+                    </div>      
+                    </div>
+                </div>
+                        
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

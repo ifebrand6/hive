@@ -1,19 +1,68 @@
-<h1>Ask a Question</h1>
-<p>  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum, dolores sint veniam dolorem rem similique quod praesentium animi, amet dicta atque ea nobis accusamus hic molestiae quidem a nemo at.
-<p> </p>
 
-<%= form_with model: @message,  url: {action: "create"} do |f| %>
-<%= f.label :name, "Name" %>
-<%= f.text_field :name %>
-<br>
-<%= f.label :email, "Email" %>
-<%= f.email_field :email %>
-<br>
-<%= f.label :phone_number, "Phone Number" %>
-<%= f.text_field :phone_number %>
-<br>
-<%= f.label :body, "Body" %>
-<%= f.text_area :body %>
-<br>
-<%= f.submit %>
-<% end %>
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(&quot;<%= image_url 'home/bg14.jpg' %>&quot;); height: 667px; background-position: 50% 501px;" data-stellar-background-ratio="0.5">
+<div class="overlay"></div>
+<div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start" style="height: 667px;">
+    <div class="col-md-9 ftco-animate pb-5 fadeInUp ftco-animated">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
+        <h1 class="mb-3 bread">Contact Us</h1>
+    </div>
+    </div>
+</div>
+</section>
+<section class="ftco-section contact-section">
+<div class="container">
+    <div class="row d-flex mb-5 contact-info">
+    <div class="col-md-4">
+        <div class="row mb-5">
+        <div class="col-md-12">
+            <div class="border w-100 p-4 rounded mb-2 d-flex">
+            <div class="icon mr-3">
+                <span class="icon-map-o"></span>
+            </div>
+            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="border w-100 p-4 rounded mb-2 d-flex">
+            <div class="icon mr-3">
+                <span class="icon-mobile-phone"></span>
+            </div>
+            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="border w-100 p-4 rounded mb-2 d-flex">
+            <div class="icon mr-3">
+                <span class="icon-envelope-o"></span>
+            </div>
+            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-8 block-9 mb-md-5">
+        <%= form_with model: @message,  url: {action: "create"}, class:"bg-light p-5 contact-form" do |f| %>
+        <form action="contact.html#" >
+        <div class="form-group">
+            <input type="text" name="message[name]" id="message_name" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <input type="text" name="message[email]" id="message_email" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <input type="text" name="message[phone_number]" id="message_phone_number" class="form-control" placeholder="Your Number">
+        </div>
+        <div class="form-group">
+            <textarea name="message[body]" id="message_body" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="commit" value="Create Message" data-disable-with="Create Message" class="btn btn-primary py-3 px-5">
+        </div>
+        <% end %>
+        
+    </div>
+    </div>
+      
+</div>
+</section>

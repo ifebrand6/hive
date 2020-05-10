@@ -6,6 +6,7 @@ class ExpertsController < ApplicationController
   
   def new
     @expert = Expert.new
+    render layout: 'home'
   end
 
   def show
@@ -15,7 +16,7 @@ class ExpertsController < ApplicationController
   def create
     @expert = Expert.new(expert_params)
 
-    if @expert.save
+    if @expert.save!
       redirect_to action: "index"
       flash[:notice] = "APPLICATION SUBMITTED SUCCESSFULLY"
     else
