@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(&quot;<%= image_url'home/holder.png' %>&quot;); height: 657px; background-position: 50% 273px;" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(&quot;<%= image_url'home/bg15.jpg' %>&quot;); height: 657px; background-position: 50% 273px;" data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start" style="height: 657px;">
@@ -16,8 +16,6 @@
       <% @posts.each do |post|%>
       <div class="col-md-12 text-center d-flex ftco-animate fadeInUp ftco-animated">
         <div class="blog-entry justify-content-end mb-md-5">
-          <a href="blog-single.html" class="block-20 img" style="background-image: url('<%= image_url 'home/bg15.jpg' %>');">
-          </a>
           <div class="text px-md-5 pt-4">
             <div class="meta mb-3">
               <div><%= post.updated_at.strftime("%B %d, %Y")%></div>
