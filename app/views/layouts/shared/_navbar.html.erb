@@ -1,0 +1,67 @@
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="/dashboard/index"><%= image_tag 'admin/logo.png',alt:"logo" %></a>
+        <a class="navbar-brand brand-logo-mini" href="/dashboard/index"><%= image_tag 'admin/logo.svg',alt:"logo" %></a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+        </button>
+        <div class="search-field d-none d-md-block">
+            <form class="d-flex align-items-center h-100" action="/dashboard/index">
+
+            </form>
+        </div>
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown show">
+                <a class="nav-link ">
+                    <div class="nav-profile-text">
+                        <% if current_user.admin_role == true %>
+                        <p class="mb-1 text-black">Adminstrator</p>
+                        <% else %>
+                        <p class="mb-1 text-black"><%= current_user.email%></p>
+                        <% end %>
+                    </div>
+                </a>
+
+            </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+                <a class="nav-link">
+                    <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="/dashboard/index#" data-toggle="dropdown" aria-expanded="false">
+                    <i class="mdi mdi-bell-outline"></i>
+                    <span class="count-symbol bg-danger"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                    <h6 class="p-3 mb-0">Notifications</h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-success">
+                                <i class="mdi mdi-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                            <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
+                            <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
+                        </div>
+                    </a>
+                    <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+                </div>
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
+                <a class="nav-link" href="/user/sign_out">
+                    <i class="mdi mdi-power"></i>
+                </a>
+            </li>
+
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+        </button>
+    </div>
+</nav>

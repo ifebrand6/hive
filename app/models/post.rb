@@ -11,7 +11,7 @@
 #
 class Post < ApplicationRecord
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders] 
   has_many :comments, dependent: :destroy
   validates :title, presence: true
   validates :content, presence: true

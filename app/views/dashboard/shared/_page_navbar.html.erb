@@ -1,0 +1,8 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to  :back  do%> <%= params.inspect[controller_name]%>
+            <% end %>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page"> <%=( params.inspect[action_name]).humanize%></li>
+    </ol>
+</nav>

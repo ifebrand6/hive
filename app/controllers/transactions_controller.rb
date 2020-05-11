@@ -1,6 +1,8 @@
 class TransactionsController < ApplicationController
-  
+  layout 'admin'
+
   def index
+    @transactions = Transaction.all
   end
 
   def create
@@ -14,6 +16,7 @@ class TransactionsController < ApplicationController
   end
 
   def show
+    @transaction = Transaction.find(params[:id])
   end
 
   def verify_transaction

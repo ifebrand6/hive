@@ -1,7 +1,9 @@
 class DashboardController < ApplicationController
-  # authorize_resource :class => false
+   authorize_resource :class => false
+  layout "admin"
   
   def index
+    @transactions = Transaction.all
   end
 
   def application

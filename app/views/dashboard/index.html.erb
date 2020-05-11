@@ -1,7 +1,61 @@
-<h1>Admin Dashboard</h1>
-<p>welcome</p>
-<%= link_to 'Pending Applications', dashboard_application_path  %>
-<br>
-<%= link_to 'Onboard experts', dashboard_talents_path %>
-<br>
-<%= link_to  "Requested talent", dashboard_customers_requests_path %>
+<div class="page-header">
+    <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+            <i class="mdi mdi-home"></i>
+        </span> Dashboard </h3>
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+                <%= image_tag 'admin/circle.svg', class:"card-img-absolute",alt:"circle-image" %>
+                <h2 class="mb-8">Welcome, Admin</h2>
+                <h6 class="card-text">Manage your customers' request and account.</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Recent Transactions</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th> Assignee </th>
+                            <th> Talent Assigned </th>
+                            <th> Amount </th>
+                            <th> Last Update </th>
+                            <th> Tracking ID </th>
+                        </tr>
+                    </thead>
+                    <%  @transactions.each do |transaction| %>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <%= transaction.finalized_request.talent_assignment.expert.last_name %>
+                                <%= transaction.finalized_request.talent_assignment.expert.first_name%>
+                            </td>
+                            <td><%= transaction.finalized_request.talent_assignment.expert.talent_type.expert_specialization%>
+                            </td>
+                            <td>
+                                <%= humanized_money_with_symbol(transaction.amount_price) %>
+                            </td>
+                            <td><%= transaction.updated_at.strftime("%Y%m%dT%H%M")%></td>
+                            <td><%= transaction.id%></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

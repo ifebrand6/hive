@@ -86,7 +86,9 @@ Rails.application.routes.draw do
   # CUSTOMER DASHBO
   get 'verify/:id', to: 'transactions#verify_transaction', as: 'verify'
   # resources :transactions
+  # get 'transactions', to: 'transactions#index'
   post 'transactions/:id' => 'transactions#create'
+  resources :transactions, only: [:index,:show]
   get 'thank-you', to: 'customer_dashboard#thank_you', as: 'thank_you'
   get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'
   get 'my-finalized-requests', to: 'customer_dashboard#finalized_requests', as: 'customer_finalized_requests'

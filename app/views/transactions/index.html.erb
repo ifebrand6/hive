@@ -1,0 +1,46 @@
+<%= render partial: 'dashboard/shared/transaction_header' %>
+<% if (@transactions.count) >= 1%>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Customer Transaction</h4>
+            <p class="page-description">List of <code>customers transaction</code></p>
+            <div class="row">
+            <div class="table-sorter-wrapper col-lg-12 table-responsive">
+                <table id="sortable-table-1" class="table">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th class="sortStyle">Customer Name</th>
+                    <th class="sortStyle"> Email</th>
+                    <th class="sortStyle">Talent Requested</th>
+                    <th class="sortStyle">Transaction Date</th>
+                    <th class="sortStyle"></th>
+                    </tr>
+                </thead>
+                <% @transactions.each do |transaction| %>
+                <tbody>
+                    <tr>
+                    <td><%= transaction.id%></td>
+                    <td>customer <%= transaction.id%></td>
+                    <td><%= transaction.finalized_request.user.email%> </td>
+                    <td><%= transaction.finalized_request.request.created_at %></td>
+                    <td><%= transaction.created_at%></td>
+                    <td><%= link_to 'View', transaction_path(transaction), class:"btn btn-outline-primary" %></td>
+                    </tr>
+                </tbody>
+                <% end %>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class="col-lg-7 mx-auto text-white">
+        <div class="row mt-5">
+            <div class="col-12 text-center mt-xl-2  text-danger">
+                <%= image_tag("admin/empty.gif", :size => "260x180", :crop => :fill) %>
+                <p>You have no Expert on board at the moment.</p>
+            </div>
+        </div>
+    </div>
+<% end %>

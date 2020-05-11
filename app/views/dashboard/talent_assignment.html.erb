@@ -1,25 +1,45 @@
- <h1>Final user Request</h1>
- <h3> fill in with the correct data </h3>
-<%= form_with(model: @finalized_request, local: true,url: {action: "finalize_user_request",id: @talent_request}) do |f| %>
+<%= render partial: 'dashboard/shared/customer_request_header' %>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Finalized user Request</h4>
+        <p class="card-description"> fill in with the correct data </p>
+        <%= form_with(model: @finalized_request, local: true,url: {action: "finalize_user_request",id: @talent_request}) do |f| %>
         <%= f.hidden_field :user_id, value: @talent_request.request.user_id %>
         <%= f.hidden_field :request_id, value: @talent_request.request_id %>
-
-    <%= f.fields_for :talent_assignment do |a| %>
-        <%= a.label :engaged_date, "Engaged_date" %>
-        <%= a.date_field :engaged_date %>
-        <br>
-        <%= a.label :engaged_date, "Start Date" %>
-        <%= a.date_field  :start_date %>
-        <br>
-        <%= a.label :engaged_date, "Select Expert" %>
-        <%= a.select(:expert_id, @talents.collect{|e| [e.first_name   , + e.id]} ) %>
-        <br>
-        <%= a.label :contract_cost, "Total Cost Of Contract" %>
-        <%= a.number_field :contract_cost %>
-        <%= a.check_box :_destroy %>
-        <%= a.label :_destroy, "remove" %>
-        <br>
-
-<% end %>
-<%= f.submit %>
-<% end %>
+        <%= f.fields_for :talent_assignment do |a| %>
+        <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Engaged date</label>
+            <div class="col-sm-9">
+                <%= a.date_field :engaged_date, class:"form-control" %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Start Date</label>
+            <div class="col-sm-9">
+                <%= a.date_field  :start_date, class:"form-control" %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputMobile" class="col-sm-3 col-form-label">End date</label>
+            <div class="col-sm-9">
+                <%= a.date_field  :end_date, class:"form-control" %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Select Expert</label>
+            <div class="col-sm-9">
+                <%= a.select(:expert_id, @talents.collect{|e| [e.first_name   , + e.id]},{},{class:"form-control form-control-lg"}) %>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Total Cost Of Contract</label>
+            <div class="col-sm-9">
+                <%= a.number_field :contract_cost, class:"form-control" %>
+            </div>
+        </div>
+        <% end %>
+        <%= f.submit "Finalized Request", class:"btn btn-gradient-primary mr-2" %>
+        <%= link_to  "text", :back, class:"btn btn-light" %>
+        <% end %>
+    </div>
+</div>

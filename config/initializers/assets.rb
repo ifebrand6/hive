@@ -10,6 +10,11 @@ Rails.application.config.assets.paths << Rails.root.join('vendor')
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w[ckeditor/config.js]
 Rails.application.config.assets.precompile += ["home*"]
+Rails.application.config.assets.precompile += ["admin.css"]
+Rails.application.config.assets.precompile += ["admin.js"]
+Rails.application.config.assets.precompile += ["fonts*"]
+
+
 
 
 # Precompile additional assets.

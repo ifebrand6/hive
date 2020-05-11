@@ -1,34 +1,58 @@
-<%= @expert.first_name%>
+<%= render partial: 'dashboard/shared/expert_header' %>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="border-bottom py-4">
+                            <p>Certfications</p>
+                            <div>
+                                <% @expert.certification.each do |e| %>
+                                <label class="badge badge-outline-dark"><%= e%></label>
+                                <%end%>
+                            </div>
+                        </div>
+                        <div class="py-4">
+                            <p class="clearfix">
+                                <span class="float-left">Name</span>
+                                <span class="float-right text-muted"> <%=@expert.first_name %> <%=@expert.last_name %> </span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left">Status</span>
+                                <span class="float-right text-muted"> Active </span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left">Talent Type</span>
+                                <span class="float-right text-muted"> <%=@expert.talent_type.expert_specialization %> </span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left"> Phone </span>
+                                <span class="float-right text-muted"> <%=@expert.phone_number %></span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left"> Mail </span>
+                                <span class="float-right text-muted"> <%=@expert.email %> </span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left">Contact Address</span>
+                                <span class="float-right text-muted">
+                                    <%=@expert.contact_address %>
+                                </span>
+                            </p>
+                            <p class="clearfix">
+                                <span class="float-left">Short Bio</span>
+                                <span class="float-right text-muted">
+                                    <p><%=@expert.short_bio %></p>
+                                </span>
+                            </p>
+                        </div>
+                        <%= link_to "Accept Application", onboard_path(@expert ,tyope: :try) , data:{ confirm: "confirm"}, class:"btn btn-gradient-primary" %>
+                        <%= link_to  "Reject Application", dashboard_index_path, class:"btn btn-gradient-danger" %>
+                    </div>
 
-<table id="table" border="1">
-        <tr>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>Contact Address</td>
-            <td>Short Bio</td>
-            <td>Certification</td>
-            <td>Date submiited</td>
-            <td>Talent Type</td>
-
-
-
-
-        </tr>
-
-        <tbody id="after_add">
-            <td><%=@expert.first_name %> <%=@expert.last_name %></td>
-            <td><%=@expert.email %></td>
-            <td><%=@expert.phone_number %></td>
-            <td><%=@expert.contact_address %></td>
-            <td><%=@expert.short_bio %></td>
-            <td><%=@expert.certification %></td>
-            <td><%=@expert.created_at %></td>
-            <td><%=@expert.talent_type.expert_specialization %></td>
-        </tbody>
-</table>
-<%= link_to  "back", :back %>
-<br>
-<%= link_to "Accept Application", onboard_path(@expert) , data:{ confirm: "confirm"} %>
-<br>
-<%= link_to  "Reject Application", reject_path(@expert) , data:{ confirm: "confirm"}  %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
