@@ -1,30 +1,29 @@
 <div class="page-header">
-    <h3 class="page-title">Finalized Request </h3>
+    <h3 class="page-title">  Pending Requests </h3>
     <%= render partial: 'dashboard/shared/page_navbar' %>
 </div>
-<% if(@finalized_requests.count >= 1) %>
+<% if(@requests.count >= 1) %>
 <div class="card">
     <div class="card-body">
-        <p class="page-description">Your request have been prepared and is ready.<code>click the see more button to proceed.</code></p>
+        <h4 class="card-title">Your Pending Requests</h4>
         <div class="row">
             <div class="table-sorter-wrapper col-lg-12 table-responsive">
                 <table id="sortable-table-1" class="table">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th class="sortStyle">Request Date</th>
                             <th class="sortStyle">Date Requested</th>
-                            <th class="sortStyle">Talent Requested</th>
+                            <th class="sortStyle">No of talent requested</th>
                             <th class="sortStyle"></th>
                         </tr>
                     </thead>
-                    <% @finalized_requests.each do |finalized_request|%>
+                    <% @requests.each do |request|%>
                     <tbody>
                         <tr>
-                            <td><%= finalized_request.id %></td>
-                            <td><%= time_ago_in_words(finalized_request.request.created_at.strftime("%B %d, %Y")) %></td>
-                            <td><%= finalized_request.talent_assignment.expert.talent_type.expert_specialization%></td>
-                            <td><%= link_to "See more", show_customer_finalized_request_path(finalized_request), class:"btn btn-outline-primary" %></td>
+                            <td><%= request.id %></td>
+                            <td><%= time_ago_in_words(request.created_at.strftime("%B %d, %Y")) %></td>
+                            <td><%= request.talent_requests.count %></td>
+                            <td><%= link_to "See more", my_customer_request_path(request), class:"btn btn-outline-primary" %></td>
                         </tr>
                     </tbody>
                     <% end %>
@@ -43,3 +42,4 @@
     </div>
 </div>
 <% end %>
+

@@ -21,7 +21,7 @@
                     <tbody>
                         <tr>
                             <td><%= talent_request.id %></td>
-                            <td><%= talent_request.created_at %></td>
+                            <td><%= talent_request.created_at.strftime("%B %d, %Y") %></td>
                             <td><%= talent_request.talent_type.expert_specialization %></td>
                             <td><%= talent_request.expected_contract_duration %></td>
                             <td><%= talent_request.expected_start_date %></td>

@@ -13341,7 +13341,7 @@ code {
       margin-top: 0;
       z-index: 1;
       cursor: pointer;
-      opacity: 0;
+      opacity: 90;
       filter: alpha(opacity=0); }
       .rtl .form-check .form-check-label input {
         left: auto;

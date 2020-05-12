@@ -1,2 +1,59 @@
-<h1>CustomerDashboard#show_request</h1>
-<p>Find me in app/views/customer_dashboard/show_request.html.erb</p>
+<div class="page-header">
+    <h3 class="page-title"> Request Details </h3>
+    <%= render partial: 'dashboard/shared/page_navbar' %>
+</div>
+
+<div class="row">
+    <% @talent_requests.each do |talent_request| %>
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+        <div class="card-body">
+            <div class="table-sorter-wrapper col-lg-12 table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="pl-0">Talent Requested</th>
+                    <th class="text-right"><%= talent_request.talent_type.expert_specialization%></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="pl-0">Contract Duration</td>
+                    <td class="pr-0 text-right">
+                    <div class="badge badge-gradient-primary"><%= talent_request.expected_contract_duration%></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pl-0">Start Date</td>
+                    <td class="pr-0 text-right">
+                    <div class="badge badge-gradient-primary"><%= talent_request.expected_start_date%></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pl-0">End Date</td>
+                    <td class="pr-0 text-right">
+                    <div class="badge badge-gradient-secondary"><%= talent_request.expected_end_date%></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pl-0">Quantity</td>
+                    <td class="pr-0 text-right">
+                    <div class="badge badge-gradient-info"><%= talent_request.quantity%></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pl-0">Date Requested</td>
+                    <td class="pr-0 text-right">
+                    <div class="badge badge-gradient-danger"><%= talent_request.created_at.strftime("%B %d, %Y")%></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <% end %>
+</div>
+

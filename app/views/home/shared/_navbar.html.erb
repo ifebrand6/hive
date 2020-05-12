@@ -16,7 +16,16 @@
         <li class="nav-item"><%= link_to 'Book Expert',new_request_path, class:"nav-link" %> </li>
         <li class="nav-item"><%= link_to 'Blog',blog_path, class:"nav-link" %></li>
         <li class="nav-item"><%= link_to 'Contact',contact_path, class:"nav-link" %> </li>
-        <li class="nav-item"><%= link_to 'Apply as an expert',new_expert_path, class:"nav-link" %></li> 
+        <li class="nav-item"><%= link_to 'Carrers',new_expert_path, class:"nav-link" %></li> 
+        <% if user_signed_in? %>
+                <% if current_user.admin_role %>
+                     <li class="nav-item"><%= link_to 'Dashboard',dashboard_index_path, class:"nav-link" %></li> 
+                <% elsif current_user.customer_role %>
+                    <li class="nav-item"><%= link_to 'Goto Dashboard',dashboard_path, class:"nav-link" %></li> 
+                <% end %>
+        <% else %>
+            <li class="nav-item"><%= link_to 'Log In',new_user_session_path, class:"nav-link" %></li> 
+        <% end %>
         </ul>
     </div>
     </div>

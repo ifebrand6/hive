@@ -1,31 +1,217 @@
+<div class="page-header">
+    <h3 class="page-title">
+        <span class="page-title-icon bg-gradient-primary text-white mr-2">
+            <i class="mdi mdi-home"></i>
+        </span> Dashboard </h3>
+    <nav aria-label="breadcrumb">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-6 stretch-card grid-margin">
+        <div class="card bg-gradient-danger card-img-holder text-white">
+            <div class="card-body">
+                <%= image_tag 'admin/circle.svg', class:"card-img-absolute",alt:"circle-image" %>
+                <h2 class="mb-8">Welcome, Abu Bin Ishtiyak
 
-<% if (@finalized_requests.count >= 1) %>
-        <h2> THIS IS A LIST OF YOUR FINALIZED REQUEST</h2>
-        <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Request Id</th>
-                    <th></th>
-                    <th>Request Date</th>
-                    <th>Talent Requested</th>
-                    <th>See more</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @finalized_requests.each do |finalized_request |%>
-                <tr>
-                    <th scope="row"><%= finalized_request.id %></th>
-                    <td></td>
-                    <td><%= time_ago_in_words(finalized_request.request.created_at) %></td>
-                    <td><%= finalized_request.talent_assignment.expert.talent_type.expert_specialization%></td>
-                    <td><%= link_to  "See more", show_customer_finalized_request_path(finalized_request) %></td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
+                </h2>
+                <h6 class="card-text">Welcome to our dashboard. Manage your account and your agro requests.
+                </h6>
+            </div>
         </div>
-    <% else %>
-       <p> Your dont have any finalized request yet.</p>
-<% end %>
-<%= link_to  "back", :back %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <h4 class="card-title font-weight-medium mb-0 d-none d-md-block">Personal Info</h4>
+                        <i class="mdi mdi-account-card-details icon-lg text-primary d-flex align-items-center"></i>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <small class="text-muted ml-2">See your profile data and manage your Account to choose what is saved in our system.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-4 font-weight-large">Mange Your Account</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <h4 class="card-title font-weight-medium mb-0 d-none d-md-block">Security Setting</h4>
+                        <i class="mdi mdi-security icon-lg text-primary d-flex align-items-center"></i>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <small class="text-muted ml-2">You have full control to manage your own account and keep account fully secure.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-4 font-weight-large">Account Setting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <h4 class="card-title font-weight-medium mb-0 d-none d-md-block">Billing History</h4>
+                        <i class="mdi mdi-history icon-lg text-primary d-flex align-items-center"></i>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <small class="text-muted ml-2">Check out all your payment history. You can also download or print your invoice.</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-4 font-weight-large">Payment History</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <h4 class="card-title font-weight-medium mb-0 d-none d-md-block">Account Reports</h4>
+                        <i class="mdi mdi-note icon-lg text-primary d-flex align-items-center"></i>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <small class="text-muted ml-2">Check your reports of uses and manage your Request or subscriptions that you have..</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper mt-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-4 font-weight-large">Mange Your Request</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12 grid-margin">
+    <div class="card card-statistics">
+        <div class="row">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row">
+                    <i class="mdi mdi-account-multiple-outline text-primary mr-6 mr-sm-12 icon-lg"></i>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row">
+                    <div class="wrapper text-center text-sm-left">
+                        <br>
+                        <h3 class="mb-0 font-weight-medium">We’re here to help you!</h3>
+                        <div class="fluid-container">
+                            <p class="card-text mb-0">Ask a question or file a support ticketn or report an issues. Our team support team will get back to you by email.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-center flex-column flex-sm-row">
+                    <div class="wrapper text-center text-sm-left">
+                        <div class="fluid-container">
+                            <br>
+                            <button type="button" class="btn btn-outline-info btn-fw">Get support</button> </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-12 grid-margin">
+    <% if (@transactions.count) >= 1 %>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Recent Transactions</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> # </th>
+                                <th> Talent Requested </th>
+                                <th> Amount Paid</th>
+                                <th> Last Update </th>
+                                <th> Tracking ID </th>
+                            </tr>
+                        </thead>
+                        <%  @transactions.each do |transaction| %>
+                        <tbody>
+                            <tr>
+                                <td>
+                                  1
+                                </td>
+                                <td>  <%= @talent_assignment.find_by(finalized_request_id: transaction.finalized_request.id).expert.talent_type.expert_specialization %>
+                                </td>
+                                <td>
+                                    <%= humanized_money_with_symbol(transaction.amount_price) %>
+                                </td>
+                                <td><%= transaction.updated_at.strftime("%B %d, %Y")%></td>
+                                <td><%= transaction.id%></td>
+                            </tr>
+                        </tbody>
+                        <% end %>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <% else %>
+    <div class="col-lg-7 mx-auto text-white">
+        <div class="row mt-5">
+            <div class="col-12 text-center mt-xl-2  text-danger">
+                <%= image_tag("admin/empty.gif", :size => "260x180", :crop => :fill) %>
+                <p>You have not made any recent transactions  at the moment.</p>
+            </div>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+

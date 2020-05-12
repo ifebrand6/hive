@@ -1,7 +1,7 @@
 <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="/dashboard/index"><%= image_tag 'admin/logo.png',alt:"logo" %></a>
-        <a class="navbar-brand brand-logo-mini" href="/dashboard/index"><%= image_tag 'admin/logo.svg',alt:"logo" %></a>
+        <a class="navbar-brand brand-logo" href="/"><%= image_tag 'admin/logo.png',alt:"logo" %></a>
+        <a class="navbar-brand brand-logo-mini" href="/"><%= image_tag 'admin/logo.svg',alt:"logo" %></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -15,15 +15,7 @@
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item nav-profile dropdown show">
                 <a class="nav-link ">
-                    <div class="nav-profile-text">
-                        <% if current_user.admin_role == true %>
-                        <p class="mb-1 text-black">Adminstrator</p>
-                        <% else %>
-                        <p class="mb-1 text-black"><%= current_user.email%></p>
-                        <% end %>
-                    </div>
                 </a>
-
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
                 <a class="nav-link">
@@ -54,9 +46,9 @@
                 </div>
             </li>
             <li class="nav-item nav-logout d-none d-lg-block">
-                <a class="nav-link" href="/user/sign_out">
-                    <i class="mdi mdi-power"></i>
-                </a>
+                <%= link_to  destroy_user_session_path, method: :delete, class:"nav-link" do %>
+                <i class="mdi mdi-power"></i>
+                <% end %>
             </li>
 
         </ul>

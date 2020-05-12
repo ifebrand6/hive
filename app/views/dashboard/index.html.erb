@@ -41,15 +41,16 @@
                     <tbody>
                         <tr>
                             <td>
-                                <%= transaction.finalized_request.talent_assignment.expert.last_name %>
-                                <%= transaction.finalized_request.talent_assignment.expert.first_name%>
+                                <%= @talent_assignment.find_by(finalized_request_id: transaction.finalized_request.id).expert.last_name%>
+                                <%= @talent_assignment.find_by(finalized_request_id: transaction.finalized_request.id).expert.first_name%>
                             </td>
-                            <td><%= transaction.finalized_request.talent_assignment.expert.talent_type.expert_specialization%>
+                            <td>
+                                <%= @talent_assignment.find_by(finalized_request_id: transaction.finalized_request.id).expert.talent_type.expert_specialization %>
                             </td>
                             <td>
                                 <%= humanized_money_with_symbol(transaction.amount_price) %>
                             </td>
-                            <td><%= transaction.updated_at.strftime("%Y%m%dT%H%M")%></td>
+                            <td><%= transaction.updated_at.strftime("%B %d, %Y") %></td>
                             <td><%= transaction.id%></td>
                         </tr>
                     </tbody>

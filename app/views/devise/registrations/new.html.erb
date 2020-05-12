@@ -17,10 +17,20 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.hidden_field :customer_role, value: true %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+<div class="mb-4">
+    <div class="form-check">
+        <label class="form-check-label text-muted">
+            <input type="checkbox" class="form-check-input"> I agree to all Terms & Conditions </label>
+    </div>
+</div>
+<div class="mt-3">
+    <%= f.button :submit, "SIGN UP", class:"btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" %>
+</div>
 <% end %>
+<div class="text-center mt-4 font-weight-light"> Already have an account? <%= link_to "Log in", new_session_path(resource_name), class:"text-primary" %>
+    <%= link_to "Create", new_registration_path(resource_name),class:"text-primary" %>
+</div>
 
-<%= render "devise/shared/links" %>
+
+
+

@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile active">
-            <%= link_to  dashboard_index_path, class:"nav-link" do %>
+            <%= link_to  edit_user_registration_path, class:"nav-link" do %>
             <div class="nav-profile-image">
                 <%= image_tag 'admin/admin.png', alt:"profile pic" %>
                 <span class="login-status online"></span>
@@ -9,6 +9,13 @@
             <div class="nav-profile-text d-flex flex-column">
                 <span class="font-weight-bold mb-2">Admin</span>
             </div>
+            <% end %>
+        </li>
+
+        <li class="nav-item active">
+            <%= link_to  dashboard_index_path, class:"nav-link" do %>
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
             <% end %>
         </li>
         <li class="nav-item active">

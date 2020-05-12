@@ -17,7 +17,7 @@
                     <tbody>
                         <tr>
                             <td><%= request.id %></td>
-                            <td><%= request.created_at %></td>
+                            <td><%= request.created_at.strftime("%B %d, %Y") %></td>
                             <td><%= request.talent_requests.count %></td>
                             <td> <%= link_to  "View", talent_requests_path(request),class:"btn btn-outline-primary" %></td>
                         </tr>

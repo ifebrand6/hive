@@ -1,41 +1,42 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-profile active">
-            <a href="#" class="nav-link">
+            <a href="/user/edit" class="nav-link">
                 <div class="nav-profile-image">
-                    <%= image_tag 'admin/face1.jpg', alt:"profile pic" %>
+                    <%= image_tag 'admin/user1.png', alt:"profile pic" %>
                     <span class="login-status online"></span>
                     <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                    <span class="font-weight-bold mb-2">David Grey. H</span>
+                    <span class="font-weight-bold mb-2"><%= current_user.email.split("@")[0] %></span>
                     <span class="text-secondary text-small">Manage Profile</span>
                 </div>
             </a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="/">
+             <%= link_to  dashboard_path, class:"nav-link" do %>
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
-            </a>
+              <% end %>
         </li>
 
         <li class="nav-item ">
-            <%= link_to  dashboard_index_path, class:"nav-link" do %>
+            <%= link_to  customer_finalized_requests_path, class:"nav-link" do %>
             <span class="menu-title">Finalized Request</span>
             <i class="mdi mdi-read menu-icon"></i>
             <% end %>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="#" target="_blank">
+                <%= link_to  my_customer_requests_path, class:"nav-link" do %>
                 <span class="menu-title">Pending Request</span>
                 <i class="mdi mdi-lan-pending menu-icon"></i>
-            </a>
+                <% end %>
         </li>
         <li class="nav-item ">
-            <a class="nav-link" href="#" target="_blank">
+                <%= link_to transactions_path, class:"nav-link" do %>
                 <span class="menu-title">Transactions</span>
                 <i class="mdi mdi-bank menu-icon"></i>
+                <% end %>
             </a>
         </li>
 

@@ -1,62 +1,87 @@
-<h2> THIS IS THE DETAIL OF YOUR FINALIZED REQUEST</h2>
-<div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Final Requet Id</th>
-            <th><%= @finalized_request.id%></th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-            <th>Talent Assigned Date  </th>
-            <th> <%= time_ago_in_words(@talent_assignment.updated_at)%></th>
-        </tr>
-    </thead>
-    <thead>
-    <thead>
-        <tr>
-            <th>Talent Assigned</th>
-            <th><%= @talent_assignment.expert.talent_type.expert_specialization%></th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-        <th>Engage Date</th>
-            <th><%= @talent_assignment.engaged_date%></th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-            <th>Contract Start Date</th>
-            <th><%= @talent_assignment.start_date%></th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-            <th>Contract End Date</th>
-            <th><%= @talent_assignment.end_date%></th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-            <th>Payment Amount:<%= humanized_money_with_symbol(@talent_assignment.amount) %></th>
-            <th></th>
-        </tr>
-    </thead>
-</table>
+<div class="page-header">
+    <h3 class="page-title"> Your Finalized Request </h3>
+    <%= render partial: 'dashboard/shared/page_navbar' %>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card px-2">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="text-center"><%= image_tag 'admin/logo.png',alt:"logo" %></div>
+                    <h3 class="text-right my-5">Payment&nbsp;&nbsp;Details</h3>
+                    <hr>
+                </div>
+                <div class="container-fluid d-flex justify-content-between">
+                    <div class="col-lg-3 pr-0">
+                        <p class="mt-5 mb-2 text-right"><b>Invoice to</b></p>
+                        <p class="text-right">Customer <%= @finalized_request.user_id%><br>
+                            <%= @finalized_request.request.email%><br>location</p>
+                    </div>
+                </div>
+                <div class="container-fluid mt-5 d-flex justify-content-center w-100">
+                    <div class="table-responsive w-100">
+                        <table class="table">
+                            <thead>
+
+                            </thead>
+                            <tbody>
+                                <tr class="text-right">
+                                    <td class="text-left text-uppercase">Talent Requested on</td>
+                                    <td> <%= @finalized_request.request.created_at.strftime("%B %d, %Y")%></td>
+                                </tr>
+                            </tbody>
+                            <tbody >
+                                <tr class="text-right">
+
+                                    <td class="text-left text-uppercase">Talent Assigned</td>
+                                    <td> <%= @finalized_request.talent_assignment.expert.talent_type.expert_specialization%>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="text-right">
+                                    <td class="text-left  text-uppercase">Engaged Date</td>
+                                    <td><%= @finalized_request.talent_assignment.engaged_date%></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="text-right">
+
+                                    <td class="text-left text-uppercase">Contract Start Date</td>
+                                    <td><%= @finalized_request.talent_assignment.start_date%></td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr class="text-right text-uppercase">
+
+                                    <td class="text-left">Contract End Date</td>
+                                    <td><%= @finalized_request.talent_assignment.end_date%></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="container-fluid mt-5 w-100">
+                    <p class="text-right mb-2">Sub - Total amount
+                        <%= humanized_money_with_symbol(@finalized_request.talent_assignment.amount) %></p>
+                    <p class="text-right">vat (10%) : 0</p>
+                    <h4 class="text-right mb-5">Total : <%= humanized_money_with_symbol(@finalized_request.talent_assignment.amount) %>
+                    </h4>
+                    <hr>
+                </div>
+                <div class="container-fluid w-100">
+                    <form action="#">
+                    <script src="https://js.paystack.co/v1/inline.js"></script>
+                    <button type="button" name="pay_now" id="pay-now" title="Pay now"  onclick="payWithPaystack()" class="btn btn-danger float-right mt-4 ml-2">Pay now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<form action="#">
-<script src="https://js.paystack.co/v1/inline.js"></script>
-<button type="button" name="pay_now" id="pay-now" title="Pay now"  onclick="payWithPaystack()">Pay now</button>
-</form>
-
-<br>
-<%= link_to  "back", :back %>
-
 <script>
-var transactionObj = {
+var finalized_requestObj = {
     email_prepared_for_paystack: '<%= @finalized_request.request.email%>',
     amount: <%= (@talent_assignment.amount * 100) %>,
     user_id: <%= @finalized_request.request.user_id%>,
@@ -67,8 +92,8 @@ var transactionObj = {
 };
 function saveOrderThenPayWithPaystack(){
     // Send the data to save using post
-    console.log('this is the transaction')
-    var posting = $.post( '/transactions', transactionObj );
+    console.log('this is the finalized_request')
+    var posting = $.post( '/finalized_requests', finalized_requestObj );
 
     posting.done(function( data ) {
     /* check result from the attempt */
@@ -79,10 +104,10 @@ function saveOrderThenPayWithPaystack(){
 function payWithPaystack(data){
     var handler = PaystackPop.setup({
     key: "<%= ENV['PAYSTACK_PUBLIC_KEY']-%>",
-    email: transactionObj.email_prepared_for_paystack,
-    amount: transactionObj.amount,
+    email: finalized_requestObj.email_prepared_for_paystack,
+    amount: finalized_requestObj.amount,
     metadata: {
-        finalized_request_id: transactionObj.finalized_request_id,
+        finalized_request_id: finalized_requestObj.finalized_request_id,
         custom_fields: [
         {
             display_name: "Paid on",
@@ -97,22 +122,25 @@ function payWithPaystack(data){
         {
             display_name: "Talent Request",
             variable_name: "talent_request",
-            value: transactionObj.talent_request
+            value: finalized_requestObj.talent_request
         }
         ]
     },
     callback: function(response){
-        console.log(`this the params id ${transactionObj.id} `)
+        console.log(`this the params id ${finalized_requestObj.id} `)
         var verifying = $.get( '/verify/' + response.reference);
         verifying.done(function( data ) {
             $.ajax({
-                url: `/transactions/${transactionObj.id}`,
+                url: `/transactions/${finalized_requestObj.id}`,
                 type: "POST",
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                },
                 data: {
                     transaction: {
-                user_id: transactionObj.user_id,
-                finalized_request_id: transactionObj.finalized_request_id,
-                amount: transactionObj.amount}
+                user_id: finalized_requestObj.user_id,
+                finalized_request_id: finalized_requestObj.finalized_request_id,
+                amount: finalized_requestObj.amount}
                 },
                 success: function(resp){ }
             });

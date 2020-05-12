@@ -1,5 +1,6 @@
-<%= render partial: 'dashboard/shared/transaction_header' %>
+<%= render partial: '/layouts/shared/transaction_header' %>
 <% if (@transactions.count) >= 1%>
+    <% if current_user.admin_role == true %>
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Customer Transaction</h4>
@@ -23,8 +24,8 @@
                     <td><%= transaction.id%></td>
                     <td>customer <%= transaction.id%></td>
                     <td><%= transaction.finalized_request.user.email%> </td>
-                    <td><%= transaction.finalized_request.request.created_at %></td>
-                    <td><%= transaction.created_at%></td>
+                    <td><%= @talent_assignment.find_by(finalized_request_id: transaction.finalized_request.id).expert.talent_type.expert_specialization %></td>
+                    <td><%= transaction.created_at.strftime("%B %d, %Y")%></td>
                     <td><%= link_to 'View', transaction_path(transaction), class:"btn btn-outline-primary" %></td>
                     </tr>
                 </tbody>
@@ -34,12 +35,50 @@
             </div>
         </div>
     </div>
+    <% elsif  %>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Your Transactions</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th> Talent Requested </th>
+                            <th> Amount Paid</th>
+                            <th> Last Update </th>
+                            <th> Tracking ID </th>
+                        </tr>
+                    </thead>
+                    <%  @transactions.each do |transaction| %>
+                    <tbody>
+                        <tr>
+                            <td>
+                            1
+                            </td>
+                            <td>  <%= @talent_assignment.find_by(finalized_request_id: transaction.finalized_request.id).expert.talent_type.expert_specialization %>
+                            </td>
+                            <td>
+                                <%= humanized_money_with_symbol(transaction.amount_price) %>
+                            </td>
+                            <td><%= transaction.updated_at.strftime("%Y%m%dT%H%M")%></td>
+                            <td><%= transaction.id%></td>
+                            <td><%= link_to 'View', transaction_path(transaction), class:"btn btn-outline-primary" %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+    <% end %>
+   
 <% else %>
     <div class="col-lg-7 mx-auto text-white">
         <div class="row mt-5">
             <div class="col-12 text-center mt-xl-2  text-danger">
                 <%= image_tag("admin/empty.gif", :size => "260x180", :crop => :fill) %>
-                <p>You have no Expert on board at the moment.</p>
+                <p>You have no transactions at the moment.</p>
             </div>
         </div>
     </div>

@@ -1,4 +1,8 @@
 <div class="page-header">
+<% if current_user.admin_role %>
     <h3 class="page-title"> Manage Transactions </h3>
+<% elsif  %>
+    <h3 class="page-title"> Your Transactions </h3>   
+<% end %>
     <%= render partial: 'dashboard/shared/page_navbar' %>
 </div>

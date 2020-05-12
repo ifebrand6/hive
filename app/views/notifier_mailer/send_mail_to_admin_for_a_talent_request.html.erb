@@ -26,7 +26,7 @@
             <%= f.expected_start_date %>
         </p>
         <p> Date ordered:
-            <%= f.created_at %>
+            <%= f.created_at.strftime("%B %d, %Y") %>
         </p> ---------------------------------------
         <% end %> ---------- --------------------------
             <p> <strong>Client Phone Number: <%= @request.phone_number %>

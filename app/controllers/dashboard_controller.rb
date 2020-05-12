@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
   
   def index
     @transactions = Transaction.all
+    @talent_assignment = TalentAssignment.with_deleted
   end
 
   def application

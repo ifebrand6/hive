@@ -1,4 +1,4 @@
-<%= render partial: 'dashboard/shared/transaction_header' %>
+<%= render partial: '/layouts/shared/transaction_header' %>
 <div class="row">
     <div class="col-lg-12">
         <div class="card px-2">
@@ -11,7 +11,7 @@
                 <div class="container-fluid d-flex justify-content-between">
                     <div class="col-lg-3 pl-0">
                         <p class="mt-5 mb-2"><b>INVOICE ID : <%= @transaction.id%></b></p>
-                        <p><b>DUE DATE : </b><%= @transaction.created_at%></p>
+                        <p><b>DUE DATE : </b><%= @transaction.created_at.strftime("%B %d, %Y")%></p>
                     </div>
                     <div class="col-lg-3 pr-0">
                         <p class="mt-5 mb-2 text-right"><b>Invoice to</b></p>
@@ -28,35 +28,35 @@
                             <tbody>
                                 <tr class="text-right">
                                     <td class="text-left text-uppercase">Talent Requested on</td>
-                                    <td> <%= @transaction.finalized_request.request.created_at%></td>
+                                    <td> <%= @transaction.finalized_request.request.created_at.strftime("%B %d, %Y")%></td>
                                 </tr>
                             </tbody>
                             <tbody >
                                 <tr class="text-right">
 
                                     <td class="text-left text-uppercase">Talent Assigned</td>
-                                    <td> <%= @transaction.finalized_request.talent_assignment.expert.talent_type.expert_specialization%>
+                                    <td> <%= @talent_assignment.expert.talent_type.expert_specialization%>
                                     </td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr class="text-right">
                                     <td class="text-left  text-uppercase">Engaged Date</td>
-                                    <td><%= @transaction.finalized_request.talent_assignment.engaged_date%></td>
+                                    <td><%= @talent_assignment.engaged_date%></td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr class="text-right">
 
                                     <td class="text-left text-uppercase">Contract Start Date</td>
-                                    <td><%= @transaction.finalized_request.talent_assignment.start_date%></td>
+                                    <td><%= @talent_assignment.start_date%></td>
                                 </tr>
                             </tbody>
                             <tbody>
                                 <tr class="text-right text-uppercase">
 
                                     <td class="text-left">Contract End Date</td>
-                                    <td><%= @transaction.finalized_request.talent_assignment.end_date%></td>
+                                    <td><%= @talent_assignment.end_date%></td>
                                 </tr>
                             </tbody>
                         </table>
