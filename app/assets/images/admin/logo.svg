@@ -1,0 +1,21 @@
+<svg width="300" height="600" xmlns="http://www.w3.org/2000/svg" stroke="null" style="vector-effect: non-scaling-stroke;">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g stroke="null">
+  <title stroke="null">background</title>
+  <rect stroke="null" fill="#fff" id="canvas_background" height="602" width="302" y="-1" x="-1"/>
+  <g stroke="null" style="vector-effect: non-scaling-stroke;" display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect stroke="null" fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g stroke="null">
+  <title stroke="null">Layer 1</title>
+  <text stroke="#000" style="vector-effect: non-scaling-stroke;" transform="rotate(-0.04641640931367874 317.5879211425051,193.37043762210024) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_1" y="201.645558" x="254.236343" stroke-width="0" fill="#2D6862">AGROHIVE</text>
+  <path stroke="#000" style="vector-effect: non-scaling-stroke;" transform="rotate(0.0030183433555066586 213.00885009787112,197.91833496083535) " id="svg_3" d="m0.000003,197.918353l91.289514,-158.49548l243.438686,0l91.289486,158.49548l-91.289486,158.49548l-243.438686,0l-91.289514,-158.49548z" stroke-opacity="null" stroke-width="0" fill="#ffffff"/>
+  <path stroke="#000" style="vector-effect: non-scaling-stroke;" transform="rotate(0.8191656470298767 428.57385253905744,464.47836303710767) " id="svg_4" d="m332.48893,464.478349l41.17927,-126.845355l109.811378,0l41.179257,126.845355l-41.179257,126.845355l-109.811378,0l-41.17927,-126.845355z" stroke-opacity="null" stroke-width="0" fill="#f29f38"/>
+  <path stroke="#847460" style="vector-effect: non-scaling-stroke;" id="svg_5" d="m-3.757503,319.926468l66.428581,-268.50001l177.142868,0l66.42856,268.50001l-66.42856,268.50001l-177.142868,0l-66.428581,-268.50001z" stroke-width="0" fill="#00bf00"/>
+  <path stroke="#000" id="svg_8" d="m-273.5,285" opacity="0.5" stroke-opacity="null" stroke-width="0" fill="#f2a038"/>
+  <text stroke="#f2a038" style="vector-effect: non-scaling-stroke;" transform="rotate(-109.64519500732422 70.55445098876952,556.3798828125) matrix(43.13175512825548,0,0,18.18785770217218,-4744.81659514883,-5672.1864541766045) " xml:space="preserve" text-anchor="start" font-family="'Times New Roman', Times, serif" font-size="24" id="svg_13" y="320.062287" x="108.785228" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#2D6862">c</text>
+  <text stroke="#847460" transform="rotate(-107.5685043334961 130.3126525878906,403.72305297851557) matrix(34.1530929332601,0,0,20.85215974218314,-3962.722078710566,-5521.548466449084) " xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_14" y="290.550925" x="112.641218" stroke-opacity="null" stroke-width="0" fill="#f29f38">c</text>
+ </g>
+</svg>

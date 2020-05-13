@@ -1,21 +1,18 @@
-<% if @post.errors.any? %>
-<h2>The following errors prevented the post from saving:</h2>
-<ul>
-<% @post.errors.full_messages.each do |msg|%>
-<li><%= msg %></li>
-<% end %>
-</ul>
-<% end %>
 <%= form_for @post do |post| %>
-<p>
-<%= post.label :title %><br>
-<%= post.text_field :title %>
-</p>
-<p>
-<%= post.label :content %><br>
-<%= post.cktext_area :content ,id:'editor', rows: 5, cols: '40'%>
-</p>
-<p>
-<%= post.submit %>
-</p>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title"><%=( params.inspect[action_name]).humanize%> Post</h4>
+        <p class="card-description"> Check for errors. </p>
+        <div class="form-group">
+            <label for="exampleInputName1">Title</label>
+            <%= post.text_field :title, class:"form-control", placeholder:"Blog title"%>
+        </div>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Content</h4>
+        <%= post.cktext_area :content ,id:'editor', rows: 5, cols: '40'%>
+    </div>
+    <%= post.submit class:"btn btn-light" %>
+    <%= link_to 'Cancel', posts_path, class:"btn btn-dark" %>
+</div>
 <% end %>

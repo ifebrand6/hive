@@ -1,2 +1,45 @@
-<h1>CustomerDashboard#finalized_requests</h1>
-<p>Find me in app/views/customer_dashboard/finalized_requests.html.erb</p>
+<div class="page-header">
+    <h3 class="page-title">Finalized Request </h3>
+    <%= render partial: 'dashboard/shared/page_navbar' %>
+</div>
+<% if(@finalized_requests.count >= 1) %>
+<div class="card">
+    <div class="card-body">
+        <p class="page-description">Your request have been prepared and is ready.<code>click the see more button to proceed.</code></p>
+        <div class="row">
+            <div class="table-sorter-wrapper col-lg-12 table-responsive">
+                <table id="sortable-table-1" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="sortStyle">Request Date</th>
+                            <th class="sortStyle">Date Requested</th>
+                            <th class="sortStyle">Talent Requested</th>
+                            <th class="sortStyle"></th>
+                        </tr>
+                    </thead>
+                    <% @finalized_requests.each do |finalized_request|%>
+                    <tbody>
+                        <tr>
+                            <td><%= finalized_request.id %></td>
+                            <td><%= time_ago_in_words(finalized_request.request.created_at.strftime("%B %d, %Y")) %></td>
+                            <td><%= finalized_request.talent_assignment.expert.talent_type.expert_specialization%></td>
+                            <td><%= link_to "See more", show_customer_finalized_request_path(finalized_request), class:"btn btn-outline-primary" %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<% else %>
+<div class="col-lg-7 mx-auto text-white">
+    <div class="row mt-5">
+        <div class="col-12 text-center mt-xl-2  text-danger">
+            <%= image_tag("admin/empty.gif", :size => "260x180", :crop => :fill) %>
+            <p>you have no customer request at the moment.</p>
+        </div>
+    </div>
+</div>
+<% end %>

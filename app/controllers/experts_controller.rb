@@ -11,6 +11,7 @@ class ExpertsController < ApplicationController
 
   def show
     @expert = Expert.find(params[:id])
+    render layout: "admin"
   end
   
   def create

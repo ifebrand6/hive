@@ -1,33 +1,37 @@
-<h1><%= @request.user.email%> talents requested</h1>
-<p>User talent request details </p>
-<div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Order Date</th>
-            <th>Talent Demanded</th>
-            <th>Expected Duration Of Contract</th>
-            <th>Expected Start Date</th>
-            <th>Quantity Demanded</th>
-        </tr>
-    </thead>
-    <tbody>
-    <% @talent_requests.each do |talent_request| %>
-        <tr>
-            <th scope="row"><%= talent_request.id %></th>
-            <td><%= talent_request.created_at %></td>
-            <td><%= talent_request.talent_type.expert_specialization %></td>
-            <td><%= talent_request.expected_contract_duration %></td>
-            <td><%= talent_request.expected_start_date %></td>
-            <td><%= talent_request.quantity %></td>
-            <%=link_to 'finalize request', talent_assignment_path(talent_request) %>
-        </tr>
-       
-        <% end %>
-    </tbody>
-</table>
+<%= render partial: 'dashboard/shared/customer_request_header' %>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title"> <%= @request.user.email%> Finalized Request</h4>
+        <p class="page-description">List of customer <code>request.</code></p>
+        <div class="row">
+            <div class="table-sorter-wrapper col-lg-12 table-responsive">
+                <table id="sortable-table-1" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="sortStyle">Requested On</th>
+                            <th class="sortStyle">Talent</th>
+                            <th class="sortStyle">Contract Duration</th>
+                            <th class="sortStyle">Start Date</th>
+                            <th class="sortStyle">No of Expert Demanded</th>
+                            <th class="sortStyle"></th>
+                        </tr>
+                    </thead>
+                    <% @talent_requests.each do |talent_request| %>
+                    <tbody>
+                        <tr>
+                            <td><%= talent_request.id %></td>
+                            <td><%= talent_request.created_at.strftime("%B %d, %Y") %></td>
+                            <td><%= talent_request.talent_type.expert_specialization %></td>
+                            <td><%= talent_request.expected_contract_duration %></td>
+                            <td><%= talent_request.expected_start_date %></td>
+                            <td><%= talent_request.quantity %></td>
+                            <td> <%=link_to 'Finalize', talent_assignment_path(talent_request), class:"btn btn-outline-primary" %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<%= link_to  "back", :back %>
-
-<br>

@@ -1,0 +1,60 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-profile active">
+            <%= link_to  edit_user_registration_path, class:"nav-link" do %>
+            <div class="nav-profile-image">
+                <%= image_tag 'admin/admin.png', alt:"profile pic" %>
+                <span class="login-status online"></span>
+            </div>
+            <div class="nav-profile-text d-flex flex-column">
+                <span class="font-weight-bold mb-2">Admin</span>
+            </div>
+            <% end %>
+        </li>
+
+        <li class="nav-item active">
+            <%= link_to  dashboard_index_path, class:"nav-link" do %>
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+            <% end %>
+        </li>
+        <li class="nav-item active">
+            <%= link_to  dashboard_application_path, class:"nav-link" do %>
+            <span class="menu-title">Pending Applications</span>
+            <i class="mdi mdi-clipboard-text menu-icon"></i>
+
+            <% end %>
+        </li>
+
+        <li class="nav-item ">
+            <%= link_to  dashboard_talents_path, class:"nav-link" do %>
+            <span class="menu-title">Manage Onboard Experts</span>
+            <i class="mdi mdi-read menu-icon"></i>
+            <% end %>
+        </li>
+        <li class="nav-item ">
+            <%= link_to  dashboard_customers_requests_path, class:"nav-link" do %>
+            <span class="menu-title">Manage Customers Requests</span>
+            <i class="mdi mdi-lan-pending menu-icon"></i>
+            <% end %>
+        </li>
+        <li class="nav-item ">
+            <%= link_to  posts_path, class:"nav-link" do %>
+            <span class="menu-title">Manage Post</span>
+            <i class="mdi mdi-blogger menu-icon"></i>
+            <% end %>
+        </li>
+        <li class="nav-item ">
+            <%= link_to  new_post_path, class:"nav-link" do %>
+            <span class="menu-title">Create Blog Post</span>
+            <i class="mdi mdi-border-color menu-icon"></i>
+            <% end %>
+        </li>
+        <li class="nav-item ">
+            <%= link_to  transactions_path, class:"nav-link" do %>
+            <span class="menu-title">Manage Customer Transactions</span>
+            <i class="mdi mdi-bank menu-icon"></i>
+            <% end %>
+        </li>
+    </ul>
+</nav>

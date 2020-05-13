@@ -1,0 +1,18 @@
+<nav aria-label="breadcrumb">
+<% if current_user.admin_role == true %>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to  :back  do%> <%= params.inspect[controller_name]%>
+            <% end %>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page"> <%=( params.inspect[action_name]).humanize%></li>
+    </ol>
+<% else %>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to  :back  do%> Dashboard
+            <% end %>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page"> <%=( params.inspect[action_name]).humanize%></li>
+    </ol>
+<% end %>
+   
+</nav>

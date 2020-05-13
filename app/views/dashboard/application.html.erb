@@ -1,30 +1,46 @@
-<h1>Expert Pending Applications</h1>
-<p>This is a list of expert that applied to be listed</p>
-<div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Date Applied</th>
-            <th>First name</th>
-            <th>Talent Type</th>
-            <th>Certification</th>
-        </tr>
-    </thead>
-    <tbody>
-     <% @expert_list.each do |expert| %>
-        <tr>
-            <%= link_to  expert_path(expert) do %>
-            <th scope="row"><%= expert.id %></th>
-            <td><%= expert.created_at %></td>
-            <td><%= expert.first_name %></td>
-            <td><%= expert.talent_type.expert_specialization %></td>
-            <td><%= expert.id %></td>
-            <td><%= link_to  "Show",   expert_path(expert) %></td>
-        </tr>
-        <% end %>
-        <% end %>
-    </tbody>
-</table>
+<%= render partial: 'dashboard/shared/expert_header' %>
+<% if (@expert_list.count ) >= 1 %>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Expert Pending Applications</h4>
+        <p class="page-description">This is a list of expert that applied to be <code>listed.</code></p>
+        <div class="row">
+            <div class="table-sorter-wrapper col-lg-12 table-responsive">
+                <table id="sortable-table-1" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="sortStyle">Date Applied</th>
+                            <th class="sortStyle">First Name</th>
+                            <th class="sortStyle">Last Name</th>
+                            <th class="sortStyle">Talent Type</th>
+                            <th class="sortStyle"></th>
+                        </tr>
+                    </thead>
+                    <% @expert_list.each do |expert| %>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><%= expert.created_at.strftime("%Y%m%dT%H%M") %></td>
+                            <td><%= expert.first_name %></td>
+                            <td><%= expert.last_name %></td>
+                            <td><%= expert.talent_type.expert_specialization %></td>
+                            <td><%= link_to  expert_path(expert),class:"btn btn-outline-primary" do %> View <% end %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<%= link_to  "back", :back %>
+<% else %>
+<div class="col-lg-7 mx-auto text-white">
+    <div class="row mt-5">
+        <div class="col-12 text-center mt-xl-2  text-danger">
+            <%= image_tag("admin/empty.gif", :size => "260x180", :crop => :fill) %>
+            <p>you have no pending application at the moment.</p>
+        </div>
+    </div>
+</div>
+<% end %>

@@ -1,7 +1,10 @@
 class DashboardController < ApplicationController
-  # authorize_resource :class => false
+   authorize_resource :class => false
+  layout "admin"
   
   def index
+    @transactions = Transaction.all
+    @talent_assignment = TalentAssignment.with_deleted
   end
 
   def application

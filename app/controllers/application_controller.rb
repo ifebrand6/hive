@@ -70,4 +70,18 @@ class ApplicationController < ActionController::Base
      def configure_sign_up_params
         devise_parameter_sanitizer.permit(:sign_up, keys: [:customer_role])
     end
+
+    def after_sign_out_path_for(resource_or_scope)
+        new_user_session_path
+    end
+
+    def after_sign_in_path_for(resource_or_scope)
+        if current_user.admin_role == true
+            dashboard_index_path
+        elsif current_user.customer_role == true
+            dashboard_path
+        else
+            root_path
+        end
+    end
 end

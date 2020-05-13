@@ -1,0 +1,10 @@
+/*
+* Manifest file for admin styles
+*
+*= require admin/mdi/css/materialdesignicons.min
+*= require admin//vendor.bundle.base
+*= require admin/font-awesome/css/font-awesome.min
+*= require admin/bootstrap-datepicker/bootstrap-datepicker.min
+*= require admin/demo_1/style
+
+*/

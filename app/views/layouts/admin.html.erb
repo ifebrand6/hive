@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agrohive</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <div class="container-scroller">
+        <%= render partial: '/layouts/shared/navbar' %>
+        <div class="container-fluid page-body-wrapper">
+            <% if current_user.admin_role == true %>
+            <%= render partial: '/layouts/shared/admin_sidebar' %>
+            <% else %>
+            <%= render partial: '/layouts/shared/sidebar' %>
+            <% end %>
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <%= yield %>
+                </div>
+                <%= render partial: '/layouts/shared/footer' %>
+            </div>
+        </div>
+    </div>
+    <%= javascript_include_tag 'admin', 'data-turbolinks-track': 'reload' %>
+</body>
+
+</html>

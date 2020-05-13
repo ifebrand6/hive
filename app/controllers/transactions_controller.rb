@@ -1,6 +1,16 @@
 class TransactionsController < ApplicationController
-  
+  layout 'admin'
+
   def index
+    if current_user.admin_role == true
+       @transactions = Transaction.all
+       @talent_assignment = TalentAssignment.with_deleted
+    elsif current_user.customer_role == true
+      @transactions = current_user.transactions
+      @talent_assignment = TalentAssignment.with_deleted
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def create
@@ -14,6 +24,8 @@ class TransactionsController < ApplicationController
   end
 
   def show
+    @transaction = Transaction.find(params[:id])
+    @talent_assignment = TalentAssignment.with_deleted.find_by(finalized_request_id: @transaction.finalized_request_id)
   end
 
   def verify_transaction

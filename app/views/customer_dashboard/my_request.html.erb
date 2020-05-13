@@ -1,0 +1,45 @@
+<div class="page-header">
+    <h3 class="page-title">  Pending Requests </h3>
+    <%= render partial: 'dashboard/shared/page_navbar' %>
+</div>
+<% if(@requests.count >= 1) %>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Your Pending Requests</h4>
+        <div class="row">
+            <div class="table-sorter-wrapper col-lg-12 table-responsive">
+                <table id="sortable-table-1" class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th class="sortStyle">Date Requested</th>
+                            <th class="sortStyle">No of talent requested</th>
+                            <th class="sortStyle"></th>
+                        </tr>
+                    </thead>
+                    <% @requests.each do |request|%>
+                    <tbody>
+                        <tr>
+                            <td><%= request.id %></td>
+                            <td><%= time_ago_in_words(request.created_at.strftime("%B %d, %Y")) %></td>
+                            <td><%= request.talent_requests.count %></td>
+                            <td><%= link_to "See more", my_customer_request_path(request), class:"btn btn-outline-primary" %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<% else %>
+<div class="col-lg-7 mx-auto text-white">
+    <div class="row mt-5">
+        <div class="col-12 text-center mt-xl-2  text-danger">
+            <%= image_tag("admin/empty.gif", :size => "260x180", :crop => :fill) %>
+            <p>you have no customer request at the moment.</p>
+        </div>
+    </div>
+</div>
+<% end %>
+
