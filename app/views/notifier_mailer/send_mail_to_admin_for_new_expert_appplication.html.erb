@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-    <p>A new application for <%= @expert.talent_type.expert_specialization%>.</p>
-    <p><%= link_to  "See more", expert_url(@expert.id) %> more to take final action.</p>
-</body>
-</html>
+<tr>
+    <td style="border-radius: 10px;background: #fff;padding: 30px 60px 20px 60px;margin-top: 10px;display: block;">
+        <p style="font-family: Roboto;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.11;letter-spacing: normal;color: #2b80ff;">A new application for <%= @expert.talent_type.expert_specialization%>!</p>
+            <%= link_to "Take action", expert_url(@expert.id), style:" height: 34px;background: linear-gradient(to right, #f9a02cbd, #f9a02c);border: none;color: #fff;padding:
+            8px 20px;border-radius: 4px;display: inline-block;margin-left: 10px;margin-bottom:
+            20px;" %>
+        </td>
+</tr>

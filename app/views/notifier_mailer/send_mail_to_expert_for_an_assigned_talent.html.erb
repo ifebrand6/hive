@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-    <p>You have a new job at </p>
-    <p>The contract will start <%= @talent_assignment.start_date%> and end <%= @talent_assignment.end_date%>  </p>
-</body>
-</html>
+<tr>
+    <td style="border-radius: 10px;background: #fff;padding: 30px 60px 20px 60px;margin-top: 10px;display: block;">
+        <p style="font-family: Roboto;font-size: 14px;font-weight: 500;font-style:
+        normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;margin-bottom: 10px;"> Hi <%= @talent_assignment.expert.last_name%> ,</p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;"> Your got a new job.
+        </p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">The contract will start <%= @talent_assignment.start_date%> and end <%= @talent_assignment.end_date%>
+        </p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style:
+        normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;margin-bottom: 0px;"> Cheers! Do put in your best.</p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 2.5;letter-spacing: normal;color: #001737;margin-bottom: 0px;"> AgroHive team</p>
+    </td>
+</tr>

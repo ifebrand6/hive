@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-    <p>You got a new message from <%= @message.name %>!</p>
-    <p>
-    message details<br>
-    --------------------------
-    </p>
-    <p>Name: <%= @message.name %></p>
-    <p>Email: <%= @message.email %></p>
-    <p>Address: <%= @message.phone_number %></p>
-    <p>Phone: <%= @message.location %></p>
-    <p>
-    Message:<br>
-    ----------
-    </p>
-    <p><%= @message.body %></p>
-</body>
-</html>
+<tr>
+    <td style="border-radius: 10px;background: #fff;padding: 30px 60px 20px 60px;margin-top: 10px;display: block;">
+        <p style="font-family: Roboto;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.11;letter-spacing: normal;color: #2b80ff;">You got a new message from <%= @message.name %>!</p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: 500;font-style:
+    normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;margin-bottom: 10px;"> Message Details</p>
+            <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;"> <%= @message.body %></p>
+            <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">
+            <b style="font-size: 20px;margin-right:10px;">Other Info</b>
+            <br>Phone Number: <%= link_to @message.phone_number, "tel:#{@message.phone_number}" %><br>
+            <% if @message.company_about.present? %>
+            website: <%= @message.location %><br>
+            Company about: <%= @message.company_about %>
+            <% end %>
+            </p>
+            <%= mail_to @message.email, "Reply",style:" height: 34px;background: linear-gradient(to right, #f9a02cbd, #f9a02c);border: none;color: #fff;padding:
+            8px 20px;border-radius: 4px;display: inline-block;margin-left: 10px;margin-bottom:
+            20px;" %>
+        </td>
+</tr>

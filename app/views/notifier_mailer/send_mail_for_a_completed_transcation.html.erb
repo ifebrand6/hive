@@ -1,2 +1,38 @@
-<p>Your Transaction is successful.</p>
-<p>Track Transaction with <%= @transaction_reference%></p>
+<tr>
+    <td style="border-radius: 10px;background: #fff;padding: 30px 60px 20px 60px;margin-top: 20px;display: block;">
+        <p style="font-family: Roboto;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.11;letter-spacing: normal;color: #2b80ff;"> Your Transaction is successful. </p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;"><%= @transaction.created_at.strftime("%B %d %Y")%></p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: bold;font-style:
+normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color:
+#001737;margin-top: 35px;"> Tracking No: <%= @transaction_reference%></p>
+        <table style="width: 100%;" cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr style="border-bottom:solid 1px #ddd;">
+                    <td style="padding-top: 10px;padding-bottom: 10px;font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;"> Talent Assigned:</td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> </td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> <%= @talent_assignment.expert.talent_type.expert_specialization%></td>
+                </tr>
+                <tr style="border-bottom:solid 1px #ddd;">
+                    <td style="padding-top: 10px;padding-bottom: 10px;font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">Engaged Date:</td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> </td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> <%= @talent_assignment.engaged_date%></td>
+                </tr>
+                <tr style="border-bottom:solid 1px #ddd;">
+                    <td style="padding-top: 10px;padding-bottom: 10px;font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">Contract Start Date:</td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> </td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> <%= @talent_assignment.expert.talent_type.expert_specialization%></td>
+                </tr>
+                <tr style="border-bottom:solid 1px #ddd;">
+                    <td style="padding-top: 10px;padding-bottom: 10px;font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">Contract End Date:</td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> </td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"> <%= @talent_assignment.expert.talent_type.expert_specialization%></td>
+                </tr>
+                <tr>
+                    <td style="padding-top: 10px;padding-bottom: 10px;font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;"> Amount Paid</td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"></td>
+                    <td style="text-align: right;font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;text-align: right;color: #001737;"><%= humanized_money_with_symbol(@transaction.amount_price) %></td>
+                </tr>
+            </tbody>
+        </table>
+    </td>
+</tr>

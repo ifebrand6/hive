@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-    <% if  @user.customer_role?%>
-       <p> Dear <%= @user.email%>, </p>
-    <% else %>
-    <h4>  Hello, there</h4>
-    <% end %>
-  <p>We got a request from you on <%= @finalized_request.request.created_at%> </p>
-  <p>Please kindly Click the link below to see and finalized your request.</p>
-  <%= link_to  "Finalized your request", show_customer_finalized_request_url(@finalized_request.id) %>
-</body>
-</html>
+<tr>
+
+    <td style="border-radius: 10px;background: #fff;padding: 30px 60px 20px 60px;margin-top: 10px;display: block;">
+        <p style="font-family: Roboto;font-size: 14px;font-weight: 500;font-style:
+      normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;margin-bottom: 10px;"> Hi <% if  @user.customer_role?%>
+            <%= @user.email.split("@")[0]%>,
+            <% else %>
+             there,
+            <% end %>
+        </p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">We got a request from you on <%= @finalized_request.request.created_at.strftime("%B %d %Y")%>.
+        </p>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing: normal;color: #001737;">Please kindly Click the link below to finalized your request.
+        </p>
+        <%= link_to  "Finalized your request", show_customer_finalized_request_url(@finalized_request.id),style:" height: 34px;background: linear-gradient(to right, #f9a02cbd, #f9a02c);border: none;color: #fff;padding:
+      8px 20px;border-radius: 4px;display: inline-block;margin-left: 10px;margin-bottom:
+      20px;" %>
+        <p style="font-family: Roboto;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 2.5;letter-spacing: normal;color: #001737;margin-bottom: 0px;"> AgroHive team</p>
+    </td>
+<tr>
+    <td style="width:100%; padding-top: 30px;padding-bottom: 20px;font-family: Roboto;font-size: 14px;font-weight:
+      500;-style: normal;font-stretch: normal;line-height: 1.71;letter-spacing:
+      normal;color: #bbbbbb;"> Notice something wrong?<br> Contact our support team and we'll e happy to help.</td>
+</tr>
+
+</tr>
