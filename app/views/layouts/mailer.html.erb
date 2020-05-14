@@ -8,6 +8,74 @@
   </head>
 
   <body>
-    <%= yield %>
+    <td style="padding: 50px;" class="__web-inspector-hide-shortcut__">
+    <table style="width: 550px;margin: 0 auto" cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+    <tr>
+      <td style="padding-top: 20px;">
+        <%= email_image_tag("logo.png",:style => "float:left;width:170px;",alt:"logo" )%>
+        <p style="font-family: Roboto;font-size: 13px;font-weight: 500;font-style:
+    normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color:
+    #bbb;float:right;margin-top: 10px;">Fast;Easy way for outsourcing agro experts.</p>
+      </td>
+    </tr>
+          <%= yield %>
+    </tbody>
+    </table>
+    <table style="width:245px;margin: 20px auto 0 auto;" cellpadding="0" cellspacing="0" border="0">
+      <tbody><tr>
+        <td>
+          <table style="float:left;margin-right:15px;" cellpadding="0" cellspacing="0" border="0">
+            <tbody><tr>
+              <td style="background: #e6e6e6;color:#2b80ff;border-radius: 100%;height: 35px;width: 35px; margin-right:20px;">
+                <a style="color:inherit;" href="http://www.facebook.com/agrohive/">
+                <%= email_image_tag("fb.png",:style => "display: block;margin: auto;max-width: 8px;",alt:"facebook" )%>
+                </a>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="float:left;margin-right:15px;" cellpadding="0" cellspacing="0" border="0">
+            <tbody><tr>
+              <td style="background: #e6e6e6;color:#2b80ff;border-radius: 100%;height: 35px;width: 35px; margin-right:20px;">
+                <a style="color:inherit;" href="https://www.twitter.com/agro_hive/">
+                <%= email_image_tag("twitter.png",:style => "display: block;margin: auto;max-width: 15px;",alt:"twitter" )%>
+                </a>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="float:left;margin-right:15px;" cellpadding="0" cellspacing="0" border="0">
+            <tbody><tr> 
+              <td style="background: #e6e6e6;color:#2b80ff;border-radius: 100%;height: 35px;width: 35px; margin-right:20px;">
+                <a style="color:inherit;" href="https://m.youtube.com/channel/UCCH8--Svxf2TO7TLDWdP3Kg">
+                <%= email_image_tag("youtube.png",:style => "display: block;margin: auto;max-width: 15px;",alt:"youtube" )%>
+                </a>
+              </td>
+            </tr>
+          </tbody></table>
+          <table style="float:left;margin-right:15px;" cellpadding="0" cellspacing="0" border="0">
+            <tbody><tr>
+              <td style="background: #e6e6e6;color:#2b80ff;border-radius: 100%;height: 35px;width: 35px; margin-right:20px;">
+                <a style="color:inherit;" href="https://www.instagram.com/agro_hive/">
+                <a href="https://www.instagram.com/agro_hive/">
+                <%= email_image_tag("slack.png",:style => "display: block;margin: auto;max-width: 15px;",alt:"instagram" )%>
+                </a>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    <table style="margin: 20px auto 10px auto;" cellpadding="0" cellspacing="0" border="0">
+      <tbody><tr>
+        <td style="font-family: Roboto;font-size: 10px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #001737;"> Copyright © 2020 AgroHive. No 5 Unity Close, Ogudu road, Ojota, Lagos Nigeria.</td>
+      </tr>
+      <tr>
+        <td style="font-family: Roboto;font-size: 12px;font-weight: normal;font-style:
+        normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color:
+        #bbb;text-align: center; padding-top: 15px;"> <%= link_to 'Get inspired!', blog_url, style:"color:inherit;"%>
+        </td>
+      </tr>
+    </tbody></table>
+    </td>
   </body>
 </html>

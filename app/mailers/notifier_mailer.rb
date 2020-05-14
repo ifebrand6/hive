@@ -44,6 +44,7 @@ class NotifierMailer < ApplicationMailer
   def send_mail_for_a_completed_transcation
     @transaction = params[:transaction]
     @transaction_reference = generate_unique_reference(@transaction)
+    @talent_assignment = TalentAssignment.with_deleted.find_by(finalized_request_id: @transaction.finalized_request_id)
     @email = @transaction.finalized_request.request.email
     mail(to: @email, subject: 'Your Transaction is successful!' )
   end
