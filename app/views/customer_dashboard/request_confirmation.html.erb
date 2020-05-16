@@ -1,9 +1,7 @@
 <div class="container-scroller">
     <div class="details-wrapper" style="padding: 0%;">
         <div class="container">
-
             <div class="row mt-5 mb-5">
-            
                 <div class="col-md-8 mx-auto py-5 text-center">
                     <a class="navbar-brand" href="/"><%= image_tag 'admin/logo.png' %></a>
                     <h1>Thank You For Your Request!</h1>
@@ -11,19 +9,16 @@
                 </div>
             </div>
             <div class="row mb-5">
-
                 <div class="col-md-4 grid-margin">
                     <div class="m-6">
-                        
                             <%= image_tag 'home/thank_you.png',style:"width: 215px; height: 215px;" %>
-                        
                     </div>
                 </div>
                 <div class="col-md-5 grid-margin stretch-card">
                     <div class="card">
                         <div class="card_body">
                             <table class="table">
-                                <h6 class="text-center"><%= @request.talent_requests.count%> made.</h6>
+                                <h6 class="text-center"><%=  pluralize(  @request.talent_requests.count, 'request' ) %> made.</h6>
                                 <% @talent_requests.each do |f|%>  
                                 <tbody>
                                     <tr>

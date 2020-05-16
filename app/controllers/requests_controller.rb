@@ -20,7 +20,7 @@ class RequestsController < ApplicationController
 
   private
     def request_and_talent_request_params
-      params.require(:request).permit(:user_id, :email, :phone_number, talent_requests_attributes: [:user_id, :unit_price, :expected_contract_duration, :expected_start_date, :quantity, :talent_type_id])
+      params.require(:request).permit(:user_id, :email, :phone_number, talent_requests_attributes: [:user_id, :unit_price, :expected_contract_duration, :expected_start_date, :expected_end_date, :quantity, :talent_type_id])
     end
     
     def get_talent_types
