@@ -83,6 +83,7 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   resources :experts, path: 'application'
+  get 'confirmed-application', to: 'experts#expert_confirmation', as: 'expert_confirmation'
   # CUSTOMER DASHBO
   get 'verify/:id', to: 'transactions#verify_transaction', as: 'verify'
   # resources :transactions

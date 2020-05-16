@@ -17,8 +17,8 @@ class ExpertsController < ApplicationController
   def create
     @expert = Expert.new(expert_params)
 
-    if @expert.save!
-      redirect_to action: "index"
+    if @expert.save
+      redirect_to expert_confirmation_path
       flash[:notice] = "APPLICATION SUBMITTED SUCCESSFULLY"
     else
       render :new
@@ -37,6 +37,11 @@ class ExpertsController < ApplicationController
     @expert.decline_expert
     redirect_to dashboard_application_path
   end
+
+  def expert_confirmation
+    render :layout => 'confirmation'
+  end
+  
 
 private
   def expert_params
