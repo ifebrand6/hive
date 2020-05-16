@@ -28,7 +28,11 @@
         <div class="form-group row">
             <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Select Expert</label>
             <div class="col-sm-9">
-                <%= a.select(:expert_id, @talents.collect{|e| [e.first_name   , + e.id]},{},{class:"form-control form-control-lg"}) %>
+            <% if  @talents.count >= 1%>
+            <%= a.select(:expert_id, @talents.collect{|e| [e.first_name   , + e.id]},{},{class:"form-control form-control-lg"}) %>
+            <% else %>
+                 <label class="form-control text-danger"> No expert is available for this request!</label>
+            <% end %>
             </div>
         </div>
         <div class="form-group row">

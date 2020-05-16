@@ -38,6 +38,7 @@ class DashboardController < ApplicationController
   
   def finalize_user_request
       @talent_request = TalentRequest.find(params[:id])
+      @talents = Expert.all.where(talent_type: @talent_request.talent_type_id)
       @finalized_request = FinalizedRequest.new(final_params)
       if @finalized_request.save
         @talent_request.destroy
