@@ -18,6 +18,7 @@ class Ability
         can :manage, :all
       elsif user.customer_role?
         can :manage, :customer_dashboard
+        can [:read,:create], Transaction
       elsif user.guest?
       end
       #
