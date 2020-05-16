@@ -16,7 +16,7 @@
         <div class="card bg-gradient-danger card-img-holder text-white">
             <div class="card-body">
                 <%= image_tag 'admin/circle.svg', class:"card-img-absolute",alt:"circle-image" %>
-                <h2 class="mb-8">Welcome, Abu Bin Ishtiyak
+                <h2 class="mb-8">Welcome, <%= current_user.email.split("@")[0]%>
 
                 </h2>
                 <h6 class="card-text">Welcome to our dashboard. Manage your account and your agro requests.
