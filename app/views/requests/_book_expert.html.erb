@@ -8,10 +8,14 @@
                 <h2>Book Talent</h2>
                 <%= f.hidden_field :user_id, value: current_or_guest_user.id %>
                 <div class="d-flex">
+                <% if user_signed_in? %>
+                  <%= f.hidden_field :email, value: current_user.email %>
+                <% elsif  %>
                 <div class="form-group mr-2">
                     <label for="" class="label">Email</label>
                     <input name="request[email]" id="request_email" type="email" class="form-control" placeholder="add your email">
                 </div>
+                <% end %>
                 <div class="form-group mr-2">
                     <label for="" class="label">Phone Number</label>
                     <input name="request[phone_number]" id="request_phone_number" type="text" class="form-control" placeholder="add your number">
