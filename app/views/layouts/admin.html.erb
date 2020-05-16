@@ -14,11 +14,13 @@
     <div class="container-scroller">
         <%= render partial: '/layouts/shared/navbar' %>
         <div class="container-fluid page-body-wrapper">
+        <% if user_signed_in? %>
             <% if current_user.admin_role == true %>
             <%= render partial: '/layouts/shared/admin_sidebar' %>
             <% else %>
             <%= render partial: '/layouts/shared/sidebar' %>
-            <% end %>
+        <% end %>
+        <% end %>
             <div class="main-panel">
                 <div class="content-wrapper">
                     <%= yield %>
