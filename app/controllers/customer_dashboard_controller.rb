@@ -29,5 +29,11 @@ class CustomerDashboardController < ApplicationController
   def thank_you
     render :layout => 'confirmation'
   end
+
+  def request_confirmation
+     @request = current_or_guest_user.requests.find(params[:id])
+     @talent_requests = @request.talent_requests
+    render :layout => 'confirmation'
+  end
   
 end

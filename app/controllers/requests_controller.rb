@@ -12,7 +12,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_and_talent_request_params)
     if @request.save
       flash[:notice] = "You request has been recieved."
-      redirect_to root_path, notice: 'request has been recieved.'
+      redirect_to confirmed_request_path(@request), notice: 'request has been recieved.'
     else
       render :new
     end

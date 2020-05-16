@@ -1,0 +1,62 @@
+<div class="container-scroller">
+    <div class="details-wrapper" style="padding: 0%;">
+        <div class="container">
+
+            <div class="row mt-5 mb-5">
+            
+                <div class="col-md-8 mx-auto py-5 text-center">
+                    <a class="navbar-brand" href="/"><%= image_tag 'admin/logo.png' %></a>
+                    <h1>Thank You For Your Request!</h1>
+                    <h5 class="font-weight-light"> We will get back to you after we have process your request. </h5>
+                </div>
+            </div>
+            <div class="row mb-5">
+
+                <div class="col-md-4 grid-margin">
+                    <div class="m-6">
+                        <div class="card card-item-preview">
+                            <%= image_tag 'home/feasibility.jpg' %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card_body">
+                            <table class="table">
+                                <h6 class="text-center"><%= @request.talent_requests.count%> made.</h6>
+                                <% @talent_requests.each do |f|%>  
+                                <tbody>
+                                    <tr>
+                                        <td> Talent Request: </td>
+                                        <td> <%= f.talent_type.expert_specialization %> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Contract Duration:</td>
+                                        <td><%= f.expected_contract_duration %></td>
+                                    </tr>
+                                    <tr>
+                                        <td> Start Date: </td>
+                                        <td>  <%= f.expected_start_date %> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> End Date: </td>
+                                        <td> <%= f.expected_end_date %> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> No of Talent Demanded: </td>
+                                        <td> <%= f.quantity %> </td>
+                                    </tr>
+                                </tbody>
+                                <% end %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <a class="btn btn-outline-dark btn-fw" href="/">Go to Home</a>
+                    <a class="btn btn-outline-dark btn-fw" href="/blog">Read about inspiring Agro stories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

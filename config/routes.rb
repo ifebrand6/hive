@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   post 'transactions/:id' => 'transactions#create'
   resources :transactions, only: [:index,:show]
   get 'thank-you', to: 'customer_dashboard#thank_you', as: 'thank_you'
+  get 'confirmed-request/:id', to: 'customer_dashboard#request_confirmation', as: 'confirmed_request'
   get '/dashboard', to: 'customer_dashboard#index',as: 'dashboard'
   get 'my-finalized-requests', to: 'customer_dashboard#finalized_requests', as: 'customer_finalized_requests'
   get 'my-finalized-request/:id', to: 'customer_dashboard#show_finalized_request', as: 'show_customer_finalized_request'
