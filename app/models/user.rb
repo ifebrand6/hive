@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :talent_requests, dependent: :delete_all
   has_many :finalized_requests, dependent: :delete_all
   has_many :transactions, dependent: :delete_all
+  has_many :login_activities, as: :user 
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable validatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

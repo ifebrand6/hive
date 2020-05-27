@@ -1,0 +1,34 @@
+<div class="page-header">
+    <h3 class="page-title">  Account Activity </h3>
+    <%= render partial: 'dashboard/shared/page_navbar' %>
+</div>
+
+<div class="col-md-7 grid-margin stretch-card">
+    <div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Project Status</h4>
+        <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th> # </th>
+                <th> Browser </th>
+                <th> Time  </th>
+               
+            </tr>
+            </thead>
+            <tbody>
+            <% @user_activities.each do |user_activity|%>
+            <tr>
+                <td><%= user_activity.id %> </td>
+                <td> <%= get_browser_name(user_activity.user_agent) %></td>
+                <td> <%= time_ago_in_words(user_activity.created_at)%></td>
+            </tr>
+                <% end %>
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+</div>

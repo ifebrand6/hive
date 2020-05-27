@@ -35,5 +35,10 @@ class CustomerDashboardController < ApplicationController
      @talent_requests = @request.talent_requests
     render :layout => 'confirmation'
   end
+
+  def login_activity
+    @user_activities = current_user.login_activities
+    # ll
+  end
   
 end

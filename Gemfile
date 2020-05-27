@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
+gem 'authtrail'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'cancancan'
@@ -42,6 +43,7 @@ gem "cocoon"
 gem 'con'
 gem 'devise'
 gem 'devise-guests', '~> 0.5.0'
+gem 'device_detector'
 gem 'delayed_job_active_record'
 gem "figaro"
 gem 'friendly_id', '~> 5.2.4'
